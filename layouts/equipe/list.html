@@ -17,9 +17,9 @@
       </div>
       {{ else }}
       <div class="kpi-card">
-        <div class="kpi-card__value">16</div>
-        <div class="kpi-card__label">Enseignants permanents</div>
-        <p class="kpi-card__desc">Universitaires, PRAG, MCF & docteurs</p>
+        <div class="kpi-card__value">18</div>
+        <div class="kpi-card__label">Membres de l'équipe</div>
+        <p class="kpi-card__desc">Direction, enseignants-chercheurs, PRAG, MCF, technicien & secrétariat</p>
       </div>
       <div class="kpi-card">
         <div class="kpi-card__value">25+</div>
@@ -28,8 +28,8 @@
       </div>
       <div class="kpi-card">
         <div class="kpi-card__value">3</div>
-        <div class="kpi-card__label">Pôles d'expertise</div>
-        <p class="kpi-card__desc">Dév Web & IA, Design UX/UI, Création Audiovisuelle</p>
+        <div class="kpi-card__label">Parcours BUT MMI</div>
+        <p class="kpi-card__desc">Dév Web & Dispositifs interactifs, Création numérique, Communication</p>
       </div>
       <div class="kpi-card">
         <div class="kpi-card__value">100%</div>
@@ -41,11 +41,12 @@
 
     <!-- Filtres par pôle -->
     <div class="gallery-filters" role="tablist" aria-label="Filtrer l'équipe pédagogique">
-      <button type="button" class="gallery-filter-btn is-active" data-team-filter="all">Toute l'équipe</button>
-      <button type="button" class="gallery-filter-btn" data-team-filter="web">Direction & Web</button>
-      <button type="button" class="gallery-filter-btn" data-team-filter="audiovisuel">Audiovisuel & Son</button>
-      <button type="button" class="gallery-filter-btn" data-team-filter="design">Design & UX</button>
-      <button type="button" class="gallery-filter-btn" data-team-filter="dev">Développement Web</button>
+      <button type="button" class="gallery-filter-btn is-active" data-team-filter="all">Toute l'équipe (18)</button>
+      <button type="button" class="gallery-filter-btn" data-team-filter="direction">Direction & Coordination</button>
+      <button type="button" class="gallery-filter-btn" data-team-filter="dev">Développement Web & Systèmes</button>
+      <button type="button" class="gallery-filter-btn" data-team-filter="design">Création, 3D & UX</button>
+      <button type="button" class="gallery-filter-btn" data-team-filter="audiovisuel">Audiovisuel & Régie</button>
+      <button type="button" class="gallery-filter-btn" data-team-filter="communication">Communication, Marketing & Écriture</button>
     </div>
 
     <!-- Grille dynamique des membres de l'équipe -->
@@ -53,13 +54,7 @@
       {{ range .Pages.ByWeight }}
       <article class="team-card card--lift{{ if .Params.featured }} team-card--featured{{ end }}" data-pole="{{ .Params.pole | default "autre" }}">
         <div class="team-card__avatar-wrap">
-          {{ with .Params.photo }}
-            <img src="{{ . | relURL }}" alt="{{ $.Title }} — {{ $.Params.role }}" class="team-card__avatar" loading="lazy">
-          {{ else }}
-            <div class="team-card__avatar team-card__avatar--placeholder" aria-hidden="true">
-              <span>{{ substr .Title 0 1 }}</span>
-            </div>
-          {{ end }}
+          {{ partial "team-avatar.html" . }}
         </div>
 
         {{ with .Params.role }}
@@ -168,7 +163,8 @@
 
         const filter = btn.getAttribute('data-team-filter');
         cards.forEach(card => {
-          if (filter === 'all' || card.getAttribute('data-pole') === filter) {
+          const cardPoles = (card.getAttribute('data-pole') || '').split(/\s+/);
+          if (filter === 'all' || cardPoles.includes(filter)) {
             card.style.display = 'flex';
           } else {
             card.style.display = 'none';

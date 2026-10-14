@@ -1033,16 +1033,50 @@ html {
   color: var(--accent);
 }
 .team-card__avatar--placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--surface-2);
-  color: var(--accent);
-  font-family: var(--font-display);
-  font-size: 36px;
-  font-weight: 700;
+  display: block;
   width: 100%;
   height: 100%;
+  border-radius: inherit;
+  overflow: hidden;
+}
+.team-card__avatar-bg {
+  fill: var(--surface-2);
+  transition: fill 0.3s ease;
+}
+.team-card__avatar-silhouette {
+  fill: var(--muted);
+  opacity: 0.16;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform-origin: 50px 80px;
+}
+.team-card:hover .team-card__avatar-silhouette {
+  opacity: 0.30;
+  transform: scale(1.05);
+}
+.team-card__avatar-ring {
+  stroke: var(--accent-glow);
+  transition: stroke 0.3s ease, transform 0.3s ease;
+  transform-origin: 50px 50px;
+}
+.team-card:hover .team-card__avatar-ring {
+  stroke: var(--accent);
+  transform: scale(1.08);
+}
+.team-card__avatar-badge {
+  fill: var(--surface);
+  stroke: var(--line-strong);
+  transition: stroke 0.3s ease;
+}
+.team-card:hover .team-card__avatar-badge {
+  stroke: var(--accent);
+}
+.team-card__avatar-text {
+  fill: var(--accent);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+  user-select: none;
 }
 .team-card__footer {
   margin-top: auto;

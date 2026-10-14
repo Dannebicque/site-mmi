@@ -1,0 +1,23 @@
+{{ with .Params.photo }}
+  <img src="{{ . | relURL }}" alt="{{ $.Title }} — {{ $.Params.role }}" class="team-card__avatar" loading="lazy">
+{{ else }}
+  <svg class="team-card__avatar team-card__avatar--placeholder" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{{ $.Title }}">
+    <!-- Fond de la carte avatar -->
+    <rect class="team-card__avatar-bg" width="100" height="100" fill="#161C28" rx="8" />
+    
+    <!-- Silhouette humaine subtile en filigrane (arrière-plan centré) -->
+    <g class="team-card__avatar-silhouette" fill="#9AA6BA" opacity="0.16">
+      <circle cx="50" cy="36" r="16" />
+      <path d="M50 56 c-19 0 -35 10 -37 34 h74 c-2 -24 -18 -34 -37 -34 z" />
+    </g>
+
+    <!-- Anneau & pastille centrale pour détacher les initiales -->
+    <circle class="team-card__avatar-ring" cx="50" cy="50" r="24" fill="none" stroke="rgba(184, 245, 61, 0.25)" stroke-width="1" />
+    <circle class="team-card__avatar-badge" cx="50" cy="50" r="21" fill="#11161F" fill-opacity="0.90" stroke="#3A4458" stroke-width="1.2" />
+
+    <!-- Initiales centrées au millimètre avec police Space Grotesk -->
+    <text class="team-card__avatar-text" x="50" y="50" text-anchor="middle" dominant-baseline="central" fill="#B8F53D" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-weight="700" font-size="18" letter-spacing="1.5">
+      {{ with .Params.initials }}{{ . }}{{ else }}{{ substr .Title 0 2 }}{{ end }}
+    </text>
+  </svg>
+{{ end }}
