@@ -7,7 +7,7 @@
 <div class="cards cards--wide">
 <article class="card card--lg card--accent">
 <span class="label label--accent">entrée en BUT1</span>
-<h3 class="h3--xl">Tu passes ton bac</h3>
+<h3 class="h3--xl">Tu passes ton bac ou tu te réoriente</h3>
 <p class="muted">Tu candidates via Parcoursup, comme pour la plupart des formations post-bac. [Calendrier et critères à compléter]</p>
 <a class="btn btn--primary card__cta" href="{{ .Site.Params.urls.parcoursup | default "https://www.parcoursup.fr" }}" target="_blank" rel="noopener">Candidater sur Parcoursup</a>
 </article>
@@ -18,6 +18,22 @@
 <a class="btn btn--ghost card__cta" href="{{ .Site.Params.urls.ecandidat | default "https://candidatures.iut-troyes.univ-reims.fr" }}" target="_blank" rel="noopener">Candidater sur eCandidat</a>
 </article>
 </div>
-<p class="muted" style="text-align: center">{{ or .Site.Params.jpo.text .Site.Params.jpo_text "Viens voir les studios et rencontrer les étudiants : 31 Janvier 2027." }}</p>
+
+<!-- Bannière d'appel JPO -->
+{{ with .Site.Params.jpo }}
+{{ if .enabled }}
+<div class="card card--accent gap-16" style="padding: 36px 32px; margin-top: 16px; align-items: center; text-align: center; width: 100%; box-sizing: border-box;">
+  <span class="label label--accent">journées portes ouvertes</span>
+  <h3 class="h3--lg" style="margin: 0; max-width: 680px;">Viens visiter les studios et rencontrer les promos lors des JPO</h3>
+  <p class="muted measure" style="text-align: center; margin: 0;">
+    Rendez-vous le <strong>{{ .date | default "31 Janvier 2027" }}</strong>{{ with .horaires }} ({{ . }}){{ end }} à l'IUT de Troyes{{ with .lieu }} — {{ . }}{{ end }}.
+    {{ with .description }}<br><span style="font-size: 14px; display: inline-block; margin-top: 4px;">{{ . }}</span>{{ end }}
+  </p>
+  <div class="actions" style="justify-content: center; margin-top: 6px;">
+    <a class="btn btn--primary" href="{{ .url | default "/contact/" | relURL }}">Préparer ma visite & nous contacter</a>
+  </div>
+</div>
+{{ end }}
+{{ end }}
 </div>
 </section>
