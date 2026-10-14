@@ -1,22 +1,58 @@
 <footer class="site-footer">
 <div class="container stack gap-24">
 <div class="site-footer__top">
-<div class="stack gap-8">
-<p class="site-footer__title">BUT MMI · IUT de Troyes</p>
-<p class="site-footer__text">Formation de l'IUT de Troyes, composante de l'Université de Reims Champagne-Ardenne.</p>
-</div>
-<nav class="stack gap-4" aria-label="Navigation secondaire">
-<p class="label label--muted">Découvrir le département</p>
-<a class="touch link-underline" href="{{ "/galerie/" | relURL }}">Galerie photos & studios</a>
-<a class="touch link-underline" href="{{ "/equipe/" | relURL }}">L'équipe pédagogique</a>
-<a class="touch link-underline" href="{{ "/contact/" | relURL }}">Contact & Accès</a>
-</nav>
-<nav class="stack gap-4" aria-label="Sites partenaires">
-<p class="label label--muted">Pour aller plus loin</p>
-<a class="touch link-underline" href="{{ .Site.Params.urls.iut_troyes | default "https://www.univ-reims.fr/iut-troyes/" }}" target="_blank" rel="noopener">Site de l'IUT de Troyes</a>
-<a class="touch link-underline" href="{{ .Site.Params.urls.urca | default "https://www.univ-reims.fr" }}" target="_blank" rel="noopener">Université de Reims Champagne-Ardenne</a>
-<a class="touch link-underline" href="{{ .Site.Params.urls.butmmi | default "https://butmmi.fr" }}" target="_blank" rel="noopener">Site national du BUT MMI</a>
-</nav>
+  <!-- Colonne 1 : Présentation & JPO -->
+  <div class="stack gap-8" style="max-width: 320px;">
+    <p class="site-footer__title">BUT MMI · IUT de Troyes</p>
+    <p class="site-footer__text">Formation de l'IUT de Troyes, composante de l'Université de Reims Champagne-Ardenne.</p>
+    {{ with .Site.Params.jpo }}
+    {{ if .enabled }}
+    <div style="margin-top: 6px;">
+      <a class="label label--accent touch link-accent" href="{{ .url | default "/contact/" | relURL }}" style="text-decoration: none;">
+        📅 {{ .badge | default (printf "Prochaine JPO : %s" .date) }}
+      </a>
+    </div>
+    {{ end }}
+    {{ end }}
+  </div>
+
+  <!-- Colonne 2 : Coordonnées (dynamiques depuis hugo.toml) -->
+  <div class="stack gap-4" style="max-width: 280px;">
+    <p class="label label--muted">Coordonnées</p>
+    <p style="font-size: 14px; color: var(--muted); margin: 0; line-height: 1.4;">
+      {{ with .Site.Params.contact }}
+        <strong>{{ .department }}</strong><br>
+        {{ .address }}<br>
+        {{ .postal_code }} {{ .city }}
+      {{ end }}
+    </p>
+    {{ with .Site.Params.contact.phone }}
+    <p style="font-size: 14px; margin: 4px 0 0 0;">
+      <a class="touch link-underline" href="tel:{{ $.Site.Params.contact.phone_clean | default "+33325424646" }}">{{ . }}</a>
+    </p>
+    {{ end }}
+    {{ with .Site.Params.contact.email }}
+    <p style="font-size: 14px; margin: 0;">
+      <a class="touch link-underline" href="mailto:{{ . }}">{{ . }}</a>
+    </p>
+    {{ end }}
+  </div>
+
+  <!-- Colonne 3 : Navigation du département -->
+  <nav class="stack gap-4" aria-label="Navigation secondaire">
+    <p class="label label--muted">Découvrir le département</p>
+    <a class="touch link-underline" href="{{ "/galerie/" | relURL }}">Galerie photos & studios</a>
+    <a class="touch link-underline" href="{{ "/equipe/" | relURL }}">L'équipe pédagogique</a>
+    <a class="touch link-underline" href="{{ "/contact/" | relURL }}">Contact & Accès</a>
+  </nav>
+
+  <!-- Colonne 4 : Partenaires institutionnels -->
+  <nav class="stack gap-4" aria-label="Sites partenaires">
+    <p class="label label--muted">Pour aller plus loin</p>
+    <a class="touch link-underline" href="{{ .Site.Params.urls.iut_troyes | default "https://www.univ-reims.fr/iut-troyes/" }}" target="_blank" rel="noopener">Site de l'IUT de Troyes</a>
+    <a class="touch link-underline" href="{{ .Site.Params.urls.urca | default "https://www.univ-reims.fr" }}" target="_blank" rel="noopener">Université de Reims Champagne-Ardenne</a>
+    <a class="touch link-underline" href="{{ .Site.Params.urls.butmmi | default "https://butmmi.fr" }}" target="_blank" rel="noopener">Site national du BUT MMI</a>
+  </nav>
 </div>
 <div class="site-footer__bar">
 <p>© 2026 IUT de Troyes · Tous droits réservés</p>

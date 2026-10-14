@@ -15,32 +15,49 @@
 
 {{- partial "footer.html" . -}}
 
-<a href="#top" id="back-to-top" class="back-to-top" aria-label="Retour en haut de page" title="Retour en haut">
+</div>
+
+<!-- Bouton Retour en haut -->
+<a href="#top" id="back-to-top" class="back-to-top" aria-label="Retour en haut de page" title="Retour en haut de page">
   <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M18 15l-6-6-6 6"/>
   </svg>
+  <span>Haut</span>
 </a>
 
 <script>
   (function() {
     const btn = document.getElementById('back-to-top');
-    if (!btn) return;
-    const toggle = () => {
-      if (window.scrollY > 300) {
-        btn.classList.add('is-visible');
-      } else {
-        btn.classList.remove('is-visible');
+    const header = document.querySelector('.site-header');
+    
+    function onScroll() {
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      if (btn) {
+        if (scrollY > 250) {
+          btn.classList.add('is-visible');
+        } else {
+          btn.classList.remove('is-visible');
+        }
       }
-    };
-    window.addEventListener('scroll', toggle, { passive: true });
-    toggle();
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+      if (header) {
+        if (scrollY > 10) {
+          header.classList.add('is-scrolled');
+        } else {
+          header.classList.remove('is-scrolled');
+        }
+      }
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    
+    if (btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
   })();
 </script>
-
-</div>
 </body>
 </html>
