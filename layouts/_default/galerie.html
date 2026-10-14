@@ -95,7 +95,7 @@
     <div class="card card--accent gap-16" style="padding: 32px; margin-top: 24px; align-items: center; text-align: center;">
       <span class="label label--accent">envie de voir tout cela en vrai ?</span>
       <h2 style="font-size: 28px; max-width: 600px;">Viens visiter les studios lors des Journées Portes Ouvertes</h2>
-      <p class="muted measure" style="text-align: center;">Rendez-vous le <strong>{{ .Site.Params.jpo_date | default "31 Janvier 2027" }}</strong> à l'IUT de Troyes pour tester le matériel et échanger avec les promos.</p>
+      <p class="muted measure" style="text-align: center;">Rendez-vous le <strong>{{ or .Site.Params.jpo.date .Site.Params.jpo_date "31 Janvier 2027" }}</strong> à l'IUT de Troyes pour tester le matériel et échanger avec les promos.</p>
       <div class="actions" style="justify-content: center; margin-top: 8px;">
         <a class="btn btn--primary" href="{{ "/contact/" | relURL }}">Nous contacter & préparer ta visite</a>
       </div>

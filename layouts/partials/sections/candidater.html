@@ -18,6 +18,6 @@
 <a class="btn btn--ghost card__cta" href="{{ .Site.Params.urls.ecandidat | default "https://candidatures.iut-troyes.univ-reims.fr" }}" target="_blank" rel="noopener">Candidater sur eCandidat</a>
 </article>
 </div>
-<p class="muted" style="text-align: center">{{ .Site.Params.jpo_text | default "Viens voir les studios et rencontrer les étudiants : 31 Janvier 2027." }}</p>
+<p class="muted" style="text-align: center">{{ or .Site.Params.jpo.text .Site.Params.jpo_text "Viens voir les studios et rencontrer les étudiants : 31 Janvier 2027." }}</p>
 </div>
 </section>

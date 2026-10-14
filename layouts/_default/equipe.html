@@ -7,67 +7,79 @@
       <p class="lead measure">Une équipe mixte composée d'enseignant·es universitaires, d'enseignant·es-chercheur·es et de professionnel·les en activité pour t'apporter à la fois la rigueur des méthodes et l'expertise du marché.</p>
     </div>
 
-    <!-- Piliers pédagogiques -->
-    <div class="team-grid">
-      <!-- 1. Direction & Web -->
-      <article class="team-card team-card--featured card--lift">
-        <div class="team-card__avatar-wrap">
-          <img src="{{ "images/equipe-direction.jpg" | relURL }}" alt="David Annebicque — Chef de département MMI Troyes" class="team-card__avatar">
-        </div>
-        <span class="team-card__role">Direction & Pôle Web</span>
-        <h2 class="team-card__name">David Annebicque</h2>
-        <p class="team-card__desc">Chef du département MMI à l'IUT de Troyes. Enseigne les technologies web, les architectures client-serveur et supervise les projets pédagogiques et partenariats entreprises.</p>
-        <ul class="team-card__tags">
-          <li class="team-card__tag">Dév Web & Frameworks</li>
-          <li class="team-card__tag">Architecture logicielle</li>
-          <li class="team-card__tag">Gestion de projet</li>
-        </ul>
-      </article>
+    <!-- Filtres par pôle -->
+    <div class="gallery-filters" role="tablist" aria-label="Filtrer l'équipe pédagogique">
+      <button type="button" class="gallery-filter-btn is-active" data-team-filter="all">Toute l'équipe</button>
+      <button type="button" class="gallery-filter-btn" data-team-filter="web">Direction & Web</button>
+      <button type="button" class="gallery-filter-btn" data-team-filter="audiovisuel">Audiovisuel & Son</button>
+      <button type="button" class="gallery-filter-btn" data-team-filter="design">Design & UX</button>
+      <button type="button" class="gallery-filter-btn" data-team-filter="dev">Développement Web</button>
+    </div>
 
-      <!-- 2. Pôle Audiovisuel -->
-      <article class="team-card card--lift">
+    <!-- Grille dynamique des membres de l'équipe -->
+    <div class="team-grid" id="team-grid">
+      {{ $members := where .Site.RegularPages "Section" "equipe" }}
+      {{ range $members.ByWeight }}
+      <article class="team-card card--lift{{ if .Params.featured }} team-card--featured{{ end }}" data-pole="{{ .Params.pole | default "autre" }}">
         <div class="team-card__avatar-wrap">
-          <img src="{{ "images/equipe-audiovisuel.jpg" | relURL }}" alt="Pôle Audiovisuel & Production Vidéo MMI Troyes" class="team-card__avatar">
+          {{ with .Params.photo }}
+            <img src="{{ . | relURL }}" alt="{{ $.Title }} — {{ $.Params.role }}" class="team-card__avatar" loading="lazy">
+          {{ else }}
+            <div class="team-card__avatar team-card__avatar--placeholder" aria-hidden="true">
+              <span>{{ substr .Title 0 1 }}</span>
+            </div>
+          {{ end }}
         </div>
-        <span class="team-card__role">Pôle Audiovisuel & Motion</span>
-        <h2 class="team-card__name">Sophie Laurent</h2>
-        <p class="team-card__desc">Enseignante en production audiovisuelle et cinéma numérique. Encadre les tournages en studio multi-caméras, la prise de son en régie et la post-production vidéo.</p>
-        <ul class="team-card__tags">
-          <li class="team-card__tag">Tournage 4K & Régie</li>
-          <li class="team-card__tag">Montage & DaVinci</li>
-          <li class="team-card__tag">Prise de son & Podcast</li>
-        </ul>
-      </article>
 
-      <!-- 3. Pôle Design & UX -->
-      <article class="team-card card--lift">
-        <div class="team-card__avatar-wrap">
-          <img src="{{ "images/equipe-design-ux.jpg" | relURL }}" alt="Pôle Design Graphique & UX/UI MMI Troyes" class="team-card__avatar">
-        </div>
-        <span class="team-card__role">Pôle Design & UX</span>
-        <h2 class="team-card__name">Camille Mercier</h2>
-        <p class="team-card__desc">Directrice artistique et ergonome numérique. Forme les promos à la conception centrée utilisateur, au design d'interface, au prototypage Figma et aux chartes graphiques.</p>
-        <ul class="team-card__tags">
-          <li class="team-card__tag">UI/UX Design</li>
-          <li class="team-card__tag">Identité visuelle</li>
-          <li class="team-card__tag">Design System</li>
-        </ul>
-      </article>
+        {{ with .Params.role }}
+          <span class="team-card__role">{{ . }}</span>
+        {{ end }}
 
-      <!-- 4. Pôle Dév Web & Innovation -->
-      <article class="team-card card--lift">
-        <div class="team-card__avatar-wrap">
-          <img src="{{ "images/equipe-dev-web.jpg" | relURL }}" alt="Pôle Développement Web & IA MMI Troyes" class="team-card__avatar">
+        <h2 class="team-card__name">
+          <a href="{{ .RelPermalink }}" class="team-card__name-link">{{ .Title }}</a>
+        </h2>
+
+        <div class="team-card__desc">
+          {{ with .Params.bio }}
+            {{ . }}
+          {{ else }}
+            {{ .Summary | plainify | htmlUnescape | truncate 150 }}
+          {{ end }}
         </div>
-        <span class="team-card__role">Pôle Web & Innovation</span>
-        <h2 class="team-card__name">Julien Moreau</h2>
-        <p class="team-card__desc">Enseignant en développement front-end et technologies émergentes. Spécialiste de l'accessibilité web, des flux CI/CD et de l'intégration critique de l'IA générative dans les projets.</p>
-        <ul class="team-card__tags">
-          <li class="team-card__tag">HTML / CSS / JS</li>
-          <li class="team-card__tag">Accessibilité RGAA</li>
-          <li class="team-card__tag">IA générative</li>
-        </ul>
+
+        {{ with .Params.tags }}
+          <ul class="team-card__tags">
+            {{ range . }}
+              <li class="team-card__tag">{{ . }}</li>
+            {{ end }}
+          </ul>
+        {{ end }}
+
+        <!-- Coordonnées directes & lien profil -->
+        <div class="team-card__footer">
+          <div class="team-card__meta">
+            {{ with .Params.bureau }}
+              <span class="team-card__meta-item" title="Bureau">
+                <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>{{ . }}</span>
+              </span>
+            {{ end }}
+            {{ with .Params.email }}
+              <a href="mailto:{{ . }}" class="team-card__meta-item team-card__meta-link" title="Envoyer un email">
+                <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>{{ . }}</span>
+              </a>
+            {{ end }}
+          </div>
+
+          <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line);">
+            <a href="{{ .RelPermalink }}" class="touch link-accent" style="font-size: 13px;">
+              Voir le profil complet →
+            </a>
+          </div>
+        </div>
       </article>
+      {{ end }}
     </div>
 
     <!-- Pôles complémentaires & Intervenants -->
@@ -112,4 +124,27 @@
     </div>
   </div>
 </section>
+
+<script>
+  (function() {
+    const filterButtons = document.querySelectorAll('[data-team-filter]');
+    const cards = document.querySelectorAll('#team-grid .team-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+
+        const filter = btn.getAttribute('data-team-filter');
+        cards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-pole') === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  })();
+</script>
 {{ end }}

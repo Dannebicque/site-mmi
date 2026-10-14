@@ -4,6 +4,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="{{ .Site.Params.theme_color | default "#0B0E14" }}">
+<script>
+  (function() {
+    const saved = localStorage.getItem('theme');
+    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    if (saved === 'light' || (!saved && prefersLight)) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="BUT MMI Troyes">

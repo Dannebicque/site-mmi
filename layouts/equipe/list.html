@@ -1,0 +1,149 @@
+{{ define "main" }}
+<section class="section grid-bg">
+  <div class="container stack gap-48">
+    <div class="section-head">
+      <p class="eyebrow">// Pédagogie & Encadrement · IUT de Troyes</p>
+      <h1 class="h2--xl">Des passionné·es à tes côtés, <span class="hl">de l'idée au diplôme.</span></h1>
+      <p class="lead measure">Une équipe mixte composée d'enseignant·es universitaires, d'enseignant·es-chercheur·es et de professionnel·les en activité pour t'apporter à la fois la rigueur des méthodes et l'expertise du marché.</p>
+    </div>
+
+    <!-- Filtres par pôle -->
+    <div class="gallery-filters" role="tablist" aria-label="Filtrer l'équipe pédagogique">
+      <button type="button" class="gallery-filter-btn is-active" data-team-filter="all">Toute l'équipe</button>
+      <button type="button" class="gallery-filter-btn" data-team-filter="web">Direction & Web</button>
+      <button type="button" class="gallery-filter-btn" data-team-filter="audiovisuel">Audiovisuel & Son</button>
+      <button type="button" class="gallery-filter-btn" data-team-filter="design">Design & UX</button>
+      <button type="button" class="gallery-filter-btn" data-team-filter="dev">Développement Web</button>
+    </div>
+
+    <!-- Grille dynamique des membres de l'équipe -->
+    <div class="team-grid" id="team-grid">
+      {{ range .Pages.ByWeight }}
+      <article class="team-card card--lift{{ if .Params.featured }} team-card--featured{{ end }}" data-pole="{{ .Params.pole | default "autre" }}">
+        <div class="team-card__avatar-wrap">
+          {{ with .Params.photo }}
+            <img src="{{ . | relURL }}" alt="{{ $.Title }} — {{ $.Params.role }}" class="team-card__avatar" loading="lazy">
+          {{ else }}
+            <div class="team-card__avatar team-card__avatar--placeholder" aria-hidden="true">
+              <span>{{ substr .Title 0 1 }}</span>
+            </div>
+          {{ end }}
+        </div>
+
+        {{ with .Params.role }}
+          <span class="team-card__role">{{ . }}</span>
+        {{ end }}
+
+        <h2 class="team-card__name">
+          <a href="{{ .RelPermalink }}" class="team-card__name-link">{{ .Title }}</a>
+        </h2>
+
+        <div class="team-card__desc">
+          {{ with .Params.bio }}
+            {{ . }}
+          {{ else }}
+            {{ .Summary | plainify | htmlUnescape | truncate 150 }}
+          {{ end }}
+        </div>
+
+        {{ with .Params.tags }}
+          <ul class="team-card__tags">
+            {{ range . }}
+              <li class="team-card__tag">{{ . }}</li>
+            {{ end }}
+          </ul>
+        {{ end }}
+
+        <!-- Coordonnées directes & lien profil -->
+        <div class="team-card__footer">
+          <div class="team-card__meta">
+            {{ with .Params.bureau }}
+              <span class="team-card__meta-item" title="Bureau">
+                <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>{{ . }}</span>
+              </span>
+            {{ end }}
+            {{ with .Params.email }}
+              <a href="mailto:{{ . }}" class="team-card__meta-item team-card__meta-link" title="Envoyer un email">
+                <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>{{ . }}</span>
+              </a>
+            {{ end }}
+          </div>
+
+          <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line);">
+            <a href="{{ .RelPermalink }}" class="touch link-accent" style="font-size: 13px;">
+              Voir le profil complet →
+            </a>
+          </div>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+
+    <!-- Pôles complémentaires & Intervenants -->
+    <div class="panel">
+      <div class="section-head gap-8">
+        <span class="label label--cyan">écosystème d'apprentissage</span>
+        <h3 class="h3--xl">Professionnel·les & support technique</h3>
+        <p class="muted">Le BUT MMI mobilise un vaste réseau d'experts externes et un accompagnement humain au quotidien.</p>
+      </div>
+
+      <div class="cards" style="margin-top: 12px;">
+        <article class="card card--plain gap-10">
+          <span class="label label--accent">experts métier</span>
+          <h4 class="h3--sm" style="margin: 0;">Intervenant·es professionnels</h4>
+          <p class="muted text-sm">Directeurs artistiques d'agences, développeurs fullstack, motion designers indépendants et journalistes web viennent animer des workshops intensifs et partager les réalités du marché.</p>
+        </article>
+
+        <article class="card card--plain gap-10">
+          <span class="label label--accent">régie & parc</span>
+          <h4 class="h3--sm" style="margin: 0;">Support technique & régie</h4>
+          <p class="muted text-sm">Une régie dédiée au prêt gratuit de matériel haut de gamme (boîtiers hybrides, optiques cinéma, micros HF, projecteurs LED, tablettes graphiques) et à la maintenance des serveurs pédagogiques.</p>
+        </article>
+
+        <article class="card card--plain gap-10">
+          <span class="label label--accent">suivi personnalisé</span>
+          <h4 class="h3--sm" style="margin: 0;">Secrétariat & Alternance</h4>
+          <p class="muted text-sm">Une équipe administrative à l'écoute des étudiant·es pour gérer les inscriptions, le suivi des conventions de stage, le montage des contrats d'apprentissage et le lien avec les tuteurs en entreprise.</p>
+        </article>
+      </div>
+    </div>
+
+    <!-- Bloc contact & candidater -->
+    <div class="split" style="background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 36px 40px;">
+      <div class="stack gap-12">
+        <h3 class="h3--lg" style="margin: 0;">Tu souhaites échanger avec nous ?</h3>
+        <p class="muted" style="margin: 0;">Viens nous poser tes questions lors de nos Journées Portes Ouvertes ou envoie-nous un message directement.</p>
+      </div>
+      <div class="actions" style="margin-left: auto;">
+        <a class="btn btn--primary" href="{{ "/contact/" | relURL }}">Contacter l'équipe</a>
+        <a class="btn btn--ghost" href="{{ "/#candidater" | relURL }}">Modalités de candidature</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    const filterButtons = document.querySelectorAll('[data-team-filter]');
+    const cards = document.querySelectorAll('#team-grid .team-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+
+        const filter = btn.getAttribute('data-team-filter');
+        cards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-pole') === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  })();
+</script>
+{{ end }}

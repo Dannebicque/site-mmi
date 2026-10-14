@@ -1,0 +1,120 @@
+{{ define "main" }}
+<section class="section grid-bg">
+  <div class="container container--md stack gap-36">
+    <!-- Fil d'Ariane / Retour -->
+    <div>
+      <a href="{{ "/equipe/" | relURL }}" class="touch link-accent" style="gap: 6px;">
+        <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>Retour à l'équipe pédagogique</span>
+      </a>
+    </div>
+
+    <!-- Carte Profil Principale -->
+    <article class="card card--lift" style="padding: 36px;">
+      <div class="split" style="align-items: flex-start; gap: 32px;">
+        <!-- Photo de profil -->
+        <div style="flex: 0 0 220px; max-width: 240px; width: 100%;">
+          <div class="team-card__avatar-wrap" style="aspect-ratio: 1; border-radius: var(--radius); margin-bottom: 0;">
+            {{ with .Params.photo }}
+              <img src="{{ . | relURL }}" alt="{{ $.Title }}" class="team-card__avatar" style="border-radius: var(--radius);">
+            {{ else }}
+              <div class="team-card__avatar team-card__avatar--placeholder" style="border-radius: var(--radius);">
+                <span style="font-size: 48px;">{{ substr .Title 0 1 }}</span>
+              </div>
+            {{ end }}
+          </div>
+        </div>
+
+        <!-- Informations & Coordonnées -->
+        <div class="stack gap-16" style="flex: 1 1 320px;">
+          <div class="stack gap-6">
+            {{ with .Params.pole_label }}
+              <span class="label label--cyan">{{ . }}</span>
+            {{ else }}
+              {{ with .Params.role }}
+                <span class="label label--cyan">{{ . }}</span>
+              {{ end }}
+            {{ end }}
+            <h1 class="h2--xl" style="margin: 0;">{{ .Title }}</h1>
+            {{ with .Params.statut }}
+              <p class="muted" style="margin: 0; font-size: 16px;">{{ . }}</p>
+            {{ end }}
+          </div>
+
+          {{ with .Params.tags }}
+            <ul class="team-card__tags">
+              {{ range . }}
+                <li class="team-card__tag" style="font-size: 13px; padding: 4px 10px;">{{ . }}</li>
+              {{ end }}
+            </ul>
+          {{ end }}
+
+          <!-- Coordonnées et réseaux -->
+          <div class="team-member-contact" style="display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: 8px; padding-top: 16px; border-top: 1px solid var(--line);">
+            {{ with .Params.bureau }}
+              <div class="team-card__meta-item" title="Bureau">
+                <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>{{ . }}</span>
+              </div>
+            {{ end }}
+
+            {{ with .Params.email }}
+              <a href="mailto:{{ . }}" class="team-card__meta-item team-card__meta-link touch" title="Envoyer un email">
+                <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>{{ . }}</span>
+              </a>
+            {{ end }}
+
+            {{ with .Params.telephone }}
+              <a href="tel:{{ replace (replace . " " "") "(0)" "" }}" class="team-card__meta-item team-card__meta-link touch" title="Téléphone">
+                <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                <span>{{ . }}</span>
+              </a>
+            {{ end }}
+
+            {{ with .Params.linkedin }}
+              <a href="{{ . }}" target="_blank" rel="noopener" class="team-card__meta-item team-card__meta-link touch" title="LinkedIn">
+                <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                <span>LinkedIn</span>
+              </a>
+            {{ end }}
+
+            {{ with .Params.github }}
+              <a href="{{ . }}" target="_blank" rel="noopener" class="team-card__meta-item team-card__meta-link touch" title="GitHub">
+                <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+                <span>GitHub</span>
+              </a>
+            {{ end }}
+
+            {{ with .Params.website }}
+              <a href="{{ . }}" target="_blank" rel="noopener" class="team-card__meta-item team-card__meta-link touch" title="Site personnel ou portfolio">
+                <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                <span>Site web</span>
+              </a>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Contenu & Biographie détaillée -->
+    <div class="card card--plain stack gap-20" style="padding: 36px; line-height: 1.7; font-size: 16px;">
+      <div class="member-content prose">
+        {{ .Content }}
+      </div>
+    </div>
+
+    <!-- Bannière contact & navigation -->
+    <div class="split" style="background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px 36px;">
+      <div class="stack gap-8">
+        <h3 class="h3--md" style="margin: 0;">Une question sur les enseignements ?</h3>
+        <p class="muted text-sm" style="margin: 0;">Notre secrétariat et nos équipes pédagogiques sont à ta disposition pour te renseigner sur la formation.</p>
+      </div>
+      <div class="actions" style="margin-left: auto;">
+        <a class="btn btn--primary" href="{{ "/contact/" | relURL }}">Nous contacter</a>
+        <a class="btn btn--ghost" href="{{ "/equipe/" | relURL }}">Toute l'équipe</a>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

@@ -4,7 +4,7 @@
 {{- partial "head.html" . -}}
 </head>
 <body>
-<div id="top" class="page" style="--accent: {{ .Site.Params.accent | default "#B8F53D" }}">
+<div id="top" class="page">
 <a class="skip" href="#contenu">Aller au contenu</a>
 
 {{- partial "header.html" . -}}
@@ -29,7 +29,18 @@
   (function() {
     const btn = document.getElementById('back-to-top');
     const header = document.querySelector('.site-header');
+    const themeBtn = document.getElementById('theme-toggle');
     
+    // Bascule du mode clair / sombre
+    if (themeBtn) {
+      themeBtn.addEventListener('click', function() {
+        const current = document.documentElement.getAttribute('data-theme') || 'dark';
+        const next = current === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+    }
+
     function onScroll() {
       const scrollY = window.pageYOffset || document.documentElement.scrollTop;
       if (btn) {

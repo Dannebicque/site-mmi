@@ -88,7 +88,13 @@
               </div>
               <div class="contact-meta-content">
                 <span class="contact-meta-label">Adresse postale</span>
-                <span class="contact-meta-value">9 rue de Québec, CS 90396<br>10026 Troyes Cedex</span>
+                <span class="contact-meta-value">
+                  {{ with .Site.Params.contact }}
+                    {{ .address }}<br>{{ .postal_code }} {{ .city }}
+                  {{ else }}
+                    9 rue de Québec, CS 90396<br>10026 Troyes Cedex
+                  {{ end }}
+                </span>
               </div>
             </li>
 
@@ -98,7 +104,7 @@
               </div>
               <div class="contact-meta-content">
                 <span class="contact-meta-label">Téléphone secrétariat</span>
-                <a class="contact-meta-value touch link-accent" href="tel:+33325424646">{{ .Site.Params.contact.phone | default "+33 (0)3 25 42 46 46" }}</a>
+                <a class="contact-meta-value touch link-accent" href="tel:{{ .Site.Params.contact.phone_clean | default "+33325424646" }}">{{ .Site.Params.contact.phone | default "+33 (0)3 25 42 46 46" }}</a>
               </div>
             </li>
 
@@ -118,7 +124,7 @@
               </div>
               <div class="contact-meta-content">
                 <span class="contact-meta-label">Horaires du secrétariat</span>
-                <span class="contact-meta-value">Du lundi au vendredi<br>8h30 – 12h00 & 13h30 – 17h00</span>
+                <span class="contact-meta-value">{{ .Site.Params.contact.hours | default "Du lundi au vendredi : 8h30 - 12h00 / 13h30 - 17h00" | safeHTML }}</span>
               </div>
             </li>
           </ul>
@@ -127,25 +133,27 @@
         <!-- Carte comment venir -->
         <div class="card card--plain gap-14">
           <span class="label label--muted">venir nous voir</span>
-          <h3 class="h3--sm">Accès au campus des Lombards</h3>
+          <h3 class="h3--sm">Accès au {{ .Site.Params.contact.campus | default "Campus des Lombards" }}</h3>
           <p class="muted text-sm">
             🚄 <strong>En train</strong> : 1h30 direct depuis Paris (Gare de l'Est), puis bus ou 15 min à vélo.<br>
             🚌 <strong>En bus</strong> : Ligne 1 ou 6 du réseau TCAT (arrêt <em>IUT / Campus</em>).<br>
             🚗 <strong>En voiture</strong> : Parking gratuit réservé aux étudiants et visiteurs sur le campus.
           </p>
           <div style="margin-top: 6px;">
-            <a class="touch link-accent" href="https://maps.google.com/?q=IUT+de+Troyes+9+rue+de+Quebec" target="_blank" rel="noopener">
+            <a class="touch link-accent" href="{{ .Site.Params.contact.maps_url | default "https://maps.google.com/?q=IUT+de+Troyes+9+rue+de+Quebec" }}" target="_blank" rel="noopener">
               Ouvrir dans Google Maps →
             </a>
           </div>
         </div>
 
         <!-- Prochaine JPO -->
+        {{ with .Site.Params.jpo }}
         <div class="card card--accent gap-10">
           <span class="label label--accent">journées portes ouvertes</span>
-          <h3 class="h3--sm">{{ .Site.Params.jpo_date | default "31 Janvier 2027" }}</h3>
-          <p class="muted text-sm">{{ .Site.Params.jpo_text | default "Viens visiter nos studios de tournage, notre régie son, rencontrer les enseignants et discuter avec les étudiants de promo." }}</p>
+          <h3 class="h3--sm">{{ .date | default "31 Janvier 2027" }}</h3>
+          <p class="muted text-sm">{{ .description | default .text | default "Viens visiter nos studios de tournage, notre régie son, rencontrer les enseignants et discuter avec les étudiants de promo." }}</p>
         </div>
+        {{ end }}
       </div>
     </div>
   </div>
