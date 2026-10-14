@@ -16,8 +16,9 @@
             <h2 style="font-size: 26px;">Envoie-nous un message</h2>
             <p class="muted text-sm">Nous te répondrons sous 24 à 48 heures ouvrées.</p>
           </div>
-
-          <form id="contact-form" class="form-grid" onsubmit="event.preventDefault(); document.getElementById('contact-form-success').style.display='flex'; this.reset();">
+          <form id="contact-form" class="form-grid" 
+          name="contact" method="POST" action="/merci"
+          netlify>
             <div class="form-group">
               <label for="nom" class="form-label">Nom <span class="hl">*</span></label>
               <input type="text" id="nom" name="nom" required placeholder="Dupont" class="form-input">
