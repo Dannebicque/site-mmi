@@ -1,0 +1,192 @@
+{{ define "main" }}
+<section class="section grid-bg">
+  <div class="container stack gap-36">
+    <div class="section-head">
+      <p class="eyebrow">// Immersion en images · IUT de Troyes</p>
+      <h1 class="h2--xl">Les coulisses de <span class="hl">ta formation.</span></h1>
+      <p class="lead measure">Découvre les équipements professionnels, les espaces de création et l'énergie des projets menés au quotidien par les étudiant·es du BUT MMI Troyes.</p>
+    </div>
+
+    <!-- Filtres interactifs -->
+    <div class="gallery-filters" role="tablist" aria-label="Filtrer les photos">
+      <button type="button" class="gallery-filter-btn is-active" data-filter="all">Tous les espaces</button>
+      <button type="button" class="gallery-filter-btn" data-filter="audiovisuel">Audiovisuel & Son</button>
+      <button type="button" class="gallery-filter-btn" data-filter="design">Design & UI/UX</button>
+      <button type="button" class="gallery-filter-btn" data-filter="dev">Développement Web</button>
+      <button type="button" class="gallery-filter-btn" data-filter="projets">Projets & Vie de promo</button>
+    </div>
+
+    <!-- Grille de la galerie -->
+    <div class="gallery-grid" id="gallery-grid">
+      <!-- 1. Studio Vidéo -->
+      <article class="gallery-item" data-category="audiovisuel" tabindex="0" role="button" aria-label="Agrandir la photo Plateau de tournage multi-caméras">
+        <div class="gallery-item__img-wrap">
+          <span class="gallery-item__badge">Studio Vidéo</span>
+          <img src="{{ "images/galerie-studio-video.jpg" | relURL }}" alt="Plateau de tournage multi-caméras MMI Troyes" class="gallery-item__img" loading="lazy">
+        </div>
+        <div class="gallery-item__caption">
+          <h2 class="gallery-item__title">Plateau de tournage multi-caméras</h2>
+          <p class="gallery-item__desc">Caméras cinéma 4K sur trépieds, éclairages softbox et fond studio pour tournages de clips, teasers et fictions.</p>
+        </div>
+      </article>
+
+      <!-- 2. Régie Son -->
+      <article class="gallery-item" data-category="audiovisuel" tabindex="0" role="button" aria-label="Agrandir la photo Cabine insonorisée et console de mixage">
+        <div class="gallery-item__img-wrap">
+          <span class="gallery-item__badge">Régie Son & Podcast</span>
+          <img src="{{ "images/galerie-regie-audio.jpg" | relURL }}" alt="Console de son et micros podcast MMI Troyes" class="gallery-item__img" loading="lazy">
+        </div>
+        <div class="gallery-item__caption">
+          <h2 class="gallery-item__title">Cabine insonorisée & console audio</h2>
+          <p class="gallery-item__desc">Micros broadcast Shure SM7B et stations audio professionnelles pour l'enregistrement de voix-off, podcasts et mixage.</p>
+        </div>
+      </article>
+
+      <!-- 3. Lab Design & UX -->
+      <article class="gallery-item" data-category="design" tabindex="0" role="button" aria-label="Agrandir la photo Atelier de conception d'interfaces">
+        <div class="gallery-item__img-wrap">
+          <span class="gallery-item__badge">Lab Design & UX</span>
+          <img src="{{ "images/galerie-lab-design.jpg" | relURL }}" alt="Étudiants en atelier design d'interface MMI Troyes" class="gallery-item__img" loading="lazy">
+        </div>
+        <div class="gallery-item__caption">
+          <h2 class="gallery-item__title">Atelier de conception d'interfaces</h2>
+          <p class="gallery-item__desc">Grands écrans, tablettes graphiques et prototypage sous Figma pour concevoir des expériences utilisateurs fluides et esthétiques.</p>
+        </div>
+      </article>
+
+      <!-- 4. Tournage Fiction -->
+      <article class="gallery-item" data-category="audiovisuel" tabindex="0" role="button" aria-label="Agrandir la photo Tournage de fiction sur stabilisateur">
+        <div class="gallery-item__img-wrap">
+          <span class="gallery-item__badge">Tournage Fiction</span>
+          <img src="{{ "images/galerie-tournage-plateau.jpg" | relURL }}" alt="Tournage étudiant sur gimbal et perche micro" class="gallery-item__img" loading="lazy">
+        </div>
+        <div class="gallery-item__caption">
+          <h2 class="gallery-item__title">Projets de fiction & stabilisateurs</h2>
+          <p class="gallery-item__desc">Mise en situation réelle avec caméras sur gimbals motorisés, prise de son à la perche et direction d'acteurs.</p>
+        </div>
+      </article>
+
+      <!-- 5. Lab Dev Web -->
+      <article class="gallery-item" data-category="dev" tabindex="0" role="button" aria-label="Agrandir la photo Développement web et intégration responsive">
+        <div class="gallery-item__img-wrap">
+          <span class="gallery-item__badge">Laboratoire Web</span>
+          <img src="{{ "images/galerie-lab-dev.jpg" | relURL }}" alt="Étudiants développeurs web au lab MMI Troyes" class="gallery-item__img" loading="lazy">
+        </div>
+        <div class="gallery-item__caption">
+          <h2 class="gallery-item__title">Développement web & intégration responsive</h2>
+          <p class="gallery-item__desc">Configurations double-écrans, stations de dev modernes et collaboration sur des applications web et architectures contemporaines.</p>
+        </div>
+      </article>
+
+      <!-- 6. Festival des Projets & Vie de promo -->
+      <article class="gallery-item" data-category="projets" tabindex="0" role="button" aria-label="Agrandir la photo Festival des réalisations et vie de promo">
+        <div class="gallery-item__img-wrap">
+          <span class="gallery-item__badge">Vie de Promo</span>
+          <img src="{{ "images/galerie-campus-vie.jpg" | relURL }}" alt="Exposition et festival des projets étudiants MMI Troyes" class="gallery-item__img" loading="lazy">
+        </div>
+        <div class="gallery-item__caption">
+          <h2 class="gallery-item__title">Festival des réalisations & expositions</h2>
+          <p class="gallery-item__desc">Présentation annuelle des grands projets devant des jurys de professionnels, partenaires entreprises et grand public.</p>
+        </div>
+      </article>
+    </div>
+
+    <!-- Bannière d'appel JPO -->
+    <div class="card card--accent gap-16" style="padding: 32px; margin-top: 24px; align-items: center; text-align: center;">
+      <span class="label label--accent">envie de voir tout cela en vrai ?</span>
+      <h2 style="font-size: 28px; max-width: 600px;">Viens visiter les studios lors des Journées Portes Ouvertes</h2>
+      <p class="muted measure" style="text-align: center;">Rendez-vous le <strong>{{ .Site.Params.jpo_date | default "31 Janvier 2027" }}</strong> à l'IUT de Troyes pour tester le matériel et échanger avec les promos.</p>
+      <div class="actions" style="justify-content: center; margin-top: 8px;">
+        <a class="btn btn--primary" href="{{ "/contact/" | relURL }}">Nous contacter & préparer ta visite</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Visualisation de la photo">
+  <div class="lightbox-content">
+    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Fermer la vue agrandie">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <img src="" alt="" class="lightbox-img" id="lightbox-img">
+    <div class="lightbox-footer">
+      <h3 class="lightbox-footer-title" id="lightbox-title"></h3>
+      <p class="lightbox-footer-desc" id="lightbox-desc"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    // 1. Filtrage interactif
+    const filterButtons = document.querySelectorAll('.gallery-filter-btn');
+    const items = document.querySelectorAll('.gallery-item');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+
+        const filter = btn.getAttribute('data-filter');
+        items.forEach(item => {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // 2. Lightbox
+    const modal = document.getElementById('lightbox-modal');
+    const modalImg = document.getElementById('lightbox-img');
+    const modalTitle = document.getElementById('lightbox-title');
+    const modalDesc = document.getElementById('lightbox-desc');
+    const closeBtn = document.getElementById('lightbox-close');
+
+    const openLightbox = (item) => {
+      const img = item.querySelector('.gallery-item__img');
+      const title = item.querySelector('.gallery-item__title');
+      const desc = item.querySelector('.gallery-item__desc');
+
+      if (img && modalImg) {
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+        modalTitle.textContent = title ? title.textContent : '';
+        modalDesc.textContent = desc ? desc.textContent : '';
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+    };
+
+    const closeLightbox = () => {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    };
+
+    items.forEach(item => {
+      item.addEventListener('click', () => openLightbox(item));
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(item);
+        }
+      });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeLightbox();
+      });
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+        closeLightbox();
+      }
+    });
+  })();
+</script>
+{{ end }}

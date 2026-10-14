@@ -1,0 +1,115 @@
+{{ define "main" }}
+<section class="section grid-bg">
+  <div class="container stack gap-48">
+    <div class="section-head">
+      <p class="eyebrow">// Pédagogie & Encadrement · IUT de Troyes</p>
+      <h1 class="h2--xl">Des passionné·es à tes côtés, <span class="hl">de l'idée au diplôme.</span></h1>
+      <p class="lead measure">Une équipe mixte composée d'enseignant·es universitaires, d'enseignant·es-chercheur·es et de professionnel·les en activité pour t'apporter à la fois la rigueur des méthodes et l'expertise du marché.</p>
+    </div>
+
+    <!-- Piliers pédagogiques -->
+    <div class="team-grid">
+      <!-- 1. Direction & Web -->
+      <article class="team-card team-card--featured card--lift">
+        <div class="team-card__avatar-wrap">
+          <img src="{{ "images/equipe-direction.jpg" | relURL }}" alt="David Annebicque — Chef de département MMI Troyes" class="team-card__avatar">
+        </div>
+        <span class="team-card__role">Direction & Pôle Web</span>
+        <h2 class="team-card__name">David Annebicque</h2>
+        <p class="team-card__desc">Chef du département MMI à l'IUT de Troyes. Enseigne les technologies web, les architectures client-serveur et supervise les projets pédagogiques et partenariats entreprises.</p>
+        <ul class="team-card__tags">
+          <li class="team-card__tag">Dév Web & Frameworks</li>
+          <li class="team-card__tag">Architecture logicielle</li>
+          <li class="team-card__tag">Gestion de projet</li>
+        </ul>
+      </article>
+
+      <!-- 2. Pôle Audiovisuel -->
+      <article class="team-card card--lift">
+        <div class="team-card__avatar-wrap">
+          <img src="{{ "images/equipe-audiovisuel.jpg" | relURL }}" alt="Pôle Audiovisuel & Production Vidéo MMI Troyes" class="team-card__avatar">
+        </div>
+        <span class="team-card__role">Pôle Audiovisuel & Motion</span>
+        <h2 class="team-card__name">Sophie Laurent</h2>
+        <p class="team-card__desc">Enseignante en production audiovisuelle et cinéma numérique. Encadre les tournages en studio multi-caméras, la prise de son en régie et la post-production vidéo.</p>
+        <ul class="team-card__tags">
+          <li class="team-card__tag">Tournage 4K & Régie</li>
+          <li class="team-card__tag">Montage & DaVinci</li>
+          <li class="team-card__tag">Prise de son & Podcast</li>
+        </ul>
+      </article>
+
+      <!-- 3. Pôle Design & UX -->
+      <article class="team-card card--lift">
+        <div class="team-card__avatar-wrap">
+          <img src="{{ "images/equipe-design-ux.jpg" | relURL }}" alt="Pôle Design Graphique & UX/UI MMI Troyes" class="team-card__avatar">
+        </div>
+        <span class="team-card__role">Pôle Design & UX</span>
+        <h2 class="team-card__name">Camille Mercier</h2>
+        <p class="team-card__desc">Directrice artistique et ergonome numérique. Forme les promos à la conception centrée utilisateur, au design d'interface, au prototypage Figma et aux chartes graphiques.</p>
+        <ul class="team-card__tags">
+          <li class="team-card__tag">UI/UX Design</li>
+          <li class="team-card__tag">Identité visuelle</li>
+          <li class="team-card__tag">Design System</li>
+        </ul>
+      </article>
+
+      <!-- 4. Pôle Dév Web & Innovation -->
+      <article class="team-card card--lift">
+        <div class="team-card__avatar-wrap">
+          <img src="{{ "images/equipe-dev-web.jpg" | relURL }}" alt="Pôle Développement Web & IA MMI Troyes" class="team-card__avatar">
+        </div>
+        <span class="team-card__role">Pôle Web & Innovation</span>
+        <h2 class="team-card__name">Julien Moreau</h2>
+        <p class="team-card__desc">Enseignant en développement front-end et technologies émergentes. Spécialiste de l'accessibilité web, des flux CI/CD et de l'intégration critique de l'IA générative dans les projets.</p>
+        <ul class="team-card__tags">
+          <li class="team-card__tag">HTML / CSS / JS</li>
+          <li class="team-card__tag">Accessibilité RGAA</li>
+          <li class="team-card__tag">IA générative</li>
+        </ul>
+      </article>
+    </div>
+
+    <!-- Pôles complémentaires & Intervenants -->
+    <div class="panel">
+      <div class="section-head gap-8">
+        <span class="label label--cyan">écosystème d'apprentissage</span>
+        <h3 class="h3--xl">Professionnel·les & support technique</h3>
+        <p class="muted">Le BUT MMI mobilise un vaste réseau d'experts externes et un accompagnement humain au quotidien.</p>
+      </div>
+
+      <div class="cards" style="margin-top: 12px;">
+        <article class="card card--plain gap-10">
+          <span class="label label--accent">experts métier</span>
+          <h4 class="h3--sm" style="margin: 0;">Intervenant·es professionnels</h4>
+          <p class="muted text-sm">Directeurs artistiques d'agences, développeurs fullstack, motion designers indépendants et journalistes web viennent animer des workshops intensifs et partager les réalités du marché.</p>
+        </article>
+
+        <article class="card card--plain gap-10">
+          <span class="label label--accent">régie & parc</span>
+          <h4 class="h3--sm" style="margin: 0;">Support technique & régie</h4>
+          <p class="muted text-sm">Une régie dédiée au prêt gratuit de matériel haut de gamme (boîtiers hybrides, optiques cinéma, micros HF, projecteurs LED, tablettes graphiques) et à la maintenance des serveurs pédagogiques.</p>
+        </article>
+
+        <article class="card card--plain gap-10">
+          <span class="label label--accent">suivi personnalisé</span>
+          <h4 class="h3--sm" style="margin: 0;">Secrétariat & Alternance</h4>
+          <p class="muted text-sm">Une équipe administrative à l'écoute des étudiant·es pour gérer les inscriptions, le suivi des conventions de stage, le montage des contrats d'apprentissage et le lien avec les tuteurs en entreprise.</p>
+        </article>
+      </div>
+    </div>
+
+    <!-- Bloc contact & candidater -->
+    <div class="split" style="background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 36px 40px;">
+      <div class="stack gap-12">
+        <h3 class="h3--lg" style="margin: 0;">Tu souhaites échanger avec nous ?</h3>
+        <p class="muted" style="margin: 0;">Viens nous poser tes questions lors de nos Journées Portes Ouvertes ou envoie-nous un message directement.</p>
+      </div>
+      <div class="actions" style="margin-left: auto;">
+        <a class="btn btn--primary" href="{{ "/contact/" | relURL }}">Contacter l'équipe</a>
+        <a class="btn btn--ghost" href="{{ "/#candidater" | relURL }}">Modalités de candidature</a>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

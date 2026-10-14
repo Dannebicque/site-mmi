@@ -1,0 +1,23 @@
+<section id="candidater" class="section section--ruled grid-bg">
+<div class="container container--md stack gap-48">
+<div class="section-head section-head--center">
+<h2 class="h2--xl">Prêt·e à <span class="hl">tout essayer</span> ?</h2>
+<p class="lead">Deux portes d'entrée selon ton parcours.</p>
+</div>
+<div class="cards cards--wide">
+<article class="card card--lg card--accent">
+<span class="label label--accent">entrée en BUT1</span>
+<h3 class="h3--xl">Tu passes ton bac</h3>
+<p class="muted">Tu candidates via Parcoursup, comme pour la plupart des formations post-bac. [Calendrier et critères à compléter]</p>
+<a class="btn btn--primary card__cta" href="{{ .Site.Params.urls.parcoursup | default "https://www.parcoursup.fr" }}" target="_blank" rel="noopener">Candidater sur Parcoursup</a>
+</article>
+<article class="card card--lg">
+<span class="label label--accent">entrée en BUT2 ou BUT3</span>
+<h3 class="h3--xl">Tu viens déjà du supérieur</h3>
+<p class="muted">Tu candidates via eCandidat pour rejoindre directement la 2e ou la 3e année. [Publics concernés et calendrier à compléter]</p>
+<a class="btn btn--ghost card__cta" href="{{ .Site.Params.urls.ecandidat | default "https://candidatures.iut-troyes.univ-reims.fr" }}" target="_blank" rel="noopener">Candidater sur eCandidat</a>
+</article>
+</div>
+<p class="muted" style="text-align: center">{{ .Site.Params.jpo_text | default "Viens voir les studios et rencontrer les étudiants : 31 Janvier 2027." }}</p>
+</div>
+</section>

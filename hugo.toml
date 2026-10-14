@@ -1,0 +1,82 @@
+baseURL = 'https://mmi.iut-troyes.univ-reims.fr/'
+languageCode = 'fr-FR'
+defaultContentLanguage = 'fr'
+title = "BUT MMI Troyes | Métiers du Multimédia et de l'Internet – IUT de Troyes"
+
+disableKinds = ["taxonomy", "term"]
+
+[params]
+  description = "BUT MMI à l'IUT de Troyes (Université de Reims Champagne-Ardenne) : 3 ans pour apprendre à concevoir, designer, filmer, coder et diffuser. Alternance, stages, candidature Parcoursup ou eCandidat."
+  accent = "#B8F53D"
+  theme_color = "#0B0E14"
+
+  # =========================================================================
+  # 📅 Journées Portes Ouvertes (JPO) — modifiable ici pour tout le site
+  # =========================================================================
+  [params.jpo]
+    enabled = true
+    date = "31 Janvier 2027"
+    horaires = "9h00 - 17h00"
+    lieu = "IUT de Troyes — Bâtiment MMI"
+    text = "Viens voir les studios et rencontrer les étudiants : 31 Janvier 2027."
+    badge = "Prochaine JPO : 31 Janvier 2027"
+    description = "Viens visiter nos studios de tournage, notre régie son, tester le matériel, rencontrer l'équipe pédagogique et échanger avec les étudiant·es."
+    url = "/contact/"
+
+  # =========================================================================
+  # 📍 Coordonnées & Contact — modifiable ici (repris sur contact et footer)
+  # =========================================================================
+  [params.contact]
+    institution = "IUT de Troyes"
+    department = "Département MMI"
+    university = "Université de Reims Champagne-Ardenne"
+    address = "9 rue de Québec, CS 90396"
+    postal_code = "10026"
+    city = "Troyes Cedex"
+    full_address = "9 rue de Québec, CS 90396, 10026 Troyes Cedex"
+    phone = "+33 (0)3 25 42 46 46"
+    phone_clean = "+33325424646"
+    email = "mmi-troyes@univ-reims.fr"
+    hours = "Du lundi au vendredi : 8h30 - 12h00 / 13h30 - 17h00"
+    campus = "Campus des Lombards"
+    maps_url = "https://maps.google.com/?q=IUT+de+Troyes+9+rue+de+Quebec"
+
+  # =========================================================================
+  # 🔗 Liens externes & plateformes de candidature
+  # =========================================================================
+  [params.urls]
+    parcoursup = "https://www.parcoursup.fr"
+    ecandidat = "https://candidatures.iut-troyes.univ-reims.fr"
+    iut_troyes = "https://www.univ-reims.fr/iut-troyes/"
+    urca = "https://www.univ-reims.fr"
+    butmmi = "https://butmmi.fr"
+
+[menu]
+  [[menu.main]]
+    name = "Compétences"
+    url = "#competences"
+    weight = 1
+  [[menu.main]]
+    name = "Un projet de A à Z"
+    url = "#projet"
+    weight = 2
+  [[menu.main]]
+    name = "L'IA"
+    url = "#ia"
+    weight = 3
+  [[menu.main]]
+    name = "Parcours"
+    url = "#parcours"
+    weight = 4
+  [[menu.main]]
+    name = "Galerie"
+    url = "/galerie/"
+    weight = 5
+  [[menu.main]]
+    name = "L'Équipe"
+    url = "/equipe/"
+    weight = 6
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 7

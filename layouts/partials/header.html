@@ -1,0 +1,14 @@
+<header class="site-header">
+<div class="container site-header__bar">
+<a class="brand" href="{{ "/" | relURL }}#top">
+<span class="brand__mark" aria-hidden="true">&gt;_</span>
+<span><span class="brand__name">MMI</span> <span class="brand__place">Troyes</span></span>
+</a>
+<nav class="nav" aria-label="Navigation principale">
+{{- range .Site.Menus.main }}
+<a class="touch nav__link" href="{{ if (hasPrefix .URL "#") }}{{ if not $.IsHome }}{{ "/" | relURL }}{{ end }}{{ .URL }}{{ else }}{{ .URL | relURL }}{{ end }}">{{ .Name }}</a>
+{{- end }}
+<a class="btn btn--primary btn--pill" href="{{ if not .IsHome }}{{ "/" | relURL }}{{ end }}#candidater">Candidater</a>
+</nav>
+</div>
+</header>

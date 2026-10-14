@@ -1,0 +1,53 @@
+<meta charset="utf-8">
+<title>{{ .Title }}</title>
+<meta name="description" content="{{ or .Description .Site.Params.description }}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="{{ .Site.Params.theme_color | default "#0B0E14" }}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="BUT MMI Troyes">
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:description" content="Un peu de tout, et ça devient ton métier : le BUT MMI de l'IUT de Troyes, Université de Reims Champagne-Ardenne.">
+<meta property="og:image" content="{{ "images/logo_mmi.png" | absURL }}">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="{{ "images/logo_mmi.png" | relURL }}" type="image/png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "IUT de Troyes",
+      "url": "https://www.iut-troyes.univ-reims.fr",
+      "logo": "{{ "images/logo_mmi.png" | absURL }}",
+      "parentOrganization": {
+        "@type": "CollegeOrUniversity",
+        "name": "Université de Reims Champagne-Ardenne",
+        "url": "https://www.univ-reims.fr"
+      }
+    },
+    {
+      "@type": "EducationalOccupationalProgram",
+      "name": "BUT Métiers du Multimédia et de l'Internet (MMI)",
+      "description": "Bachelor Universitaire de Technologie en 3 ans : conception, design, audiovisuel, développement web et diffusion.",
+      "timeToComplete": "P3Y",
+      "educationalCredentialAwarded": "Bachelor universitaire de technologie (bac +3)",
+      "inLanguage": "fr",
+      "provider": { "@type": "CollegeOrUniversity", "name": "IUT de Troyes" }
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&amp;family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@500;700&amp;display=swap">
+{{- $css := resources.Get "css/site.css" -}}
+{{- if $css -}}
+  {{- if hugo.IsProduction -}}
+    {{- $css = $css | minify | fingerprint -}}
+  {{- end -}}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" {{- if hugo.IsProduction }} integrity="{{ $css.Data.Integrity }}"{{- end }}>
+{{- else -}}
+  <link rel="stylesheet" href="{{ "css/site.css" | relURL }}">
+{{- end -}}

@@ -1,0 +1,183 @@
+{{ define "main" }}
+<section class="section grid-bg">
+  <div class="container stack gap-48">
+    <div class="section-head">
+      <p class="eyebrow">// Contact & Accès · IUT de Troyes</p>
+      <h1 class="h2--xl">Échangeons sur ton <span class="hl">projet d'études.</span></h1>
+      <p class="lead measure">Une question sur les admissions Parcoursup ou eCandidat, le programme pédagogique, l'alternance ou les stages ? Notre équipe et le secrétariat sont à ton écoute.</p>
+    </div>
+
+    <div class="split" style="align-items: flex-start; gap: 40px;">
+      <!-- Formulaire de contact -->
+      <div class="card card--lift" style="flex: 1 1 540px; padding: 36px;">
+        <div class="stack gap-24">
+          <div class="stack gap-8">
+            <span class="label label--accent">formulaire en ligne</span>
+            <h2 style="font-size: 26px;">Envoie-nous un message</h2>
+            <p class="muted text-sm">Nous te répondrons sous 24 à 48 heures ouvrées.</p>
+          </div>
+
+          <form id="contact-form" class="form-grid" onsubmit="event.preventDefault(); document.getElementById('contact-form-success').style.display='flex'; this.reset();">
+            <div class="form-group">
+              <label for="nom" class="form-label">Nom <span class="hl">*</span></label>
+              <input type="text" id="nom" name="nom" required placeholder="Dupont" class="form-input">
+            </div>
+
+            <div class="form-group">
+              <label for="prenom" class="form-label">Prénom <span class="hl">*</span></label>
+              <input type="text" id="prenom" name="prenom" required placeholder="Alex" class="form-input">
+            </div>
+
+            <div class="form-group form-group--full">
+              <label for="email" class="form-label">Adresse email <span class="hl">*</span></label>
+              <input type="email" id="email" name="email" required placeholder="alex.dupont@exemple.fr" class="form-input">
+            </div>
+
+            <div class="form-group form-group--full">
+              <label for="profil" class="form-label">Ton profil <span class="hl">*</span></label>
+              <select id="profil" name="profil" required class="form-select">
+                <option value="" disabled selected>Sélectionne ton profil</option>
+                <option value="lyceen">Lycéen·ne (candidature BUT1 Parcoursup)</option>
+                <option value="reorientation">Étudiant·e en réorientation (BUT2 / BUT3 eCandidat)</option>
+                <option value="entreprise">Entreprise (offre de stage / alternance)</option>
+                <option value="parent">Parent d'élève</option>
+                <option value="autre">Autre demande</option>
+              </select>
+            </div>
+
+            <div class="form-group form-group--full">
+              <label for="sujet" class="form-label">Objet de la demande <span class="hl">*</span></label>
+              <input type="text" id="sujet" name="sujet" required placeholder="Renseignements sur l'alternance en BUT2" class="form-input">
+            </div>
+
+            <div class="form-group form-group--full">
+              <label for="message" class="form-label">Message <span class="hl">*</span></label>
+              <textarea id="message" name="message" rows="5" required placeholder="Explique-nous ta question ou ton parcours..." class="form-textarea"></textarea>
+            </div>
+
+            <div class="form-group form-group--full" style="margin-top: 8px;">
+              <button type="submit" class="btn btn--primary" style="width: 100%; justify-content: center;">
+                Envoyer le message
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </form>
+
+          <!-- Notification de confirmation après envoi -->
+          <div id="contact-form-success" style="display: none; align-items: center; gap: 14px; padding: 16px 20px; border-radius: var(--radius-sm); background: rgba(184, 245, 61, 0.12); border: 1px solid var(--accent); color: var(--text);">
+            <svg class="icon" style="color: var(--accent); flex-shrink: 0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>
+              <strong>Message bien reçu !</strong>
+              <p class="muted text-sm" style="margin: 2px 0 0 0;">Merci pour ta prise de contact. L'équipe du département MMI Troyes te répondra très rapidement.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coordonnées & Accès -->
+      <div class="stack gap-24" style="flex: 1 1 380px;">
+        <!-- Carte coordonnées -->
+        <div class="card gap-20">
+          <span class="label label--cyan">coordonnées directes</span>
+          <h3 class="h3--lg">IUT de Troyes — MMI</h3>
+
+          <ul class="contact-meta-list">
+            <li class="contact-meta-item">
+              <div class="contact-meta-icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="contact-meta-content">
+                <span class="contact-meta-label">Adresse postale</span>
+                <span class="contact-meta-value">9 rue de Québec, CS 90396<br>10026 Troyes Cedex</span>
+              </div>
+            </li>
+
+            <li class="contact-meta-item">
+              <div class="contact-meta-icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <div class="contact-meta-content">
+                <span class="contact-meta-label">Téléphone secrétariat</span>
+                <a class="contact-meta-value touch link-accent" href="tel:+33325424646">{{ .Site.Params.contact.phone | default "+33 (0)3 25 42 46 46" }}</a>
+              </div>
+            </li>
+
+            <li class="contact-meta-item">
+              <div class="contact-meta-icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="contact-meta-content">
+                <span class="contact-meta-label">Email officiel</span>
+                <a class="contact-meta-value touch link-accent" href="mailto:{{ .Site.Params.contact.email | default "mmi-troyes@univ-reims.fr" }}">{{ .Site.Params.contact.email | default "mmi-troyes@univ-reims.fr" }}</a>
+              </div>
+            </li>
+
+            <li class="contact-meta-item">
+              <div class="contact-meta-icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="contact-meta-content">
+                <span class="contact-meta-label">Horaires du secrétariat</span>
+                <span class="contact-meta-value">Du lundi au vendredi<br>8h30 – 12h00 & 13h30 – 17h00</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Carte comment venir -->
+        <div class="card card--plain gap-14">
+          <span class="label label--muted">venir nous voir</span>
+          <h3 class="h3--sm">Accès au campus des Lombards</h3>
+          <p class="muted text-sm">
+            🚄 <strong>En train</strong> : 1h30 direct depuis Paris (Gare de l'Est), puis bus ou 15 min à vélo.<br>
+            🚌 <strong>En bus</strong> : Ligne 1 ou 6 du réseau TCAT (arrêt <em>IUT / Campus</em>).<br>
+            🚗 <strong>En voiture</strong> : Parking gratuit réservé aux étudiants et visiteurs sur le campus.
+          </p>
+          <div style="margin-top: 6px;">
+            <a class="touch link-accent" href="https://maps.google.com/?q=IUT+de+Troyes+9+rue+de+Quebec" target="_blank" rel="noopener">
+              Ouvrir dans Google Maps →
+            </a>
+          </div>
+        </div>
+
+        <!-- Prochaine JPO -->
+        <div class="card card--accent gap-10">
+          <span class="label label--accent">journées portes ouvertes</span>
+          <h3 class="h3--sm">{{ .Site.Params.jpo_date | default "31 Janvier 2027" }}</h3>
+          <p class="muted text-sm">{{ .Site.Params.jpo_text | default "Viens visiter nos studios de tournage, notre régie son, rencontrer les enseignants et discuter avec les étudiants de promo." }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Express -->
+<section class="section section--ruled section--alt">
+  <div class="container stack gap-36">
+    <div class="section-head">
+      <p class="eyebrow">questions fréquentes</p>
+      <h2>Tu te poses encore des questions ?</h2>
+    </div>
+
+    <div class="cards">
+      <article class="card card--lift gap-12">
+        <span class="label label--cyan">admission</span>
+        <h3 class="h3--sm">Faut-il savoir coder ou dessiner avant d'entrer ?</h3>
+        <p class="muted text-sm">Non ! Le BUT MMI repart des bases dans chaque discipline dès le premier semestre. Ce qui compte, c'est ta curiosité, ton envie d'apprendre et ta polyvalence.</p>
+      </article>
+
+      <article class="card card--lift gap-12">
+        <span class="label label--cyan">alternance</span>
+        <h3 class="h3--sm">L'alternance est-elle accessible dès le BUT1 ?</h3>
+        <p class="muted text-sm">La première année se fait en formation initiale avec de nombreux projets concrets. L'alternance débute au choix dès la 2e année (BUT2) ou en 3e année (BUT3).</p>
+      </article>
+
+      <article class="card card--lift gap-12">
+        <span class="label label--cyan">matériel</span>
+        <h3 class="h3--sm">Dois-je acheter du matériel audiovisuel coûteux ?</h3>
+        <p class="muted text-sm">Absolument pas. L'IUT de Troyes met à disposition des caméras professionnelles 4K, micros, régies, éclairages et ordinateurs équipés de la suite Adobe complète.</p>
+      </article>
+    </div>
+  </div>
+</section>
+{{ end }}
