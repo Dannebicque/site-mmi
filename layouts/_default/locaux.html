@@ -1,0 +1,381 @@
+{{ define "main" }}
+<section class="section grid-bg">
+  <div class="container stack gap-48">
+    <!-- Header de la page -->
+    <div class="section-head">
+      <p class="eyebrow">// Espaces & Matériels de pointe · IUT de Troyes</p>
+      <h1 class="h2--xl">Des équipements professionnels, <span class="hl">dès le premier jour.</span></h1>
+      <p class="lead measure">Plateau cinéma, régie audio insonorisée, stations informatiques double écran et régie de prêt de matériel : tout est pensé pour apprendre dans les conditions réelles d'une agence ou d'un studio de production.</p>
+    </div>
+
+    <!-- Chiffres clés & KPIs Locaux & Matériel -->
+    <div class="kpi-grid" aria-label="Chiffres clés des locaux et équipements">
+      {{ range .Site.Params.locaux.stats }}
+      <div class="kpi-card">
+        <div class="kpi-card__value">{{ .value }}</div>
+        <div class="kpi-card__label">{{ .label }}</div>
+        <p class="kpi-card__desc">{{ .desc }}</p>
+      </div>
+      {{ else }}
+      <div class="kpi-card">
+        <div class="kpi-card__value">850 m²</div>
+        <div class="kpi-card__label">Espaces dédiés</div>
+        <p class="kpi-card__desc">Plateaux, régies, labos informatiques & créatifs</p>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-card__value">120+</div>
+        <div class="kpi-card__label">Postes informatiques</div>
+        <p class="kpi-card__desc">Stations pro Mac & PC double écran 27"</p>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-card__value">50+</div>
+        <div class="kpi-card__label">Kits caméras 4K & son</div>
+        <p class="kpi-card__desc">En prêt gratuit pour tes tournages & projets</p>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-card__value">1</div>
+        <div class="kpi-card__label">Régie broadcast pro</div>
+        <p class="kpi-card__desc">Studio podcast & cabine insonorisée</p>
+      </div>
+      {{ end }}
+    </div>
+
+    <!-- Fiches détaillées par Espace & Matériels -->
+    <div class="stack gap-20">
+      <div class="section-head gap-8">
+        <span class="label label--cyan">visite guidée des espaces</span>
+        <h2 class="h3--xl">Les installations techniques à ta disposition</h2>
+        <p class="muted">Chaque espace est conçu et géré pour répondre aux exigences des standards industriels actuels.</p>
+      </div>
+
+      <div class="facilities-grid">
+        <!-- 1. Plateau de tournage -->
+        <article class="facility-card">
+          <div class="facility-card__header">
+            <span class="facility-card__badge">Vidéo & Cinéma</span>
+            <img src="{{ "images/galerie-studio-video.jpg" | relURL }}" alt="Plateau de tournage multi-caméras MMI Troyes" class="facility-card__img" loading="lazy">
+          </div>
+          <div class="facility-card__body">
+            <h3 class="facility-card__title">Plateau de tournage multi-caméras & Fond Vert</h3>
+            <p class="facility-card__desc">Plateau insonorisé et climatisé avec cyclorama vert, grill technique plafonnier et régie multi-flux pour tournages de fictions, émissions et captations en direct.</p>
+            <span class="facility-card__specs-title">Équipements phares</span>
+            <ul class="facility-card__specs">
+              <li class="facility-card__spec-item">Caméras Blackmagic Cinema 4K & 6K</li>
+              <li class="facility-card__spec-item">Boîtiers hybrides Sony FX3 / FX30</li>
+              <li class="facility-card__spec-item">Panneaux LED & projecteurs Fresnel DMX</li>
+              <li class="facility-card__spec-item">Téléprompteur broadcast pro</li>
+              <li class="facility-card__spec-item">Micros HF sans fil Sennheiser</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 2. Régie Audio & Studio Podcast -->
+        <article class="facility-card">
+          <div class="facility-card__header">
+            <span class="facility-card__badge">Son & Broadcast</span>
+            <img src="{{ "images/galerie-regie-audio.jpg" | relURL }}" alt="Cabine insonorisée et régie audio MMI Troyes" class="facility-card__img" loading="lazy">
+          </div>
+          <div class="facility-card__body">
+            <h3 class="facility-card__title">Régie audio & Studio podcast insonorisé</h3>
+            <p class="facility-card__desc">Cabine acoustique traitée avec vitre de régie pour l'enregistrement de voix-off, la réalisation d'émissions de podcast, la création de sound design et le mixage audio multicanal.</p>
+            <span class="facility-card__specs-title">Équipements phares</span>
+            <ul class="facility-card__specs">
+              <li class="facility-card__spec-item">Console Rodecaster Pro II</li>
+              <li class="facility-card__spec-item">Micros studio Shure SM7B</li>
+              <li class="facility-card__spec-item">Écoutes de monitoring Genelec</li>
+              <li class="facility-card__spec-item">Casques studio Beyerdynamic DT 770</li>
+              <li class="facility-card__spec-item">Pro Tools, Reaper & Adobe Audition</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 3. Lab Développement Web & IA -->
+        <article class="facility-card">
+          <div class="facility-card__header">
+            <span class="facility-card__badge">Dév Web & Cloud</span>
+            <img src="{{ "images/galerie-lab-dev.jpg" | relURL }}" alt="Laboratoire développement web MMI Troyes" class="facility-card__img" loading="lazy">
+          </div>
+          <div class="facility-card__body">
+            <h3 class="facility-card__title">Laboratoires informatiques & Stack IA</h3>
+            <p class="facility-card__desc">Salles en réseau haute performance équipées pour le développement fullstack, les architectures conteneurisées, le machine learning et les ateliers d'intégration responsive.</p>
+            <span class="facility-card__specs-title">Équipements phares</span>
+            <ul class="facility-card__specs">
+              <li class="facility-card__spec-item">Double-écran 27" par poste</li>
+              <li class="facility-card__spec-item">Stations Mac & PC Linux / Windows</li>
+              <li class="facility-card__spec-item">Serveurs d'hébergement & VPS dédiés</li>
+              <li class="facility-card__spec-item">Stack Docker, Gitlab CI & Node.js</li>
+              <li class="facility-card__spec-item">Connexion fibre très haut débit</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 4. Lab Design & UX -->
+        <article class="facility-card">
+          <div class="facility-card__header">
+            <span class="facility-card__badge">UI / UX & Création</span>
+            <img src="{{ "images/galerie-lab-design.jpg" | relURL }}" alt="Atelier design interactif MMI Troyes" class="facility-card__img" loading="lazy">
+          </div>
+          <div class="facility-card__body">
+            <h3 class="facility-card__title">Laboratoire Design d'interaction & Ergonomie</h3>
+            <p class="facility-card__desc">Espace d'idéation et de recherche utilisateur équipé pour le wireframing, le prototypage haute-fidélité, les tests utilisateurs et la création graphique assistée par ordinateur.</p>
+            <span class="facility-card__specs-title">Équipements phares</span>
+            <ul class="facility-card__specs">
+              <li class="facility-card__spec-item">Tablettes graphiques Wacom Cintiq 22"</li>
+              <li class="facility-card__spec-item">iPads Pro avec Apple Pencil</li>
+              <li class="facility-card__spec-item">Licences complètes Figma Organisation</li>
+              <li class="facility-card__spec-item">Suite Adobe Creative Cloud intégrale</li>
+              <li class="facility-card__spec-item">Casques VR Meta Quest 3 pour immersion 3D</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 5. Tournage Extérieur & Nomade -->
+        <article class="facility-card">
+          <div class="facility-card__header">
+            <span class="facility-card__badge">Terrain & Mobilité</span>
+            <img src="{{ "images/galerie-tournage-plateau.jpg" | relURL }}" alt="Kits nomades de tournage MMI Troyes" class="facility-card__img" loading="lazy">
+          </div>
+          <div class="facility-card__body">
+            <h3 class="facility-card__title">Matériel nomade & Tournages de terrain</h3>
+            <p class="facility-card__desc">Packs mobiles tout-en-un conditionnés en valises Peli étanches pour les tournages extérieurs, documentaires, reportages événementiels et projets de fiction hors campus.</p>
+            <span class="facility-card__specs-title">Équipements phares</span>
+            <ul class="facility-card__specs">
+              <li class="facility-card__spec-item">Stabilisateurs motorisés DJI RS3 Pro</li>
+              <li class="facility-card__spec-item">Enregistreurs audio nomades Zoom F6 (32-bit float)</li>
+              <li class="facility-card__spec-item">Perches légères carbone & bonnettes anti-vent Rycote</li>
+              <li class="facility-card__spec-item">Éclairages nomades Nanlite Forza sur batterie</li>
+              <li class="facility-card__spec-item">Drones vidéo 4K homologués</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 6. Magasin & Régie de Prêt -->
+        <article class="facility-card">
+          <div class="facility-card__header">
+            <span class="facility-card__badge">Prêt Gratuit Étudiant</span>
+            <img src="{{ "images/galerie-campus-vie.jpg" | relURL }}" alt="Régie de prêt de matériel MMI Troyes" class="facility-card__img" loading="lazy">
+          </div>
+          <div class="facility-card__body">
+            <h3 class="facility-card__title">Régie de prêt gratuit & Accompagnement</h3>
+            <p class="facility-card__desc">Tous les équipements décrits ci-dessus sont empruntables sans frais pour tes cours, mais également pour tes projets personnels, courts-métrages ou créations associatives.</p>
+            <span class="facility-card__specs-title">Avantages étudiants</span>
+            <ul class="facility-card__specs">
+              <li class="facility-card__spec-item">Prêt 100% gratuit 7j/7</li>
+              <li class="facility-card__spec-item">Réservation en ligne via portail interne</li>
+              <li class="facility-card__spec-item">Prêt pour le week-end et les vacances</li>
+              <li class="facility-card__spec-item">Support & conseils d'utilisation par un régisseur</li>
+              <li class="facility-card__spec-item">Assurance matériel incluse dans la scolarité</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Galerie Photos interactive & immersive -->
+    <div class="stack gap-20" style="margin-top: 16px;">
+      <div class="section-head gap-8">
+        <span class="label label--cyan">en images</span>
+        <h2 class="h3--xl">Immersion dans le quotidien de la promo</h2>
+        <p class="muted">Clique sur une image pour l'agrandir en plein écran.</p>
+      </div>
+
+      <!-- Filtres interactifs -->
+      <div class="gallery-filters" role="tablist" aria-label="Filtrer les photos">
+        <button type="button" class="gallery-filter-btn is-active" data-filter="all">Tous les espaces</button>
+        <button type="button" class="gallery-filter-btn" data-filter="audiovisuel">Audiovisuel & Son</button>
+        <button type="button" class="gallery-filter-btn" data-filter="design">Design & UI/UX</button>
+        <button type="button" class="gallery-filter-btn" data-filter="dev">Développement Web</button>
+        <button type="button" class="gallery-filter-btn" data-filter="projets">Projets & Vie de promo</button>
+      </div>
+
+      <!-- Grille de la galerie -->
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- 1. Studio Vidéo -->
+        <article class="gallery-item" data-category="audiovisuel" tabindex="0" role="button" aria-label="Agrandir la photo Plateau de tournage multi-caméras">
+          <div class="gallery-item__img-wrap">
+            <span class="gallery-item__badge">Studio Vidéo</span>
+            <img src="{{ "images/galerie-studio-video.jpg" | relURL }}" alt="Plateau de tournage multi-caméras MMI Troyes" class="gallery-item__img" loading="lazy">
+          </div>
+          <div class="gallery-item__caption">
+            <h3 class="gallery-item__title">Plateau de tournage multi-caméras</h3>
+            <p class="gallery-item__desc">Caméras cinéma 4K sur trépieds, éclairages softbox et fond studio pour tournages de clips, teasers et fictions.</p>
+          </div>
+        </article>
+
+        <!-- 2. Régie Son -->
+        <article class="gallery-item" data-category="audiovisuel" tabindex="0" role="button" aria-label="Agrandir la photo Cabine insonorisée et console de mixage">
+          <div class="gallery-item__img-wrap">
+            <span class="gallery-item__badge">Régie Son & Podcast</span>
+            <img src="{{ "images/galerie-regie-audio.jpg" | relURL }}" alt="Console de son et micros podcast MMI Troyes" class="gallery-item__img" loading="lazy">
+          </div>
+          <div class="gallery-item__caption">
+            <h3 class="gallery-item__title">Cabine insonorisée & console audio</h3>
+            <p class="gallery-item__desc">Micros broadcast Shure SM7B et stations audio professionnelles pour l'enregistrement de voix-off, podcasts et mixage.</p>
+          </div>
+        </article>
+
+        <!-- 3. Lab Design & UX -->
+        <article class="gallery-item" data-category="design" tabindex="0" role="button" aria-label="Agrandir la photo Atelier de conception d'interfaces">
+          <div class="gallery-item__img-wrap">
+            <span class="gallery-item__badge">Lab Design & UX</span>
+            <img src="{{ "images/galerie-lab-design.jpg" | relURL }}" alt="Étudiants en atelier design d'interface MMI Troyes" class="gallery-item__img" loading="lazy">
+          </div>
+          <div class="gallery-item__caption">
+            <h3 class="gallery-item__title">Atelier de conception d'interfaces</h3>
+            <p class="gallery-item__desc">Grands écrans, tablettes graphiques et prototypage sous Figma pour concevoir des expériences utilisateurs fluides et esthétiques.</p>
+          </div>
+        </article>
+
+        <!-- 4. Tournage Fiction -->
+        <article class="gallery-item" data-category="audiovisuel" tabindex="0" role="button" aria-label="Agrandir la photo Tournage de fiction sur stabilisateur">
+          <div class="gallery-item__img-wrap">
+            <span class="gallery-item__badge">Tournage Fiction</span>
+            <img src="{{ "images/galerie-tournage-plateau.jpg" | relURL }}" alt="Tournage étudiant sur gimbal et perche micro" class="gallery-item__img" loading="lazy">
+          </div>
+          <div class="gallery-item__caption">
+            <h3 class="gallery-item__title">Projets de fiction & stabilisateurs</h3>
+            <p class="gallery-item__desc">Mise en situation réelle avec caméras sur gimbals motorisés, prise de son à la perche et direction d'acteurs.</p>
+          </div>
+        </article>
+
+        <!-- 5. Lab Dev Web -->
+        <article class="gallery-item" data-category="dev" tabindex="0" role="button" aria-label="Agrandir la photo Développement web et intégration responsive">
+          <div class="gallery-item__img-wrap">
+            <span class="gallery-item__badge">Laboratoire Web</span>
+            <img src="{{ "images/galerie-lab-dev.jpg" | relURL }}" alt="Étudiants développeurs web au lab MMI Troyes" class="gallery-item__img" loading="lazy">
+          </div>
+          <div class="gallery-item__caption">
+            <h3 class="gallery-item__title">Développement web & intégration responsive</h3>
+            <p class="gallery-item__desc">Configurations double-écrans, stations de dev modernes et collaboration sur des applications web et architectures contemporaines.</p>
+          </div>
+        </article>
+
+        <!-- 6. Festival des Projets & Vie de promo -->
+        <article class="gallery-item" data-category="projets" tabindex="0" role="button" aria-label="Agrandir la photo Festival des réalisations et vie de promo">
+          <div class="gallery-item__img-wrap">
+            <span class="gallery-item__badge">Vie de Promo</span>
+            <img src="{{ "images/galerie-campus-vie.jpg" | relURL }}" alt="Exposition et festival des projets étudiants MMI Troyes" class="gallery-item__img" loading="lazy">
+          </div>
+          <div class="gallery-item__caption">
+            <h3 class="gallery-item__title">Festival des réalisations & expositions</h3>
+            <p class="gallery-item__desc">Présentation annuelle des grands projets devant des jurys de professionnels, partenaires entreprises et grand public.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Bannière d'appel JPO -->
+    {{ with .Site.Params.jpo }}
+    {{ if .enabled }}
+    <div class="card card--accent gap-16" style="padding: 36px 32px; margin-top: 16px; align-items: center; text-align: center; width: 100%; box-sizing: border-box;">
+      <span class="label label--accent">envie de tester le matériel en vrai ?</span>
+      <h2 class="h3--lg" style="margin: 0; max-width: 680px;">Viens visiter les studios et tester les équipements lors des JPO</h2>
+      <p class="muted measure" style="text-align: center; margin: 0;">
+        Rendez-vous le <strong>{{ .date | default "31 Janvier 2027" }}</strong>{{ with .horaires }} ({{ . }}){{ end }} à l'IUT de Troyes{{ with .lieu }} — {{ . }}{{ end }}.
+        {{ with .description }}<br><span style="font-size: 14px; display: inline-block; margin-top: 4px;">{{ . }}</span>{{ end }}
+      </p>
+      <div class="actions" style="justify-content: center; margin-top: 8px;">
+        <a class="btn btn--primary" href="{{ .url | default "/contact/" | relURL }}">Préparer ma visite & nous contacter</a>
+        <a class="btn btn--ghost" href="{{ "/#candidater" | relURL }}">Comment candidater</a>
+      </div>
+    </div>
+    {{ end }}
+    {{ end }}
+  </div>
+</section>
+
+<!-- Lightbox Modal pour agrandir les photos -->
+<div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Visualisation de la photo">
+  <div class="lightbox-content">
+    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Fermer la vue agrandie">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <img src="" alt="" class="lightbox-img" id="lightbox-img">
+    <div class="lightbox-footer">
+      <span id="lightbox-badge" class="label label--accent" style="margin-bottom: 2px;"></span>
+      <h3 class="lightbox-footer-title" id="lightbox-title"></h3>
+      <p class="lightbox-footer-desc" id="lightbox-desc"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    // 1. Filtrage interactif des photos
+    const filterButtons = document.querySelectorAll('.gallery-filter-btn');
+    const items = document.querySelectorAll('.gallery-item');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+
+        const filter = btn.getAttribute('data-filter');
+        items.forEach(item => {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // 2. Visualiseur Lightbox
+    const modal = document.getElementById('lightbox-modal');
+    const modalImg = document.getElementById('lightbox-img');
+    const modalBadge = document.getElementById('lightbox-badge');
+    const modalTitle = document.getElementById('lightbox-title');
+    const modalDesc = document.getElementById('lightbox-desc');
+    const closeBtn = document.getElementById('lightbox-close');
+
+    const openLightbox = (item) => {
+      const img = item.querySelector('.gallery-item__img');
+      const badge = item.querySelector('.gallery-item__badge');
+      const title = item.querySelector('.gallery-item__title');
+      const desc = item.querySelector('.gallery-item__desc');
+
+      if (!img || !modalImg) return;
+
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+      if (modalBadge) modalBadge.textContent = badge ? badge.textContent : '';
+      if (modalTitle) modalTitle.textContent = title ? title.textContent : '';
+      if (modalDesc) modalDesc.textContent = desc ? desc.textContent : '';
+
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      if (closeBtn) closeBtn.focus();
+    };
+
+    const closeLightbox = () => {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+      if (modalImg) modalImg.src = '';
+    };
+
+    items.forEach(item => {
+      item.addEventListener('click', () => openLightbox(item));
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(item);
+        }
+      });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeLightbox();
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+        closeLightbox();
+      }
+    });
+  })();
+</script>
+{{ end }}

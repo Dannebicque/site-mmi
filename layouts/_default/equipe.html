@@ -7,6 +7,38 @@
       <p class="lead measure">Une équipe mixte composée d'enseignant·es universitaires, d'enseignant·es-chercheur·es et de professionnel·les en activité pour t'apporter à la fois la rigueur des méthodes et l'expertise du marché.</p>
     </div>
 
+    <!-- Chiffres clés & KPIs de l'équipe pédagogique -->
+    <div class="kpi-grid" aria-label="Chiffres clés de l'équipe pédagogique">
+      {{ range .Site.Params.equipe.stats }}
+      <div class="kpi-card">
+        <div class="kpi-card__value">{{ .value }}</div>
+        <div class="kpi-card__label">{{ .label }}</div>
+        <p class="kpi-card__desc">{{ .desc }}</p>
+      </div>
+      {{ else }}
+      <div class="kpi-card">
+        <div class="kpi-card__value">16</div>
+        <div class="kpi-card__label">Enseignants permanents</div>
+        <p class="kpi-card__desc">Universitaires, PRAG, MCF & docteurs</p>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-card__value">25+</div>
+        <div class="kpi-card__label">Intervenants professionnels</div>
+        <p class="kpi-card__desc">Experts d'agences, directeurs artistiques & développeurs</p>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-card__value">3</div>
+        <div class="kpi-card__label">Pôles d'expertise</div>
+        <p class="kpi-card__desc">Dév Web & IA, Design UX/UI, Création Audiovisuelle</p>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-card__value">100%</div>
+        <div class="kpi-card__label">Encadrement de proximité</div>
+        <p class="kpi-card__desc">Suivi en SAÉ, tuteurs dédiés, stages & alternance</p>
+      </div>
+      {{ end }}
+    </div>
+
     <!-- Filtres par pôle -->
     <div class="gallery-filters" role="tablist" aria-label="Filtrer l'équipe pédagogique">
       <button type="button" class="gallery-filter-btn is-active" data-team-filter="all">Toute l'équipe</button>

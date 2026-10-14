@@ -51,6 +51,28 @@ disableKinds = ["taxonomy", "term"]
     urca = "https://www.univ-reims.fr"
     butmmi = "https://butmmi.fr"
 
+  # =========================================================================
+  # 👥 Données chiffrées & KPIs : Équipe pédagogique
+  # =========================================================================
+  [params.equipe]
+    stats = [
+      { value = "16", label = "Enseignants permanents", desc = "Universitaires, PRAG, MCF & docteurs" },
+      { value = "25+", label = "Intervenants professionnels", desc = "Experts d'agences, directeurs artistiques & développeurs" },
+      { value = "3", label = "Pôles d'expertise", desc = "Dév Web & IA, Design UX/UI, Création Audiovisuelle" },
+      { value = "100%", label = "Encadrement de proximité", desc = "Suivi en SAÉ, tuteurs dédiés, stages & alternance" }
+    ]
+
+  # =========================================================================
+  # 🏢 Données chiffrées & KPIs : Locaux & Équipements
+  # =========================================================================
+  [params.locaux]
+    stats = [
+      { value = "850 m²", label = "Espaces dédiés", desc = "Plateaux, régies, labos informatiques & créatifs" },
+      { value = "120+", label = "Postes informatiques", desc = "Stations pro Mac & PC double écran 27\"" },
+      { value = "50+", label = "Kits caméras 4K & son", desc = "En prêt gratuit pour tes tournages & projets" },
+      { value = "1", label = "Régie broadcast pro", desc = "Studio podcast & cabine insonorisée" }
+    ]
+
 [menu]
   [[menu.main]]
     name = "Compétences"
@@ -69,8 +91,8 @@ disableKinds = ["taxonomy", "term"]
     url = "#parcours"
     weight = 4
   [[menu.main]]
-    name = "Galerie"
-    url = "/galerie/"
+    name = "Locaux & Équipements"
+    url = "/locaux/"
     weight = 5
   [[menu.main]]
     name = "L'Équipe"
