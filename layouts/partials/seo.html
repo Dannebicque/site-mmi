@@ -1,0 +1,197 @@
+{{- /* ==========================================================================
+       Partiel SEO : Métadonnées, Balises Open Graph, Twitter Cards et Schema.org
+       ========================================================================== */ -}}
+
+{{- /* 1. Titre et Description --------------------------------------------- */ -}}
+{{- $siteName := .Site.Params.site_name | default "BUT MMI Troyes" -}}
+{{- $pageTitle := "" -}}
+{{- if .IsHome -}}
+  {{- $pageTitle = .Site.Title -}}
+{{- else if and (eq .Section "equipe") (not .IsSection) -}}
+  {{- $role := .Params.role | default "Équipe pédagogique" -}}
+  {{- $pageTitle = printf "%s (%s) · %s" .Title $role $siteName -}}
+{{- else -}}
+  {{- $pageTitle = printf "%s · %s" .Title $siteName -}}
+{{- end -}}
+
+{{- $rawDesc := or .Params.description .Description .Summary .Site.Params.description -}}
+{{- $metaDesc := $rawDesc | plainify | chomp -}}
+{{- if gt (len $metaDesc) 210 -}}
+  {{- $metaDesc = $metaDesc | truncate 200 "…" -}}
+{{- end -}}
+
+{{- /* 2. Image Open Graph & Twitter -------------------------------------- */ -}}
+{{- $ogImageRel := or .Params.og_image .Params.photo .Params.image .Site.Params.og_image "images/galerie-campus-vie.jpg" -}}
+{{- $ogImage := $ogImageRel | absURL -}}
+
+{{- /* 3. Type Open Graph -------------------------------------------------- */ -}}
+{{- $ogType := "website" -}}
+{{- if and (eq .Section "equipe") (not .IsSection) -}}
+  {{- $ogType = "profile" -}}
+{{- else if .IsPage -}}
+  {{- $ogType = "article" -}}
+{{- end -}}
+
+<!-- Métadonnées de base -->
+<title>{{ $pageTitle }}</title>
+<meta name="description" content="{{ $metaDesc }}">
+<link rel="canonical" href="{{ .Permalink }}">
+
+<!-- Directives Robots -->
+{{- if or (eq .Params.robots "noindex") (eq .Params.noindex true) }}
+<meta name="robots" content="noindex, nofollow">
+{{- else }}
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+{{- end }}
+
+<!-- Auteur & Mots-clés -->
+{{- with or .Params.author .Site.Params.author }}
+<meta name="author" content="{{ . }}">
+{{- end }}
+{{- with or .Params.keywords .Site.Params.keywords }}
+<meta name="keywords" content="{{ delimit . ", " }}">
+{{- end }}
+
+<!-- Alternates de langue -->
+<link rel="alternate" hreflang="fr" href="{{ .Permalink }}">
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+
+<!-- Open Graph (Facebook, LinkedIn, Discord) -->
+<meta property="og:site_name" content="{{ $siteName }}">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:type" content="{{ $ogType }}">
+<meta property="og:title" content="{{ $pageTitle }}">
+<meta property="og:description" content="{{ $metaDesc }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ $ogImage }}">
+<meta property="og:image:alt" content="{{ $pageTitle }}">
+{{- if and (eq .Section "equipe") (not .IsSection) }}
+  {{- with .Params.role }}<meta property="profile:role" content="{{ . }}">{{ end }}
+{{- end }}
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $pageTitle }}">
+<meta name="twitter:description" content="{{ $metaDesc }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
+{{- with .Site.Params.twitter }}
+<meta name="twitter:site" content="{{ . }}">
+{{- end }}
+
+<!-- Données Structurées Schema.org (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "{{ .Site.BaseURL }}#website",
+      "url": "{{ .Site.BaseURL }}",
+      "name": "{{ $siteName }}",
+      "description": "{{ .Site.Params.description }}",
+      "inLanguage": "fr-FR"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "@id": "https://www.iut-troyes.univ-reims.fr/#organization",
+      "name": "IUT de Troyes",
+      "url": "https://www.iut-troyes.univ-reims.fr",
+      "logo": "{{ "images/logo_mmi.png" | absURL }}",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ .Site.Params.contact.address | default "9 rue de Québec, CS 90396" }}",
+        "postalCode": "{{ .Site.Params.contact.postal_code | default "10026" }}",
+        "addressLocality": "Troyes",
+        "addressCountry": "FR"
+      },
+      "telephone": "{{ .Site.Params.contact.phone | default "+33 (0)3 25 42 46 46" }}",
+      "email": "{{ .Site.Params.contact.email | default "mmi-troyes@univ-reims.fr" }}",
+      "parentOrganization": {
+        "@type": "CollegeOrUniversity",
+        "name": "Université de Reims Champagne-Ardenne",
+        "url": "https://www.univ-reims.fr"
+      }
+    },
+    {
+      "@type": "EducationalOccupationalProgram",
+      "@id": "{{ .Site.BaseURL }}#program",
+      "name": "BUT Métiers du Multimédia et de l'Internet (MMI)",
+      "description": "Bachelor Universitaire de Technologie en 3 ans : conception, design, audiovisuel, développement web et diffusion.",
+      "timeToComplete": "P3Y",
+      "educationalCredentialAwarded": "Bachelor universitaire de technologie (bac +3)",
+      "inLanguage": "fr",
+      "provider": {
+        "@id": "https://www.iut-troyes.univ-reims.fr/#organization"
+      }
+    }
+    {{- if not .IsHome }},
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{ .Permalink }}#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "{{ .Site.BaseURL }}"
+        }
+        {{- if and (eq .Section "equipe") (not .IsSection) }},
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "L'Équipe",
+          "item": "{{ "equipe/" | absURL }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "{{ .Title }}",
+          "item": "{{ .Permalink }}"
+        }
+        {{- else }},
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{ .Title }}",
+          "item": "{{ .Permalink }}"
+        }
+        {{- end }}
+      ]
+    }
+    {{- end }}
+    {{- if and (eq .Section "equipe") (not .IsSection) }},
+    {
+      "@type": "Person",
+      "@id": "{{ .Permalink }}#person",
+      "name": "{{ .Title }}",
+      "jobTitle": "{{ .Params.role }}",
+      {{- with .Params.bio }}"description": {{ . | jsonify | safeJS }},{{- end }}
+      {{- with .Params.photo }}"image": "{{ . | absURL }}",{{- end }}
+      {{- with .Params.email }}"email": "mailto:{{ . }}",{{- end }}
+      {{- with .Params.telephone }}"telephone": "{{ . }}",{{- end }}
+      "worksFor": {
+        "@id": "https://www.iut-troyes.univ-reims.fr/#organization"
+      }
+      {{- $sameAs := slice }}
+      {{- with .Params.linkedin }}{{ $sameAs = $sameAs | append . }}{{ end }}
+      {{- with .Params.github }}{{ $sameAs = $sameAs | append . }}{{ end }}
+      {{- with .Params.website }}{{ $sameAs = $sameAs | append . }}{{ end }}
+      {{- if gt (len $sameAs) 0 }},
+      "sameAs": {{ $sameAs | jsonify | safeJS }}
+      {{- end }}
+    }
+    {{- end }}
+    {{- if eq .RelPermalink "/contact/" }},
+    {
+      "@type": "ContactPage",
+      "@id": "{{ .Permalink }}#contact",
+      "url": "{{ .Permalink }}",
+      "name": "Contact & Accès · {{ $siteName }}",
+      "mainEntity": {
+        "@id": "https://www.iut-troyes.univ-reims.fr/#organization"
+      }
+    }
+    {{- end }}
+  ]
+}
+</script>

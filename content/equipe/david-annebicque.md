@@ -14,7 +14,7 @@ statut: "Maître de Conférences"
 bio: "Enseigne le développement web front-end et back-end, les frameworks PHP/Symfony, les architectures client-serveur et l'accessibilité numérique."
 linkedin: "https://www.linkedin.com"
 github: "https://github.com"
-website: "https://mmi.iut-troyes.univ-reims.fr"
+website: "https://davidannebicque.fr"
 tags:
   - "Dév Web Front & Back"
   - "Symfony & PHP"

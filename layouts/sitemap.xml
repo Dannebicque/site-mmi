@@ -1,0 +1,47 @@
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  {{- range .Data.Pages -}}
+    {{- $exclude := or .Params.sitemap_exclude (eq .Params.robots "noindex") (eq .Params.noindex true) -}}
+    {{- if and .Permalink (not $exclude) -}}
+  <url>
+    <loc>{{ .Permalink }}</loc>
+    {{- if not .Lastmod.IsZero }}
+    <lastmod>{{ safeHTML ( .Lastmod.Format "2006-01-02T15:04:05-07:00" ) }}</lastmod>
+    {{- else if not .Date.IsZero }}
+    <lastmod>{{ safeHTML ( .Date.Format "2006-01-02T15:04:05-07:00" ) }}</lastmod>
+    {{- end }}
+    {{- $changefreq := "weekly" -}}
+    {{- if .Params.changefreq -}}
+      {{- $changefreq = .Params.changefreq -}}
+    {{- else if .IsHome -}}
+      {{- $changefreq = "daily" -}}
+    {{- else if or (eq .RelPermalink "/contact/") (eq .RelPermalink "/locaux/") (eq .RelPermalink "/equipe/") -}}
+      {{- $changefreq = "weekly" -}}
+    {{- else if and (eq .Section "equipe") (not .IsSection) -}}
+      {{- $changefreq = "monthly" -}}
+    {{- end }}
+    <changefreq>{{ $changefreq }}</changefreq>
+    {{- $priority := "0.7" -}}
+    {{- if .Params.priority -}}
+      {{- $priority = .Params.priority -}}
+    {{- else if .IsHome -}}
+      {{- $priority = "1.0" -}}
+    {{- else if or (eq .RelPermalink "/contact/") (eq .RelPermalink "/locaux/") (eq .RelPermalink "/equipe/") -}}
+      {{- $priority = "0.9" -}}
+    {{- else if .IsSection -}}
+      {{- $priority = "0.8" -}}
+    {{- else if and (eq .Section "equipe") (not .IsSection) -}}
+      {{- $priority = "0.6" -}}
+    {{- end }}
+    <priority>{{ $priority }}</priority>
+    {{- if .IsTranslated }}
+      {{- range .Translations }}
+    <xhtml:link rel="alternate" hreflang="{{ .Language.LanguageCode | default .Language.Lang }}" href="{{ .Permalink }}" />
+      {{- end }}
+    <xhtml:link rel="alternate" hreflang="{{ .Language.LanguageCode | default .Language.Lang }}" href="{{ .Permalink }}" />
+    {{- end }}
+  </url>
+    {{- end -}}
+  {{- end }}
+</urlset>

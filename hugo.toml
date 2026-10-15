@@ -1,13 +1,23 @@
-baseURL = 'https://mmi.iut-troyes.univ-reims.fr/'
+baseURL = 'https://mmi.iut-troyes.fr/'
 languageCode = 'fr-FR'
 defaultContentLanguage = 'fr'
 title = "BUT MMI Troyes | Métiers du Multimédia et de l'Internet – IUT de Troyes"
 
 disableKinds = ["taxonomy", "term"]
+enableRobotsTXT = true
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.7
 
 [params]
+  site_name = "BUT MMI Troyes"
   description = "BUT MMI à l'IUT de Troyes (Université de Reims Champagne-Ardenne) : 3 ans pour apprendre à concevoir, designer, filmer, coder et diffuser. Alternance, stages, candidature Parcoursup ou eCandidat."
-  accent = "#B8F53D"
+  author = "Département MMI – IUT de Troyes"
+  og_image = "images/galerie-campus-vie.jpg"
+  keywords = ["BUT MMI", "MMI Troyes", "IUT de Troyes", "Université de Reims Champagne-Ardenne", "URCA", "multimédia", "audiovisuel", "développement web", "design UX/UI", "formation bac+3", "alternance", "Parcoursup"]
+  accent = "#4C2365"
   theme_color = "#0B0E14"
 
   # =========================================================================
