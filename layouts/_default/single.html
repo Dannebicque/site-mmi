@@ -1,13 +1,13 @@
 {{ define "main" }}
-<section class="section section--ruled">
-  <div class="container container--md stack gap-28">
+<section class="section section--ruled grid-bg">
+  <div class="container container--md stack gap-36">
     <div class="section-head">
-      <h1>{{ .Title }}</h1>
+      <h1 class="h2--xl">{{ .Title }}</h1>
       {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
     </div>
-    <div class="stack gap-16">
+    <article class="card" style="padding: clamp(24px, 4vw, 44px); font-size: 16px; line-height: 1.8;">
       {{ .Content }}
-    </div>
+    </article>
   </div>
 </section>
 {{ end }}

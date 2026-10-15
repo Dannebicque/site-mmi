@@ -63,8 +63,8 @@
   --line: #E2E8F0;
   --line-strong: #CBD5E1;
   --text: #0F172A;
-  --muted: #64748B;
-  --cyan: #0284C7;
+  --muted: #475569;
+  --cyan: #0369A1;
   --danger: #DC2626;
 
   --grid-line: rgba(15, 23, 42, 0.045);
@@ -590,15 +590,49 @@ body,
 .cursor { animation: blink 1.1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 
-@media (prefers-reduced-motion: reduce) {
-  .cursor { animation: none; }
-  .card--lift, .btn { transition: none; }
-  .btn:hover, .btn:focus-visible { transform: none; }
-  .card--lift:hover { transform: none; }
+/* Défilement fluide uniquement si l'utilisateur ne demande pas de réduction */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
-html {
-  scroll-behavior: smooth;
+/* Respect strict de la préférence de réduction des animations */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .cursor {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .btn,
+  .btn:hover,
+  .btn:focus-visible,
+  .card--lift,
+  .card--lift:hover,
+  .theme-toggle,
+  .theme-toggle:hover,
+  .gallery-item,
+  .gallery-item:hover,
+  .team-card,
+  .team-card:hover,
+  .site-header,
+  .back-to-top {
+    transition: none !important;
+    transform: none !important;
+  }
 }
 
 /* 7. NOUVEAUX COMPOSANTS ==================================================== */

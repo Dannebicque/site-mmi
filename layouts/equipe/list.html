@@ -40,13 +40,13 @@
     </div>
 
     <!-- Filtres par pôle -->
-    <div class="gallery-filters" role="tablist" aria-label="Filtrer l'équipe pédagogique">
-      <button type="button" class="gallery-filter-btn is-active" data-team-filter="all">Toute l'équipe (18)</button>
-      <button type="button" class="gallery-filter-btn" data-team-filter="direction">Direction & Coordination</button>
-      <button type="button" class="gallery-filter-btn" data-team-filter="dev">Développement Web & Systèmes</button>
-      <button type="button" class="gallery-filter-btn" data-team-filter="design">Création, 3D & UX</button>
-      <button type="button" class="gallery-filter-btn" data-team-filter="audiovisuel">Audiovisuel & Régie</button>
-      <button type="button" class="gallery-filter-btn" data-team-filter="communication">Communication, Marketing & Écriture</button>
+    <div class="gallery-filters" role="group" aria-label="Filtrer l'équipe pédagogique par pôle">
+      <button type="button" class="gallery-filter-btn is-active" data-team-filter="all" aria-pressed="true">Toute l'équipe (18)</button>
+      <button type="button" class="gallery-filter-btn" data-team-filter="direction" aria-pressed="false">Direction & Coordination</button>
+      <button type="button" class="gallery-filter-btn" data-team-filter="dev" aria-pressed="false">Développement Web & Systèmes</button>
+      <button type="button" class="gallery-filter-btn" data-team-filter="design" aria-pressed="false">Création, 3D & UX</button>
+      <button type="button" class="gallery-filter-btn" data-team-filter="audiovisuel" aria-pressed="false">Audiovisuel & Régie</button>
+      <button type="button" class="gallery-filter-btn" data-team-filter="communication" aria-pressed="false">Communication, Marketing & Écriture</button>
     </div>
 
     <!-- Grille dynamique des membres de l'équipe -->
@@ -158,8 +158,12 @@
 
     filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('is-active'));
+        filterButtons.forEach(b => {
+          b.classList.remove('is-active');
+          b.setAttribute('aria-pressed', 'false');
+        });
         btn.classList.add('is-active');
+        btn.setAttribute('aria-pressed', 'true');
 
         const filter = btn.getAttribute('data-team-filter');
         cards.forEach(card => {

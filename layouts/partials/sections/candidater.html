@@ -254,24 +254,40 @@
 
 <script>
   (function() {
-    // Gestion des modales pop-in Timeline
+    // Gestion des modales pop-in Timeline avec confinement du focus et restitution au déclencheur
     const triggers = document.querySelectorAll('[data-timeline-modal]');
     const modals = document.querySelectorAll('.timeline-modal');
+    let lastActiveTrigger = null;
 
-    const openModal = (modalId) => {
+    const getFocusables = (container) => {
+      return Array.from(container.querySelectorAll(
+        'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )).filter(el => el.offsetWidth > 0 || el.offsetHeight > 0 || el === document.activeElement);
+    };
+
+    const openModal = (modalId, trigger) => {
       const modal = document.getElementById(modalId);
       if (modal) {
+        lastActiveTrigger = trigger || document.activeElement;
         modal.removeAttribute('hidden');
         document.body.style.overflow = 'hidden';
-        const focusable = modal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-        if (focusable) focusable.focus();
+
+        const focusables = getFocusables(modal);
+        if (focusables.length > 0) {
+          const closeBtn = modal.querySelector('.timeline-modal__close') || focusables[0];
+          setTimeout(() => closeBtn.focus(), 30);
+        }
       }
     };
 
     const closeModal = (modal) => {
-      if (modal) {
+      if (modal && !modal.hasAttribute('hidden')) {
         modal.setAttribute('hidden', '');
         document.body.style.overflow = '';
+        if (lastActiveTrigger && typeof lastActiveTrigger.focus === 'function') {
+          lastActiveTrigger.focus();
+        }
+        lastActiveTrigger = null;
       }
     };
 
@@ -279,13 +295,38 @@
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         const targetId = btn.getAttribute('data-timeline-modal');
-        openModal(targetId);
+        openModal(targetId, btn);
       });
     });
 
     modals.forEach(modal => {
       modal.querySelectorAll('[data-close-modal]').forEach(closeBtn => {
         closeBtn.addEventListener('click', () => closeModal(modal));
+      });
+
+      // Confinement du focus (Focus Trap)
+      modal.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+          const focusables = getFocusables(modal);
+          if (focusables.length === 0) {
+            e.preventDefault();
+            return;
+          }
+          const first = focusables[0];
+          const last = focusables[focusables.length - 1];
+
+          if (e.shiftKey) {
+            if (document.activeElement === first) {
+              e.preventDefault();
+              last.focus();
+            }
+          } else {
+            if (document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
+        }
       });
     });
 

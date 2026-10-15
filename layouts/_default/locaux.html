@@ -180,12 +180,12 @@
       </div>
 
       <!-- Filtres interactifs -->
-      <div class="gallery-filters" role="tablist" aria-label="Filtrer les photos">
-        <button type="button" class="gallery-filter-btn is-active" data-filter="all">Tous les espaces</button>
-        <button type="button" class="gallery-filter-btn" data-filter="audiovisuel">Audiovisuel & Son</button>
-        <button type="button" class="gallery-filter-btn" data-filter="design">Design & UI/UX</button>
-        <button type="button" class="gallery-filter-btn" data-filter="dev">Développement Web</button>
-        <button type="button" class="gallery-filter-btn" data-filter="projets">Projets & Vie de promo</button>
+      <div class="gallery-filters" role="group" aria-label="Filtrer les photos par espace">
+        <button type="button" class="gallery-filter-btn is-active" data-filter="all" aria-pressed="true">Tous les espaces</button>
+        <button type="button" class="gallery-filter-btn" data-filter="audiovisuel" aria-pressed="false">Audiovisuel & Son</button>
+        <button type="button" class="gallery-filter-btn" data-filter="design" aria-pressed="false">Design & UI/UX</button>
+        <button type="button" class="gallery-filter-btn" data-filter="dev" aria-pressed="false">Développement Web</button>
+        <button type="button" class="gallery-filter-btn" data-filter="projets" aria-pressed="false">Projets & Vie de promo</button>
       </div>
 
       <!-- Grille de la galerie -->
@@ -301,14 +301,18 @@
 
 <script>
   (function() {
-    // 1. Filtrage interactif des photos
+    // 1. Filtrage interactif des photos avec support aria-pressed
     const filterButtons = document.querySelectorAll('.gallery-filter-btn');
     const items = document.querySelectorAll('.gallery-item');
 
     filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('is-active'));
+        filterButtons.forEach(b => {
+          b.classList.remove('is-active');
+          b.setAttribute('aria-pressed', 'false');
+        });
         btn.classList.add('is-active');
+        btn.setAttribute('aria-pressed', 'true');
 
         const filter = btn.getAttribute('data-filter');
         items.forEach(item => {
@@ -321,15 +325,17 @@
       });
     });
 
-    // 2. Visualiseur Lightbox
+    // 2. Visualiseur Lightbox avec confinement et restitution du focus
     const modal = document.getElementById('lightbox-modal');
     const modalImg = document.getElementById('lightbox-img');
     const modalBadge = document.getElementById('lightbox-badge');
     const modalTitle = document.getElementById('lightbox-title');
     const modalDesc = document.getElementById('lightbox-desc');
     const closeBtn = document.getElementById('lightbox-close');
+    let lastActiveTrigger = null;
 
     const openLightbox = (item) => {
+      lastActiveTrigger = item || document.activeElement;
       const img = item.querySelector('.gallery-item__img');
       const badge = item.querySelector('.gallery-item__badge');
       const title = item.querySelector('.gallery-item__title');
@@ -345,13 +351,21 @@
 
       modal.classList.add('is-open');
       document.body.style.overflow = 'hidden';
-      if (closeBtn) closeBtn.focus();
+      if (closeBtn) {
+        setTimeout(() => closeBtn.focus(), 30);
+      }
     };
 
     const closeLightbox = () => {
-      modal.classList.remove('is-open');
-      document.body.style.overflow = '';
-      if (modalImg) modalImg.src = '';
+      if (modal.classList.contains('is-open')) {
+        modal.classList.remove('is-open');
+        document.body.style.overflow = '';
+        if (modalImg) modalImg.src = '';
+        if (lastActiveTrigger && typeof lastActiveTrigger.focus === 'function') {
+          lastActiveTrigger.focus();
+        }
+        lastActiveTrigger = null;
+      }
     };
 
     items.forEach(item => {
@@ -368,6 +382,34 @@
     if (modal) {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) closeLightbox();
+      });
+
+      // Confinement du focus (Focus Trap)
+      modal.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+          const focusables = Array.from(modal.querySelectorAll(
+            'button:not([disabled]), [href], input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+          )).filter(el => el.offsetWidth > 0 || el.offsetHeight > 0 || el === document.activeElement);
+
+          if (focusables.length === 0) {
+            e.preventDefault();
+            return;
+          }
+          const first = focusables[0];
+          const last = focusables[focusables.length - 1];
+
+          if (e.shiftKey) {
+            if (document.activeElement === first) {
+              e.preventDefault();
+              last.focus();
+            }
+          } else {
+            if (document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
+        }
       });
     }
 
