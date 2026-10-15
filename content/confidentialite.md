@@ -47,4 +47,3 @@ Conformément à la réglementation en vigueur, vous disposez des droits suivant
 Pour exercer ces droits ou pour toute question relative au traitement de vos données, vous pouvez nous contacter :
 - **Par courriel** : [mmi-troyes@univ-reims.fr](mailto:mmi-troyes@univ-reims.fr)
 - **Délégué à la Protection des Données (DPO)** de l'URCA : [dpo@univ-reims.fr](mailto:dpo@univ-reims.fr)
-- **Par courrier** : Délégué à la Protection des Données, Université de Reims Champagne-Ardenne, Villa Douce, 9 boulevard de la Paix, 51097 Reims Cedex.

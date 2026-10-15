@@ -17,11 +17,10 @@ Le site **BUT MMI Troyes** (accessible à l'adresse https://mmi.iut-troyes.fr/) 
 
 ### 2. Hébergement
 
-Le site est hébergé sur les infrastructures de l'Université de Reims Champagne-Ardenne :
+Le site est hébergé sur les infrastructures de Netlify :
 
-- **Hébergeur** : Université de Reims Champagne-Ardenne (URCA) — Direction du Numérique
-- **Adresse** : Villa Douce, 9 boulevard de la Paix, 51097 Reims Cedex
-- **Site web** : [https://www.univ-reims.fr](https://www.univ-reims.fr)
+- **Hébergeur** : Netlify
+- **Site web** : [https://netlify.com](https://netlify.com)
 
 ---
 
@@ -36,3 +35,7 @@ Tous les droits de reproduction sont réservés, y compris pour les documents t�
 ### 4. Liens hypertextes
 
 Le site propose des liens vers des sites tiers (notamment Parcoursup, eCandidat, portail national BUT MMI et URCA). Ces pages externes ne font pas partie du site BUT MMI Troyes et n'engagent pas la responsabilité de l'IUT de Troyes quant à leurs contenus.
+
+### 5. IA
+
+Le site a été pour tout ou partie généré à l'aide d'outils IA.
