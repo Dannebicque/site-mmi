@@ -26,6 +26,8 @@ enableRobotsTXT = true
   [params.jpo]
     enabled = true
     date = "31 Janvier 2027"
+    start_date = "2027-01-31T09:00:00+01:00"
+    end_date = "2027-01-31T17:00:00+01:00"
     horaires = "9h00 - 17h00"
     lieu = "IUT de Troyes — Bâtiment MMI"
     text = "Viens voir les studios et rencontrer les étudiants : 31 Janvier 2027."

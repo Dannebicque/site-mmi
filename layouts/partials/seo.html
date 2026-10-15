@@ -92,68 +92,185 @@
       "inLanguage": "fr-FR"
     },
     {
-      "@type": "CollegeOrUniversity",
-      "@id": "https://www.iut-troyes.univ-reims.fr/#organization",
-      "name": "IUT de Troyes",
-      "url": "https://www.iut-troyes.univ-reims.fr",
-      "logo": "{{ "images/logo_mmi.png" | absURL }}",
+      "@type": "EducationalOrganization",
+      "@id": "{{ .Site.BaseURL }}#organization",
+      "name": "{{ .Site.Params.contact.department | default "Département MMI" }} – {{ .Site.Params.contact.institution | default "IUT de Troyes" }}",
+      "alternateName": [
+        "Département MMI",
+        "Département Métiers du Multimédia et de l'Internet",
+        "MMI Troyes"
+      ],
+      "url": "{{ .Site.BaseURL }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ "images/logo_mmi.png" | absURL }}"
+      },
+      "image": "{{ "images/galerie-campus-vie.jpg" | absURL }}",
+      "description": "Département Métiers du Multimédia et de l'Internet (MMI) de l'IUT de Troyes, composante de l'Université de Reims Champagne-Ardenne (URCA).",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "{{ .Site.Params.contact.address | default "9 rue de Québec, CS 90396" }}",
         "postalCode": "{{ .Site.Params.contact.postal_code | default "10026" }}",
-        "addressLocality": "Troyes",
+        "addressLocality": "{{ .Site.Params.contact.city | default "Troyes Cedex" }}",
+        "addressRegion": "Grand Est",
         "addressCountry": "FR"
       },
       "telephone": "{{ .Site.Params.contact.phone | default "+33 (0)3 25 42 46 46" }}",
       "email": "{{ .Site.Params.contact.email | default "mmi-troyes@univ-reims.fr" }}",
       "parentOrganization": {
         "@type": "CollegeOrUniversity",
-        "name": "Université de Reims Champagne-Ardenne",
-        "url": "https://www.univ-reims.fr"
+        "@id": "https://www.univ-reims.fr/iut-troyes/#organization",
+        "name": "IUT de Troyes",
+        "url": "{{ .Site.Params.urls.iut_troyes | default "https://www.univ-reims.fr/iut-troyes/" }}",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "{{ .Site.Params.contact.address | default "9 rue de Québec, CS 90396" }}",
+          "postalCode": "{{ .Site.Params.contact.postal_code | default "10026" }}",
+          "addressLocality": "{{ .Site.Params.contact.city | default "Troyes Cedex" }}",
+          "addressCountry": "FR"
+        },
+        "parentOrganization": {
+          "@type": "CollegeOrUniversity",
+          "@id": "https://www.univ-reims.fr/#organization",
+          "name": "Université de Reims Champagne-Ardenne",
+          "alternateName": "URCA",
+          "url": "{{ .Site.Params.urls.urca | default "https://www.univ-reims.fr" }}"
+        }
       }
     },
     {
       "@type": "EducationalOccupationalProgram",
       "@id": "{{ .Site.BaseURL }}#program",
-      "name": "BUT Métiers du Multimédia et de l'Internet (MMI)",
-      "description": "Bachelor Universitaire de Technologie en 3 ans : conception, design, audiovisuel, développement web et diffusion.",
+      "name": "Bachelor Universitaire de Technologie (BUT) Métiers du Multimédia et de l'Internet",
+      "alternateName": "BUT MMI",
+      "description": "Formation universitaire en 3 ans (Bac+3, Grade de Licence, 180 ECTS) dispensée par l'IUT de Troyes. Forme aux compétences pluridisciplinaires : création numérique, design interactif (UI/UX), développement web et mobile, audiovisuel et communication digitale. Proposée en formation initiale (avec 22 à 26 semaines de stages) et en alternance (apprentissage en BUT2 et BUT3).",
+      "url": "{{ .Site.BaseURL }}",
       "timeToComplete": "P3Y",
-      "educationalCredentialAwarded": "Bachelor universitaire de technologie (bac +3)",
-      "inLanguage": "fr",
+      "educationalLevel": "Bac +3 / Grade de Licence / Niveau 6 RNCP",
+      "programPrerequisites": "Baccalauréat général ou technologique (sélection sur dossier Parcoursup)",
+      "educationalProgramMode": [
+        "Formation initiale avec stages",
+        "Alternance en apprentissage (BUT2 et BUT3)"
+      ],
+      "educationalCredentialAwarded": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Bachelor Universitaire de Technologie",
+          "credentialCategory": "degree",
+          "educationalLevel": "Bac +3 / Grade de Licence / Niveau 6 RNCP (180 ECTS)",
+          "recognizedBy": {
+            "@type": "GovernmentOrganization",
+            "name": "Ministère de l'Enseignement Supérieur et de la Recherche"
+          }
+        }
+      ],
+      "occupationalCategory": [
+        "Développeur web & mobile",
+        "Designer UX / UI",
+        "Chargé de communication numérique",
+        "Motion designer",
+        "Vidéaste & Réalisateur multimédia",
+        "Chef de projet multimédia"
+      ],
+      "inLanguage": "fr-FR",
       "provider": {
-        "@id": "https://www.iut-troyes.univ-reims.fr/#organization"
+        "@id": "{{ .Site.BaseURL }}#organization"
+      },
+      "hasCourse": {
+        "@id": "{{ .Site.BaseURL }}#course"
       }
+    },
+    {
+      "@type": "Course",
+      "@id": "{{ .Site.BaseURL }}#course",
+      "name": "BUT Métiers du Multimédia et de l'Internet (MMI)",
+      "courseCode": "BUT-MMI",
+      "description": "Cursus universitaire Bac+3 combinant compétences artistiques, techniques et communicationnelles : développement web, design UX/UI, audiovisuel, gestion de projet et intelligence artificielle. Accessible en formation initiale ou en alternance.",
+      "url": "{{ .Site.BaseURL }}",
+      "provider": {
+        "@id": "{{ .Site.BaseURL }}#organization"
+      },
+      "educationalCredentialAwarded": "Bachelor Universitaire de Technologie (Bac+3, Grade de Licence, 180 ECTS)",
+      "timeToComplete": "P3Y",
+      "hasCourseInstance": [
+        {
+          "@type": "CourseInstance",
+          "name": "BUT MMI – Formation Initiale",
+          "courseMode": ["full-time", "in-person"],
+          "description": "3 ans de formation avec 22 à 26 semaines de stages en entreprise (en BUT2 et BUT3) et 600 heures de situations d'apprentissage et d'évaluation (SAÉ)."
+        },
+        {
+          "@type": "CourseInstance",
+          "name": "BUT MMI – Alternance (Apprentissage)",
+          "courseMode": ["blended", "apprenticeship"],
+          "description": "Alternance possible en BUT2 (rythme moyen 1 sem. cours / 1 sem. entreprise) et en BUT3 (rythme moyen 1 sem. cours / 2 sem. entreprise). Statut salarié rémunéré avec contrat d'apprentissage."
+        }
+      ]
     }
+    {{- if and .Site.Params.jpo .Site.Params.jpo.enabled }},
+    {
+      "@type": "Event",
+      "@id": "{{ .Site.BaseURL }}#jpo-2027",
+      "name": "Journée Portes Ouvertes BUT MMI Troyes – 31 Janvier 2027",
+      "description": {{ .Site.Params.jpo.description | default "Viens visiter nos studios de tournage, notre régie son, tester le matériel, rencontrer l'équipe pédagogique et échanger avec les étudiant·es." | jsonify | safeJS }},
+      "startDate": "{{ .Site.Params.jpo.start_date | default "2027-01-31T09:00:00+01:00" }}",
+      "endDate": "{{ .Site.Params.jpo.end_date | default "2027-01-31T17:00:00+01:00" }}",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "{{ .Site.Params.jpo.lieu | default "IUT de Troyes — Bâtiment MMI" }}",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "{{ .Site.Params.contact.address | default "9 rue de Québec, CS 90396" }}",
+          "postalCode": "{{ .Site.Params.contact.postal_code | default "10026" }}",
+          "addressLocality": "{{ .Site.Params.contact.city | default "Troyes Cedex" }}",
+          "addressRegion": "Grand Est",
+          "addressCountry": "FR"
+        }
+      },
+      "image": "{{ "images/galerie-campus-vie.jpg" | absURL }}",
+      "organizer": {
+        "@id": "{{ .Site.BaseURL }}#organization"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "{{ "contact/" | absURL }}",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-10-01T00:00:00+02:00"
+      },
+      "isAccessibleForFree": true,
+      "inLanguage": "fr-FR"
+    }
+    {{- end }}
     {{- if not .IsHome }},
     {
       "@type": "BreadcrumbList",
       "@id": "{{ .Permalink }}#breadcrumb",
       "itemListElement": [
+        {{- $breadcrumbs := slice (dict "name" "Accueil" "url" .Site.BaseURL) -}}
+        {{- if and (eq .Section "equipe") (not .IsSection) -}}
+          {{- $breadcrumbs = $breadcrumbs | append (dict "name" "L'Équipe" "url" ("equipe/" | absURL)) -}}
+          {{- $breadcrumbs = $breadcrumbs | append (dict "name" .Title "url" .Permalink) -}}
+        {{- else if .Ancestors -}}
+          {{- range .Ancestors.Reverse -}}
+            {{- if not .IsHome -}}
+              {{- $breadcrumbs = $breadcrumbs | append (dict "name" .Title "url" .Permalink) -}}
+            {{- end -}}
+          {{- end -}}
+          {{- $breadcrumbs = $breadcrumbs | append (dict "name" .Title "url" .Permalink) -}}
+        {{- else -}}
+          {{- $breadcrumbs = $breadcrumbs | append (dict "name" .Title "url" .Permalink) -}}
+        {{- end -}}
+        {{- range $index, $item := $breadcrumbs -}}
+        {{- if gt $index 0 }},{{- end }}
         {
           "@type": "ListItem",
-          "position": 1,
-          "name": "Accueil",
-          "item": "{{ .Site.BaseURL }}"
-        }
-        {{- if and (eq .Section "equipe") (not .IsSection) }},
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "L'Équipe",
-          "item": "{{ "equipe/" | absURL }}"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "{{ .Title }}",
-          "item": "{{ .Permalink }}"
-        }
-        {{- else }},
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "{{ .Title }}",
-          "item": "{{ .Permalink }}"
+          "position": {{ add $index 1 }},
+          "name": {{ $item.name | jsonify | safeJS }},
+          "item": "{{ $item.url }}"
         }
         {{- end }}
       ]
@@ -170,7 +287,7 @@
       {{- with .Params.email }}"email": "mailto:{{ . }}",{{- end }}
       {{- with .Params.telephone }}"telephone": "{{ . }}",{{- end }}
       "worksFor": {
-        "@id": "https://www.iut-troyes.univ-reims.fr/#organization"
+        "@id": "{{ .Site.BaseURL }}#organization"
       }
       {{- $sameAs := slice }}
       {{- with .Params.linkedin }}{{ $sameAs = $sameAs | append . }}{{ end }}
@@ -188,7 +305,7 @@
       "url": "{{ .Permalink }}",
       "name": "Contact & Accès · {{ $siteName }}",
       "mainEntity": {
-        "@id": "https://www.iut-troyes.univ-reims.fr/#organization"
+        "@id": "{{ .Site.BaseURL }}#organization"
       }
     }
     {{- end }}
