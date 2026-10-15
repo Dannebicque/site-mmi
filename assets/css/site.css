@@ -15,11 +15,11 @@
 /* 1. TOKENS ================================================================ */
 
 :root {
-  /* Mode Sombre (défaut) */
-  --accent: #B8F53D;
+  /* Mode Sombre (défaut) - Déclinaison lumineuse sur la base #4C2365 (teinte 277°) */
+  --accent: #C47BF5;
   --accent-fg: #0B0E14;
-  --accent-tint: rgba(184, 245, 61, 0.08);
-  --accent-glow: rgba(184, 245, 61, 0.25);
+  --accent-tint: rgba(196, 123, 245, 0.12);
+  --accent-glow: rgba(196, 123, 245, 0.30);
 
   --bg: #0B0E14;
   --bg-alt: #0E121A;
@@ -51,10 +51,10 @@
 
 /* Mode Clair */
 [data-theme="light"] {
-  --accent: #65A30D;
+  --accent: #4C2365;
   --accent-fg: #FFFFFF;
-  --accent-tint: rgba(101, 163, 13, 0.08);
-  --accent-glow: rgba(101, 163, 13, 0.20);
+  --accent-tint: rgba(76, 35, 101, 0.08);
+  --accent-glow: rgba(76, 35, 101, 0.20);
 
   --bg: #F8FAFC;
   --bg-alt: #F1F5F9;
@@ -703,7 +703,7 @@ html {
 }
 .form-input:focus, .form-textarea:focus, .form-select:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(184, 245, 61, 0.2);
+  box-shadow: 0 0 0 3px var(--accent-glow);
 }
 .form-textarea {
   min-height: 130px;
@@ -812,7 +812,7 @@ html {
 .gallery-item:hover {
   transform: translateY(-4px);
   border-color: var(--accent);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(184, 245, 61, 0.15);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--accent-glow);
 }
 .gallery-item__img-wrap {
   position: relative;
@@ -965,7 +965,7 @@ html {
 .team-card:hover {
   transform: translateY(-4px);
   border-color: var(--accent);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(184, 245, 61, 0.15);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
 }
 .team-card--featured {
   border-color: var(--line-strong);
@@ -1152,7 +1152,7 @@ html {
   color: #9AA6BA;
 }
 [data-theme="light"] .terminal .hl {
-  color: #B8F53D;
+  color: #C47BF5;
 }
 [data-theme="light"] .terminal .label--cyan {
   color: #5CE1FF;
@@ -1534,7 +1534,7 @@ html {
   letter-spacing: 0.04em;
   padding: 4px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(184, 245, 61, 0.3);
+  border: 1px solid var(--accent-glow);
 }
 .facility-card__body {
   padding: 24px 26px;
