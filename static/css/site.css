@@ -563,6 +563,62 @@ body,
 .site-footer__title { margin: 0; font-family: var(--font-display); font-size: 18px; color: var(--text); }
 .site-footer__text { margin: 0; max-width: 40ch; font-size: 14px; color: var(--muted); }
 .site-footer__links { display: flex; flex-wrap: wrap; gap: 0 24px; }
+.cookie-settings {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.cookie-banner {
+  position: fixed;
+  z-index: 10000;
+  right: 50%;
+  bottom: 20px;
+  display: flex;
+  width: min(900px, calc(100vw - 32px));
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 24px;
+  transform: translateX(50%);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  color: var(--text);
+}
+.cookie-banner[hidden] { display: none; }
+.cookie-banner__content { display: grid; gap: 6px; }
+.cookie-banner__title { font-size: 20px; line-height: 1.25; }
+.cookie-banner__description { max-width: 65ch; color: var(--muted); font-size: 15px; }
+.cookie-banner__description a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.cookie-banner__actions { display: flex; flex: 0 0 auto; gap: 10px; }
+.cookie-banner__button {
+  min-width: 112px;
+  min-height: 44px;
+  padding: 9px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--text);
+  font: 500 15px var(--font-body);
+  cursor: pointer;
+}
+.cookie-banner__button:focus-visible,
+.cookie-settings:focus-visible {
+  outline: 3px solid var(--cyan);
+  outline-offset: 3px;
+}
+.cookie-banner__button--primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+.cookie-banner__button:hover { border-color: var(--accent); }
 
 
 /* 5. UTILITAIRES =========================================================== */
@@ -695,6 +751,15 @@ body,
   .back-to-top span {
     display: none;
   }
+  .cookie-banner {
+    bottom: 12px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 18px;
+  }
+  .cookie-banner__actions { display: grid; grid-template-columns: 1fr 1fr; }
+  .cookie-banner__button { min-width: 0; }
 }
 
 /* --- Formulaires & Contact ----------------------------------------------- */
@@ -1616,5 +1681,4 @@ body,
   padding: 4px 9px;
   border-radius: var(--radius-sm);
 }
-
 

@@ -3,7 +3,7 @@ title: "Gestion des cookies et traceurs"
 description: "Informations sur l'utilisation des cookies, du stockage local et la protection de la vie privée sur le site BUT MMI Troyes."
 ---
 
-Le site officiel du **BUT MMI Troyes** (Université de Reims Champagne-Ardenne) applique une politique stricte de respect de la vie privée et de minimisation des données, en stricte conformité avec les recommandations de la CNIL et les directives européennes ePrivacy / RGPD.
+Le site officiel du **BUT MMI Troyes** (Université de Reims Champagne-Ardenne) respecte votre vie privée. Les traceurs non essentiels ne sont activés qu'après votre accord.
 
 ---
 
@@ -15,13 +15,13 @@ Un cookie est un petit fichier texte déposé sur votre terminal (ordinateur, ta
 
 ### 2. Cookies et traceurs utilisés sur ce site
 
-Notre site vitrine se distingue par une conception sobre et respectueuse :
+Le site utilise les stockages et traceurs suivants :
 
-- **Aucun cookie publicitaire ou commercial** : nous ne diffusons aucune publicité ciblée et ne revendons aucune donnée à des régies ou courtiers de données.
-- **Aucun traceur tiers de profilage** : aucun script de réseaux sociaux intrusif ou outil de tracking comportemental externe n'est chargé sur nos pages.
-- **Stockage technique local (`localStorage`)** : nous utilisons un stockage local strictement nécessaire au bon fonctionnement ergonomique du site. Il permet d'enregistrer votre choix de thème d'affichage (**mode sombre** ou **mode clair**). Cette information reste exclusivement stockée sur votre navigateur et n'est jamais transmise à un quelconque serveur distant.
+- **Google Tag Manager** : le conteneur de gestion des balises n'est chargé qu'après votre acceptation. Il peut ensuite charger les balises configurées dans ce conteneur, susceptibles de déposer des cookies ou d'accéder à des données de navigation. Vous pouvez refuser leur activation ; dans ce cas, le conteneur n'est pas chargé.
+- **Préférence de consentement** : votre choix (« accepté » ou « refusé ») est mémorisé dans le stockage local de votre navigateur afin de ne pas afficher le bandeau à chaque visite.
+- **Préférence d'affichage** : le stockage local mémorise également votre choix de thème (**mode sombre** ou **mode clair**).
 
-Conformément à la réglementation CNIL, l'utilisation de ce paramètre technique strictement nécessaire à la fourniture du service expressément demandé par l'utilisateur ne nécessite pas le recueil préalable de votre consentement par un bandeau intrusif.
+Vous pouvez modifier ou retirer votre choix à tout moment avec le lien « Modifier mes choix de cookies » en bas de page. Si vous refusez, aucun tag GTM n'est chargé. Le retrait du consentement empêche les chargements ultérieurs ; il ne supprime pas automatiquement les cookies éventuellement déposés lors d'une visite antérieure.
 
 ---
 

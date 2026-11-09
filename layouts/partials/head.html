@@ -1,6 +1,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="{{ .Site.Params.theme_color | default "#0B0E14" }}">
+{{- with .Site.Params.gtm_id }}
+<script defer src="{{ "js/cookie-consent.js" | relURL }}" data-gtm-id="{{ . }}"></script>
+{{- end }}
 
 {{- /* Référencement & Métadonnées SEO (OpenGraph, Twitter Cards, Schema.org) */ -}}
 {{- partial "seo.html" . -}}

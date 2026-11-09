@@ -46,8 +46,11 @@
 <script src="./vendor/react-dom.js"></script>
 <script src="./support.js"></script>
 <link rel="stylesheet" href="./site.css">
+<script defer src="./js/cookie-consent.js" data-gtm-id="GTM-NHNVRBLR"></script>
+
 </head>
 <body>
+
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -412,12 +415,26 @@
 <a class="touch link-underline" href="#top">Mentions légales</a>
 <a class="touch link-underline" href="#top">Politique de confidentialité</a>
 <a class="touch link-underline" href="#top">Contact</a>
+<button class="touch link-underline cookie-settings" type="button" data-cookie-settings>Modifier mes choix de cookies</button>
 </p>
 </div>
 </div>
 </footer>
 
 </div>
+<section class="cookie-banner" id="cookie-banner" aria-labelledby="cookie-banner-title" aria-describedby="cookie-banner-description" aria-live="polite" hidden>
+  <div class="cookie-banner__content">
+    <h2 class="cookie-banner__title" id="cookie-banner-title">Votre vie privée compte</h2>
+    <p class="cookie-banner__description" id="cookie-banner-description">
+      Nous utilisons Google Tag Manager pour gérer des traceurs qui ne seront activés qu’avec votre accord.
+      <a href="./cookies/">En savoir plus</a>.
+    </p>
+  </div>
+  <div class="cookie-banner__actions">
+    <button class="cookie-banner__button cookie-banner__button--secondary" type="button" data-cookie-reject>Refuser</button>
+    <button class="cookie-banner__button cookie-banner__button--primary" type="button" data-cookie-accept>Accepter</button>
+  </div>
+</section>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#B8F53D","options":["#B8F53D","#5CE1FF","#FF8A3D","#C792FF"]},"$preview":{"width":1360,"height":5000}}'>
 class Component extends DCLogic {

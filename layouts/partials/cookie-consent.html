@@ -1,0 +1,15 @@
+{{- if .Site.Params.gtm_id }}
+<section class="cookie-banner" id="cookie-banner" aria-labelledby="cookie-banner-title" aria-describedby="cookie-banner-description" aria-live="polite" hidden>
+  <div class="cookie-banner__content">
+    <h2 class="cookie-banner__title" id="cookie-banner-title">Votre vie privée compte</h2>
+    <p class="cookie-banner__description" id="cookie-banner-description">
+      Nous utilisons Google Tag Manager pour gérer des traceurs qui ne seront activés qu’avec votre accord.
+      <a href="{{ "/cookies/" | relURL }}">En savoir plus</a>.
+    </p>
+  </div>
+  <div class="cookie-banner__actions">
+    <button class="cookie-banner__button cookie-banner__button--secondary" type="button" data-cookie-reject>Refuser</button>
+    <button class="cookie-banner__button cookie-banner__button--primary" type="button" data-cookie-accept>Accepter</button>
+  </div>
+</section>
+{{- end }}

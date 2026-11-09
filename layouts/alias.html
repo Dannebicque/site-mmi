@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="{{ .Page.Site.LanguageCode }}">
+  <head>
+    {{- with .Page.Site.Params.gtm_id }}
+    <script defer src="{{ "js/cookie-consent.js" | relURL }}" data-gtm-id="{{ . }}"></script>
+    {{- end }}
+    <title>{{ .Permalink }}</title>
+    <link rel="canonical" href="{{ .Permalink }}">
+    <meta name="robots" content="noindex">
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="0; url={{ .Permalink }}">
+  </head>
+  <body></body>
+</html>
