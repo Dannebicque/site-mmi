@@ -24,10 +24,13 @@ tags:
   - "Vie étudiante"
 ---
 
-Assurer la coordination opérationnelle, administrative et financière des activités de formation, garantir la fiabilité des processus et des données, contribuer au pilotage de l'activité et participer à l'amélioration continue ainsi qu'à la digitalisation des dispositifs.
+Assistante de département MMI à l'IUT de Troyes. Marina Matosin est l'interlocutrice privilégiée des étudiants, des enseignants et des intervenants extérieurs pour l'ensemble des questions administratives et quotidiennes du département.
 
 ### Missions & Domaines d'intervention
 - **Accueil & Scolarité** : gestion des dossiers étudiants, justificatifs d'absence, certificats de scolarité, relevés de notes et organisation des jurys.
 - **Stages & Contrats d'alternance** : suivi administratif des conventions de stage, relation avec la DFPA de l'université, relations avec les CFA et entreprises d'accueil.
 - **Coordination opérationnelle** : plannings des cours, réservations de salles et appui à la direction de département.
 
+### Mon quotidien 
+
+Assurer la coordination opérationnelle, administrative et financière des activités de formation, garantir la fiabilité des processus et des données, contribuer au pilotage de l'activité et participer à l'amélioration continue ainsi qu'à la digitalisation des dispositifs.
