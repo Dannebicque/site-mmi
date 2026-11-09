@@ -28,7 +28,3 @@ Enseignant au département MMI de l'IUT de Troyes. Fabrice Meuzeret accompagne l
 - **3D temps réel & Modélisation** : pipelines de production 3D, géométrie polygonale, textures PBR, shaders et optimisation pour moteurs temps réel.
 - **Réalité Virtuelle (VR) & Réalité Virtuelle/Augmentée (RV)** : casques VR, interactions spatiales, tracking de mouvement et environnements immersifs.
 - **Développement d'applications 3D/VR** : intégration dans des moteurs de jeu (Unity, Unreal) et frameworks 3D pour le web (Three.js/WebXR).
-
-### Contact
-- **Bureau** : Bâtiment MMI — Bureau H109
-- **Email** : fabrice.meuzeret@univ-reims.fr

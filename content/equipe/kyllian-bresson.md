@@ -28,7 +28,3 @@ Enseignant au département MMI de l'IUT de Troyes. Kyllian Bresson intervient su
 - **Techniques de captation & Prise de vue** : manipulation des caméras numériques, réglages d'exposition, objectifs et profondeur de champ.
 - **Lumière & Mise en scène** : configuration de l'éclairage de plateau (projecteurs LED, fresnels), gestion des ombres et ambiance visuelle.
 - **Encadrement des tournages** : accompagnement des étudiants lors de la réalisation de courts-métrages, interviews et vidéos promotionnelles.
-
-### Contact
-- **Bureau** : Bâtiment MMI — Lab Audiovisuel
-- **Email** : kyllian.bresson@univ-reims.fr

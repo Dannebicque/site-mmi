@@ -28,7 +28,3 @@ Enseignant au département MMI de l'IUT de Troyes. Régis Huez enseigne les outi
 - **Mathématiques pour l'informatique** : matrices, transformations géométriques 2D/3D, trigonométrie et calcul vectoriel pour les moteurs web et graphiques.
 - **Algorithmique fondamentale** : structures de données, logique booléenne, tri, parcours d'arbres et optimisation de la complexité.
 - **Accompagnement pédagogique** : renforcement méthodologique et soutien logique auprès des promotions de BUT MMI.
-
-### Contact
-- **Bureau** : Bâtiment MMI — Bureau C203
-- **Email** : regis.huez@univ-reims.fr

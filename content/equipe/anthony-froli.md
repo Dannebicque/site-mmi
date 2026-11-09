@@ -28,7 +28,3 @@ Enseignant et responsable de parcours au département MMI de l'IUT de Troyes. An
 - **Responsable de parcours** : coordination de l'équipe pédagogique du parcours, suivi continu des cohortes et organisation des jurys de semestres.
 - **Enseignement en Communication** : théories de la communication, communication stratégique, relations médias et prise de parole professionnelle.
 - **Suivi des alternants et projets** : lien avec les tuteurs professionnels en agence et encadrement des SAÉ de communication.
-
-### Contact
-- **Bureau** : Bâtiment MMI
-- **Email** : anthony.froli@univ-reims.fr

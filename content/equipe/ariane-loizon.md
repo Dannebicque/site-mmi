@@ -28,7 +28,3 @@ Enseignante au département MMI de l'IUT de Troyes. Ariane Loizon forme les futu
 - **Design d'expérience (UX) & Recherche utilisateur** : entretiens, personas, cartographies de parcours (user journeys), architecture de l'information et tests d'utilisabilité.
 - **Création visuelle & Prototypage** : wireframing, maquettes interactives sous Figma, principes d'affordance et micro-interactions.
 - **Accompagnement de projets UX** : encadrement des audits ergonomiques et recommandations de refonte d'interfaces.
-
-### Contact
-- **Bureau** : Bâtiment MMI
-- **Email** : ariane.loizon@univ-reims.fr

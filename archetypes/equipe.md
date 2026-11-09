@@ -14,6 +14,8 @@ bio: "Courte biographie ou présentation résumée (1 à 2 phrases) affichée su
 linkedin: ""
 github: ""
 website: ""
+behance: ""
+contact_notes: []
 tags:
   - "Discipline 1"
   - "Discipline 2"

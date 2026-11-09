@@ -28,7 +28,3 @@ Enseignant au département MMI de l'IUT de Troyes. Thomas Pavie assure la format
 - **Anglais technique & Web** : appropriation du lexique spécialisé (informatique, UX/UI, marketing digital, vidéo), documentation technique et veille en anglais.
 - **Communication professionnelle orale & écrite** : simulations de réunions, échanges avec des clients internationaux, rédaction de propositions commerciales et pitchs en langue anglaise.
 - **Certifications & Mobilité** : préparation aux certifications de compétences linguistiques (TOEIC, CLES) et accompagnement des projets de stage à l'international.
-
-### Contact
-- **Bureau** : Bâtiment MMI
-- **Email** : thomas.pavie@univ-reims.fr

@@ -28,7 +28,3 @@ Enseignant au département MMI de l'IUT de Troyes. Thomas Castellengo forme les 
 - **Réseaux informatiques & Protocoles** : architecture IP, routage, DNS, HTTP/3, WebSocket, protocoles sécurisés et gestion de trafic.
 - **DevOps & Conteneurisation** : déploiements automatisés via Docker, Docker Compose, pipelines CI/CD (GitHub Actions, GitLab CI) et hébergement cloud.
 - **Sécurité & Administration système** : gestion de serveurs Linux, monitoring, sauvegardes et sécurisation d'infrastructures de production.
-
-### Contact
-- **Bureau** : Bâtiment MMI — Bureau H109
-- **Email** : thomas.castellengo@univ-reims.fr

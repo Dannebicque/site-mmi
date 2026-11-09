@@ -75,17 +75,6 @@ enableRobotsTXT = true
       { value = "100%", label = "Encadrement de proximité", desc = "Suivi en SAÉ, tuteurs dédiés, stages & alternance" }
     ]
 
-  # =========================================================================
-  # 🏢 Données chiffrées & KPIs : Locaux & Équipements
-  # =========================================================================
-  [params.locaux]
-    stats = [
-      { value = "850 m²", label = "Espaces dédiés", desc = "Plateaux, régies, labos informatiques & créatifs" },
-      { value = "120+", label = "Postes informatiques", desc = "Stations pro Mac & PC double écran 27\"" },
-      { value = "50+", label = "Kits caméras 4K & son", desc = "En prêt gratuit pour tes tournages & projets" },
-      { value = "1", label = "Régie broadcast pro", desc = "Studio podcast & cabine insonorisée" }
-    ]
-
 [menu]
   [[menu.main]]
     name = "Compétences"

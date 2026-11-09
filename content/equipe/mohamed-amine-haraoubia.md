@@ -28,7 +28,3 @@ Enseignant au département MMI de l'IUT de Troyes. Mohamed Amine Haraoubia forme
 - **Développement front-end & back-end** : programmation JavaScript moderne, manipulation du DOM, moteurs de templates et environnements serveur.
 - **Bases de données & Persistance** : conception de schémas relationnels, modélisation de données et requêtes SQL optimisées.
 - **Accompagnement technique en SAÉ** : supervision de l'architecture logicielle lors des projets web complets des étudiants.
-
-### Contact
-- **Bureau** : Bâtiment MMI — Bureau C203
-- **Email** : mohamed-amine.haraoubia@univ-reims.fr

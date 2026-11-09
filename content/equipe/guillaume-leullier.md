@@ -1,34 +1,25 @@
 ---
 title: "Guillaume Leullier"
-role: "Pôle Création Numérique"
-pole: "design"
-pole_label: "Pôle Création Numérique & Graphisme"
+role: "Pôle Graphisme (2D/3D/motion)"
+pole: "crea"
+pole_label: "Pôle Création Numérique"
 featured: false
 weight: 14
 photo: ""
 initials: "GL"
 email: "guillaume.leullier@univ-reims.fr"
-bureau: "Bâtiment MMI — Bureau H015 / H009"
-telephone: "+33 (0)3 25 42 46 46"
-statut: "Enseignant · Création numérique & Graphisme"
-bio: "Enseigne la création graphique numérique, la conception visuelle, l'illustration et l'identité de marque pour les médias interactifs."
-linkedin: "https://www.linkedin.com"
+bureau: "Bâtiment MMI - Bâtiment H - H015"
+telephone: "+33 (0)3 25 42 71 37"
+statut: "Professeur agrégé"
+bio: "Enseigne le graphisme 2D & 3D, le prototypage Web & le motion design."
+linkedin: "linkedin.com/in/guillaume-leullier-532b3277"
+behance: "https://www.behance.net/leulliergu4626?locale=fr_FR"
 github: ""
 website: ""
 tags:
-  - "Création numérique"
-  - "Conception visuelle"
-  - "Identité graphique"
-  - "Design de supports"
+  - "graphisme création design"
+  - "Adobe Affinity Figma Blender"
+  - "graphisme Print/Web/Motion/3D"
 ---
 
 Enseignant au département MMI de l'IUT de Troyes. Guillaume Leullier accompagne les étudiants dans le développement de leur créativité visuelle et la maîtrise des outils de création numérique.
-
-### Missions & Enseignements
-- **Création graphique numérique** : composition visuelle, harmonie des couleurs, typographie créative et logiciels de création vectorielle et matricielle.
-- **Identités visuelles & Chartes graphiques** : conception de logotypes, déclinaisons sur supports digitaux et imprimés et cohérence de marque.
-- **Accompagnement en SAÉ de création** : suivi artistique des productions étudiantes lors des projets pluridisciplinaires.
-
-### Contact
-- **Bureau** : Bâtiment MMI — Bureau H015 / H009
-- **Email** : guillaume.leullier@univ-reims.fr

@@ -28,7 +28,3 @@ Enseignant et responsable de parcours au département MMI de l'IUT de Troyes. Fl
 - **Responsable de parcours** : pilotage pédagogique du parcours, accompagnement des étudiants et harmonisation des enseignements et évaluations.
 - **Enseignement en Audiovisuel** : réalisation vidéo, gestion de plateau de tournage, direction de projets audiovisuels et formats pour le web.
 - **Suivi des projets tuteurés & SAÉ** : supervision de réalisations concrètes (clips, documentaires, fictions) en lien avec des partenaires réels.
-
-### Contact
-- **Bureau** : Bâtiment MMI — Bureau H109
-- **Email** : florent.libbrecht@univ-reims.fr
