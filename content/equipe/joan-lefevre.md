@@ -12,7 +12,7 @@ bureau: "Bâtiment MMI"
 telephone: "+33 (0)3 25 42 46 46"
 statut: "Enseignant · Marketing & Gestion de projet"
 bio: "Enseigne le marketing digital, les études de marché, la gestion de projet agile, la planification et le pilotage des campagnes multimédias."
-linkedin: "https://www.linkedin.com"
+linkedin: "https://www.linkedin.com/in/joan-lefevre/"
 github: ""
 website: ""
 tags:

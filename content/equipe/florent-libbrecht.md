@@ -12,7 +12,7 @@ bureau: "Bâtiment MMI — Bureau H109"
 telephone: "+33 (0)3 25 42 46 46"
 statut: "Enseignant · Responsable de parcours BUT MMI"
 bio: "Responsable de parcours en BUT MMI et enseignant en audiovisuel. Encadre les apprentissages en production vidéo, réalisation et projets transversaux."
-linkedin: "https://www.linkedin.com"
+linkedin: "https://www.linkedin.com/in/florent-l-44571718/"
 github: ""
 website: ""
 tags:

@@ -12,7 +12,7 @@ bureau: "Bâtiment MMI"
 telephone: "+33 (0)3 25 42 46 46"
 statut: "Enseignante · Création & UX Design"
 bio: "Enseigne la création centrée utilisateur, le design UX, les personas, les parcours d'usage, les tests d'ergonomie et le prototypage interactif."
-linkedin: "https://www.linkedin.com"
+linkedin: "https://www.linkedin.com/in/ariane-l-7834b8179/"
 github: ""
 website: ""
 tags:

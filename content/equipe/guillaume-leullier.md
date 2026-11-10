@@ -4,6 +4,7 @@ role: "Pôle Graphisme (2D/3D/motion)"
 pole: "crea"
 pole_label: "Pôle Création Numérique"
 featured: false
+review: true
 weight: 14
 photo: ""
 initials: "GL"

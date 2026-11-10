@@ -8,13 +8,13 @@ weight: 7
 photo: ""
 initials: "JS"
 email: "jules.sabater@univ-reims.fr"
-bureau: "Bâtiment MMI — Régie Audiovisuelle & Plateau"
+bureau: "Bâtiment MMI — H110"
 telephone: "+33 (0)3 25 42 46 46"
 contact_notes:
   - "Prêt et retour de matériel : créneaux d'ouverture affichés à la régie ou sur rendez-vous."
 statut: "Technicien du département MMI"
 bio: "Technicien du département MMI. Gestion du parc de matériel audiovisuel et informatique, maintenance des régies et assistance technique aux projets."
-linkedin: "https://www.linkedin.com"
+linkedin: "https://www.linkedin.com/in/jules-sabater/"
 github: ""
 website: ""
 tags:

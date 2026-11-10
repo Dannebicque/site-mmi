@@ -4,6 +4,7 @@ role: "Assistante de département"
 pole: "direction"
 pole_label: "Secrétariat & Gestion Pédagogique"
 featured: true
+review: true
 weight: 4
 photo: ""
 initials: "MM"

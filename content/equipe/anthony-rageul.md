@@ -12,7 +12,7 @@ bureau: "Bâtiment MMI — Lab Créatif"
 telephone: "+33 (0)3 25 42 46 46"
 statut: "Enseignant · Écriture multimédia & Narration interactive"
 bio: "Enseigne l'écriture multimédia, la scénarisation interactive, la bande dessinée numérique et les formes narratives hybrides sur écran."
-linkedin: "https://www.linkedin.com"
+linkedin: "https://www.linkedin.com/in/anthony-rageul-tony/"
 github: ""
 website: ""
 tags:
