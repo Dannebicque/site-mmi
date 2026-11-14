@@ -12,17 +12,20 @@ bureau: "Bâtiment MMI — Bureau H109"
 telephone: "+33 (0)3 25 42 46 46"
 statut: "Enseignant · DevOps, Systèmes & Réseaux"
 bio: "Enseigne l'administration système Linux, les réseaux informatiques, Docker, les pipelines CI/CD et l'architecture des infrastructures web."
-linkedin: "https://www.linkedin.com"
-github: "https://github.com"
+linkedin: ""
+github: ""
 website: ""
 tags:
   - "DevOps & CI/CD"
-  - "Réseaux & Protocoles"
   - "Docker & Conteneurs"
   - "Sécurité & Hébergement"
+  - "Intelligence Artificielle"
+  - "Écosystème IA Agentique"
 ---
 
-Enseignant au département MMI de l'IUT de Troyes. Thomas Castellengo forme les étudiants aux compétences réseau, à l'administration de serveurs et aux pratiques DevOps modernes.
+Enseignant au département MMI de l’IUT de Troyes. Thomas Castellengo forme les étudiants à l'administration de serveurs et aux pratiques DevOps modernes, tout en les initiant aux fondamentaux et au fonctionnement de l'intelligence artificielle, avec pour ambition de démystifier l'IA et de les préparer à ce nouvel écosystème.
+
+Avant de se consacrer à l'enseignement, Thomas a exercé comme DevOps et ingénieur logiciel, une expérience du terrain qu'il met aujourd'hui au service de la transmission.
 
 ### Missions & Enseignements
 - **Réseaux informatiques & Protocoles** : architecture IP, routage, DNS, HTTP/3, WebSocket, protocoles sécurisés et gestion de trafic.

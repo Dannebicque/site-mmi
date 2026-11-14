@@ -1,30 +1,29 @@
 ---
 title: "Anthony Rageul"
-role: "Pôle Écriture Multimédia & Récits Interactifs"
+role: "Pôle Écriture Multimédia & narration interactive"
 pole: "communication design"
-pole_label: "Pôle Écriture Multimédia & Narration Interactive"
+pole_label: "Pôle Écriture Multimédia"
 featured: false
 weight: 9
 photo: ""
 initials: "AR"
 email: "anthony.rageul@univ-reims.fr"
-bureau: "Bâtiment MMI — Lab Créatif"
+bureau: "Bâtiment MMI — H015"
 telephone: "+33 (0)3 25 42 46 46"
-statut: "Enseignant · Écriture multimédia & Narration interactive"
-bio: "Enseigne l'écriture multimédia, la scénarisation interactive, la bande dessinée numérique et les formes narratives hybrides sur écran."
+statut: "Maître de Conférences"
+bio: "Enseignant-chercheur spécialisé dans les formes hybrides de récits sur écrans; auteur de bande dessinée papier et numérique. Anthony Rageul enseigne l’écriture multimédia."
 linkedin: "https://www.linkedin.com/in/anthony-rageul-tony/"
-github: ""
-website: ""
+website: "https://www.anthonyrageul.net/"
 tags:
-  - "Écriture multimédia"
-  - "Narration interactive"
-  - "Scénarisation web"
-  - "Bande dessinée numérique"
+    - "Écriture multimédia"
+    - "Narration interactive"
+    - "Création numérique"
+    - "Culture numérique"
 ---
 
 Enseignant au département MMI de l'IUT de Troyes. Auteur et enseignant spécialisé dans les formes hybrides de récits sur écrans, Anthony Rageul enseigne l'écriture multimédia sous toutes ses facettes.
 
 ### Missions & Enseignements
-- **Écriture multimédia & Scénarisation** : arborescences narratives, structures interactives non-linéaires et écriture transmédia.
-- **Bande dessinée & Récit numérique** : articulation texte-image-son, interfaces de lecture sur smartphone et tablette, ergonomie narrative.
-- **Accompagnement de créations interactives** : encadrement de fictions interactives, jeux narratifs et projets artistiques numériques.
+- **Écriture multimédia & Narrations interactives** : structures narratives non-linéaires, dispositifs interactifs et immersifs.
+- **Culture numérique** : analyse critique des discours médiatiques et des usages numériques.
+- **Encadrement de projets artistiques numériques** : récits et bandes dessinées numériques, web-documentaires, expositions virtuelles, etc.
