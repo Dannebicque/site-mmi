@@ -14,6 +14,7 @@
 
 <script>
   (function() {
+    document.documentElement.classList.add('js');
     const saved = localStorage.getItem('theme');
     const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
     if (saved === 'light' || (!saved && prefersLight)) {

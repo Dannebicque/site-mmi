@@ -42,8 +42,69 @@
       });
     }
 
+    // Menu mobile : le bouton ouvre ou ferme la liste des pages (replié seulement si JS actif)
+    const navToggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('site-nav');
+    function setNav(open) {
+      nav.classList.toggle('is-open', open);
+      navToggle.setAttribute('aria-expanded', String(open));
+      navToggle.setAttribute('aria-label', open ? 'Fermer le menu principal' : 'Ouvrir le menu principal');
+    }
+    if (navToggle && nav) {
+      navToggle.addEventListener('click', function() {
+        setNav(navToggle.getAttribute('aria-expanded') !== 'true');
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+          setNav(false);
+          navToggle.focus();
+        }
+      });
+      nav.addEventListener('click', function(e) {
+        if (e.target.closest('a')) setNav(false);
+      });
+    }
+
+    // Hauteur réelle du header (barre + sous-navigation) : sert au décalage des ancres
+    function syncHeaderHeight() {
+      if (header) document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+    }
+    syncHeaderHeight();
+    if (header && 'ResizeObserver' in window) {
+      new ResizeObserver(syncHeaderHeight).observe(header);
+    } else {
+      window.addEventListener('resize', syncHeaderHeight);
+    }
+
+    // Sous-navigation de l'accueil : met en évidence la section en cours de lecture
+    const spyLinks = Array.from(document.querySelectorAll('.subnav__link'));
+    const spySections = Array.from(document.querySelectorAll('main > section[id]'));
+    let spyTicking = false;
+    function updateSpy() {
+      spyTicking = false;
+      if (!spyLinks.length) return;
+      const line = (header ? header.offsetHeight : 0) + 24;
+      const atBottom = window.innerHeight + window.pageYOffset >= document.documentElement.scrollHeight - 2;
+      let currentId = null;
+      spySections.forEach(function(sec) {
+        if (sec.getBoundingClientRect().top <= line) currentId = sec.id;
+      });
+      if (atBottom && spySections.length) currentId = spySections[spySections.length - 1].id;
+      spyLinks.forEach(function(a) {
+        if (a.getAttribute('href') === '#' + currentId) {
+          a.setAttribute('aria-current', 'location');
+        } else {
+          a.removeAttribute('aria-current');
+        }
+      });
+    }
+
     function onScroll() {
       const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      if (!spyTicking) {
+        spyTicking = true;
+        window.requestAnimationFrame(updateSpy);
+      }
       if (btn) {
         if (scrollY > 250) {
           btn.classList.add('is-visible');
