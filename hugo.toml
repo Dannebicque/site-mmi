@@ -75,32 +75,44 @@ enableRobotsTXT = true
       { value = "100%", label = "Encadrement de proximité", desc = "Suivi en SAÉ, tuteurs dédiés, stages & alternance" }
     ]
 
+# Navigation principale (header) : uniquement de vraies pages.
+# Les ancres de l'accueil sont dans le menu « sections » plus bas.
 [menu]
   [[menu.main]]
-    name = "Compétences"
-    url = "#competences"
+    name = "Formation"
+    url = "/"
     weight = 1
-  [[menu.main]]
-    name = "Un projet de A à Z"
-    url = "#projet"
-    weight = 2
-  [[menu.main]]
-    name = "L'IA"
-    url = "#ia"
-    weight = 3
-  [[menu.main]]
-    name = "Parcours"
-    url = "#parcours"
-    weight = 4
   [[menu.main]]
     name = "Locaux & Équipements"
     url = "/locaux/"
-    weight = 5
+    weight = 2
   [[menu.main]]
     name = "L'Équipe"
     url = "/equipe/"
-    weight = 6
+    weight = 3
   [[menu.main]]
     name = "Contact"
     url = "/contact/"
-    weight = 7
+    weight = 4
+
+  # Sous-navigation de l'accueil (barre « Sur cette page ») : ancres des sections.
+  [[menu.sections]]
+    name = "Compétences"
+    url = "#competences"
+    weight = 1
+  [[menu.sections]]
+    name = "Un projet de A à Z"
+    url = "#projet"
+    weight = 2
+  [[menu.sections]]
+    name = "L'IA"
+    url = "#ia"
+    weight = 3
+  [[menu.sections]]
+    name = "Parcours"
+    url = "#parcours"
+    weight = 4
+  [[menu.sections]]
+    name = "Le département"
+    url = "#departement"
+    weight = 5

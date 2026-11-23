@@ -331,14 +331,72 @@ body,
 .brand__name { font-family: var(--font-display); font-size: 26px; letter-spacing: -0.02em; color: var(--text); }
 .brand__place { font-size: 15px; font-weight: 400; color: var(--muted); }
 
-.nav {
+.nav { margin-left: auto; font-size: 15px; }
+.nav__list {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px 20px;
-  font-size: 15px;
+  gap: 0 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 .nav__link:hover { color: var(--accent); }
+/* Page courante : couleur + soulignement (jamais la couleur seule) */
+.nav__link[aria-current] { color: var(--accent); box-shadow: inset 0 -3px 0 var(--accent); }
+
+.site-header__tools { display: flex; align-items: center; gap: 12px; }
+.nav-toggle { display: none; width: 44px; height: 44px; }
+.nav-toggle__close { display: none; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__open { display: none; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__close { display: inline; }
+
+/* Sous-navigation de l'accueil (ancres) */
+.subnav { border-top: 1px solid var(--line); }
+.subnav__bar { display: flex; align-items: center; gap: 16px; padding-block: 8px; }
+.subnav__label { flex: none; font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.subnav__list { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding-block: 2px; }
+.subnav__list::-webkit-scrollbar { display: none; }
+.subnav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.subnav__link:hover { border-color: var(--accent); color: var(--accent); }
+.subnav__link[aria-current] { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+
+/* Les ancres ne passent pas sous l'en-tête collant */
+html { scroll-padding-top: calc(var(--header-h, 120px) + 12px); }
+
+/* Bloc « Le département » : aiguillage vers les pages */
+.card__title { display: flex; align-items: center; gap: 14px; }
+.card__title h3 { line-height: 1.25; }
+.dept-facts { display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
+.dept-facts strong { font-family: var(--font-display); font-size: 20px; color: var(--accent); margin-right: 6px; }
+
+@media (max-width: 900px) {
+  .js .nav-toggle { display: inline-flex; }
+  .site-header__tools { margin-left: auto; }
+  .nav { order: 3; flex: 1 0 100%; margin-left: 0; }
+  .js .nav:not(.is-open) { display: none; }
+  .nav__list { flex-direction: column; align-items: stretch; gap: 0; border-top: 1px solid var(--line); }
+  .nav__list li + li { border-top: 1px solid var(--line); }
+  .nav__link { width: 100%; }
+}
+@media (max-width: 700px) {
+  .subnav__label { display: none; }
+}
+@media (max-width: 480px) {
+  .brand__place { display: none; }
+  .site-header__tools { gap: 8px; }
+  .site-header__tools .btn { padding: 0 14px; font-size: 14px; }
+}
 
 /* --- Bouton bascule de thème ---------------------------------------------- */
 .theme-toggle {
@@ -402,16 +460,41 @@ body,
   border-block: 1px solid var(--line);
   background: var(--bg-alt);
 }
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px 12px;
+/* Domaines : grille de tuiles avec icône (remplace les anciennes pastilles) */
+.domains {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
   font-family: var(--font-mono);
   font-size: 14px;
 }
-.chip { padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; }
-.chip--accent { border-color: var(--accent); color: var(--accent); }
+.domain {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 22px 12px 20px;
+  text-align: center;
+  /* filet quadrillé : chaque tuile dessine ses bords droit et bas */
+  box-shadow: 1px 0 0 var(--line), 0 1px 0 var(--line);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.domain .icon { width: 32px; height: 32px; stroke: var(--muted); transition: stroke 0.2s ease, transform 0.2s ease; }
+.domain:hover { background: var(--surface-2); color: var(--accent); }
+.domain:hover .icon { stroke: var(--accent); transform: translateY(-2px); }
+.domain--accent { color: var(--accent); background: linear-gradient(160deg, var(--accent-glow), transparent 70%); }
+.domain--accent .icon { stroke: var(--accent); }
+.domain--accent::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--accent);
+}
 
 /* --- Fenêtre « terminal » (hero et bloc IA) --------------------------------- */
 
@@ -1274,9 +1357,6 @@ body,
   border-color: var(--text);
 }
 
-[data-theme="light"] .chips .chip {
-  background: var(--surface);
-}
 
 [data-theme="light"] .team-card:hover,
 [data-theme="light"] .gallery-item:hover,
