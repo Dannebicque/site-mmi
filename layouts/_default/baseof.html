@@ -69,6 +69,20 @@
     function syncHeaderHeight() {
       if (header) document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
     }
+    // Sur PC, la barre « Sur cette page » démarre à la même abscisse que le premier lien du menu
+    const subnavList = document.querySelector('.subnav__list');
+    const firstNavLink = document.querySelector('.nav__link');
+    function alignSubnav() {
+      if (!subnavList || !firstNavLink) return;
+      subnavList.style.setProperty('--subnav-offset', '0px');
+      if (window.innerWidth <= 900) return;
+      const delta = firstNavLink.getBoundingClientRect().left - subnavList.getBoundingClientRect().left;
+      subnavList.style.setProperty('--subnav-offset', Math.max(0, delta) + 'px');
+    }
+    window.addEventListener('resize', alignSubnav);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(alignSubnav);
+    alignSubnav();
+
     syncHeaderHeight();
     if (header && 'ResizeObserver' in window) {
       new ResizeObserver(syncHeaderHeight).observe(header);
