@@ -485,7 +485,9 @@ body,
 .card--dashed { border: 1px dashed var(--line-strong); background: none; }
 .card--lift { transition: border-color 0.2s, transform 0.2s; }
 .card--lift:hover { border-color: var(--accent); transform: translateY(-3px); }
-.card__head { display: flex; align-items: center; justify-content: space-between; }
+/* En-tête de carte : icône devant le titre, sur la même ligne */
+.card__head { display: flex; align-items: center; gap: 14px; }
+.card__head h3 { line-height: 1.25; }
 .card__cta { align-self: flex-start; margin-top: auto; }
 
 .quote { font-size: 19px; }
