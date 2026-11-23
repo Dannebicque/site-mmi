@@ -8,8 +8,9 @@
     {{ with .Site.Params.jpo }}
     {{ if .enabled }}
     <div style="margin-top: 6px;">
-      <a class="label label--accent touch link-accent" href="{{ .url | default "/contact/" | relURL }}" style="text-decoration: none;">
-        📅 {{ .badge | default (printf "Prochaine JPO : %s" .date) }}
+      <a class="footer-jpo" href="{{ .url | default "/contact/" | relURL }}">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+        <span>{{ .badge | default (printf "Prochaine JPO : %s" .date) }}</span>
       </a>
     </div>
     {{ end }}

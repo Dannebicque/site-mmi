@@ -249,8 +249,11 @@ body,
   border: 1px solid var(--accent);
 }
 .btn--ghost {
+  background: transparent; /* un <button> natif garde sinon son fond clair : texte blanc sur blanc en mode sombre */
   border: 1px solid var(--line-strong);
   color: var(--text);
+  font: inherit;
+  cursor: pointer;
 }
 .btn:hover, .btn:focus-visible { transform: translateY(-2px); }
 .btn--primary:hover, .btn--primary:focus-visible {
@@ -1753,3 +1756,20 @@ html { scroll-padding-top: calc(var(--header-h, 120px) + 12px); }
   border-radius: var(--radius-sm);
 }
 
+
+/* Pastille « Prochaine JPO » du pied de page */
+.footer-jpo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 16px 0 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text);
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+.footer-jpo .icon { width: 20px; height: 20px; }
+.footer-jpo:hover, .footer-jpo:focus-visible { border-color: var(--accent); color: var(--accent); background: var(--accent-tint); }
