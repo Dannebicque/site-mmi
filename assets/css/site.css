@@ -29,7 +29,11 @@
   --line-strong: #3A4458;
   --text: #E8ECF4;
   --muted: #9AA6BA;
-  --cyan: #5CE1FF;
+  /* Teinte secondaire : intitulés (.eyebrow), étiquettes (.label--cyan), anneau de focus.
+     Ambre pour se démarquer du violet de l'accent et du bleu « IA » générique.
+     Pour changer d'ambiance, ne modifier que --secondary (ici et en mode clair). */
+  --secondary: #FFB454;
+  --cyan: var(--secondary); /* nom historique : conservé pour les classes existantes */
   --danger: #FF8A7A;
 
   --grid-line: rgba(255, 255, 255, 0.045);
@@ -64,7 +68,7 @@
   --line-strong: #CBD5E1;
   --text: #0F172A;
   --muted: #475569;
-  --cyan: #0369A1;
+  --secondary: #9A4A00;
   --danger: #DC2626;
 
   --grid-line: rgba(15, 23, 42, 0.045);
@@ -695,9 +699,12 @@ body,
 
 /* --- Bouton Retour en haut ----------------------------------------------- */
 .back-to-top {
+  /* Décalé vers le haut pour laisser la place au badge Netlify (bas droite).
+     Ajuster --btt-bottom si le badge change de taille ou de position. */
+  --btt-bottom: 88px;
   position: fixed;
   right: 28px;
-  bottom: 28px;
+  bottom: var(--btt-bottom);
   z-index: 999;
   display: inline-flex;
   align-items: center;
@@ -741,8 +748,8 @@ body,
 }
 @media (max-width: 600px) {
   .back-to-top {
+    --btt-bottom: 84px;
     right: 18px;
-    bottom: 18px;
     padding: 0;
     width: 44px;
     height: 44px;
@@ -1253,8 +1260,9 @@ body,
 [data-theme="light"] .terminal .hl {
   color: #C47BF5;
 }
-[data-theme="light"] .terminal .label--cyan {
-  color: #5CE1FF;
+[data-theme="light"] .terminal .label--cyan,
+[data-theme="light"] .terminal .diff--note {
+  color: #FFB454;
 }
 
 [data-theme="light"] .gallery-item__badge {
