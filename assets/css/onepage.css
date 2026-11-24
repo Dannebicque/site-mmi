@@ -502,3 +502,7 @@ body.op-inner { margin: 0; background: var(--bg); color: var(--ink); font-family
 .op-contact__v { font: 600 22px/1.25 var(--display); overflow-wrap: anywhere; }
 .op-cta { padding-bottom: 64px; }
 @media (max-width: 900px) { .op-contact { grid-template-columns: minmax(0, 1fr); } }
+/* Colonnes de même hauteur (page Contact) : la dernière carte de droite s'étire */
+.op-two--stretch { align-items: stretch; }
+.op-two--stretch > .op-col > .op-card:last-child { flex: 1; }
+.op-two--stretch > .op-col > .op-card:last-child .op-link { margin-top: auto; }
