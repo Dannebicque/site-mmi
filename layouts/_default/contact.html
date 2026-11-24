@@ -2,7 +2,6 @@
 <section class="section grid-bg">
   <div class="container stack gap-48">
     <div class="section-head">
-      <p class="eyebrow">// Contact & Accès · IUT de Troyes</p>
       <h1 class="h2--xl">Échangeons sur ton <span class="hl">projet d'études.</span></h1>
       <p class="lead measure">Une question sur les admissions Parcoursup ou eCandidat, le programme pédagogique, l'alternance ou les stages ? Notre équipe et le secrétariat sont à ton écoute.</p>
     </div>
@@ -12,7 +11,6 @@
       <div class="card card--lift" style="flex: 1 1 540px; padding: 36px;">
         <div class="stack gap-24">
           <div class="stack gap-8">
-            <span class="label label--accent">formulaire en ligne</span>
             <h2 style="font-size: 26px;">Envoie-nous un message</h2>
             <p class="muted text-sm">Nous te répondrons sous 24 à 48 heures ouvrées.</p>
           </div>
@@ -79,7 +77,6 @@
       <div class="stack gap-24" style="flex: 1 1 380px;">
         <!-- Carte coordonnées -->
         <div class="card gap-20">
-          <span class="label label--cyan">coordonnées directes</span>
           <h3 class="h3--lg">IUT de Troyes — MMI</h3>
 
           <ul class="contact-meta-list">
@@ -133,7 +130,6 @@
 
         <!-- Carte comment venir -->
         <div class="card card--plain gap-14">
-          <span class="label label--muted">venir nous voir</span>
           <h3 class="h3--sm">Accès au {{ .Site.Params.contact.campus | default "Campus des Lombards" }}</h3>
           <p class="muted text-sm">
             🚄 <strong>En train</strong> : 1h30 direct depuis Paris (Gare de l'Est), puis bus ou 15 min à vélo.<br>
@@ -150,7 +146,6 @@
         <!-- Prochaine JPO -->
         {{ with .Site.Params.jpo }}
         <div class="card card--accent gap-10">
-          <span class="label label--accent">journées portes ouvertes</span>
           <h3 class="h3--sm">{{ .date | default "31 Janvier 2027" }}</h3>
           <p class="muted text-sm">{{ .description | default .text | default "Viens visiter nos studios de tournage, notre régie son, rencontrer les enseignants et discuter avec les étudiants de promo." }}</p>
         </div>
@@ -164,25 +159,21 @@
 <section class="section section--ruled section--alt">
   <div class="container stack gap-36">
     <div class="section-head">
-      <p class="eyebrow">questions fréquentes</p>
       <h2>Tu te poses encore des questions ?</h2>
     </div>
 
     <div class="cards">
       <article class="card card--lift gap-12">
-        <span class="label label--cyan">admission</span>
         <h3 class="h3--sm">Faut-il savoir coder ou dessiner avant d'entrer ?</h3>
         <p class="muted text-sm">Non ! Le BUT MMI repart des bases dans chaque discipline dès le premier semestre. Ce qui compte, c'est ta curiosité, ton envie d'apprendre et ta polyvalence.</p>
       </article>
 
       <article class="card card--lift gap-12">
-        <span class="label label--cyan">alternance</span>
         <h3 class="h3--sm">L'alternance est-elle accessible dès le BUT1 ?</h3>
         <p class="muted text-sm">La première année se fait en formation initiale avec de nombreux projets concrets. L'alternance débute au choix dès la 2e année (BUT2) ou en 3e année (BUT3).</p>
       </article>
 
       <article class="card card--lift gap-12">
-        <span class="label label--cyan">matériel</span>
         <h3 class="h3--sm">Dois-je acheter du matériel audiovisuel coûteux ?</h3>
         <p class="muted text-sm">Absolument pas. L'IUT de Troyes met à disposition des caméras professionnelles 4K, micros, régies, éclairages et ordinateurs équipés de la suite Adobe complète.</p>
       </article>

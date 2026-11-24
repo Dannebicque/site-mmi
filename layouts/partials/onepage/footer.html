@@ -1,5 +1,6 @@
 {{- $c := site.Params.contact -}}
 {{- $u := site.Params.urls -}}
+{{- $b := cond .IsHome "" ("/" | relURL) -}}
 <footer class="op-footer" id="contact">
   <div class="op-footer__inner">
     <div class="op-fcols">
@@ -11,18 +12,18 @@
       </div>
       <nav aria-label="La formation">
         <p class="op-fh">La formation</p>
-        <a href="#formation">Compétences</a>
-        <a href="#projets">Projets étudiants</a>
-        <a href="#projet">Un projet de A à Z</a>
-        <a href="#parcours">Parcours</a>
-        <a href="#candidater">Candidater</a>
+        <a href="{{ $b }}#formation">Compétences</a>
+        <a href="{{ $b }}#projets">Projets étudiants</a>
+        <a href="{{ $b }}#projet">Un projet de A à Z</a>
+        <a href="{{ $b }}#parcours">Parcours</a>
+        <a href="{{ $b }}#candidater">Candidater</a>
       </nav>
       <nav aria-label="Découvrir">
         <p class="op-fh">Découvrir</p>
         <a href="{{ "/locaux/" | relURL }}">Locaux &amp; équipements</a>
         <a href="{{ "/equipe/" | relURL }}">L'équipe</a>
         <a href="{{ "/contact/" | relURL }}">Contact &amp; accès</a>
-        <a href="#candidater">Portes ouvertes</a>
+        <a href="{{ $b }}#candidater">Portes ouvertes</a>
       </nav>
       <nav aria-label="Pour aller plus loin">
         <p class="op-fh">Pour aller plus loin</p>

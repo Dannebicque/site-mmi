@@ -2,7 +2,6 @@
 <section class="section grid-bg">
   <div class="container stack gap-48">
     <div class="section-head">
-      <p class="eyebrow">// {{ .Params.hero_eyebrow }}</p>
       <h1 class="h2--xl">{{ .Params.hero_title }} <span class="hl">{{ .Params.hero_highlight }}</span></h1>
       <p class="lead measure">{{ .Params.hero_description }}</p>
     </div>
@@ -19,7 +18,6 @@
 
     <div class="stack gap-20">
       <div class="section-head gap-8">
-        <span class="label label--cyan">{{ .Params.facilities_label }}</span>
         <h2 class="h3--xl">{{ .Params.facilities_title }}</h2>
         <p class="muted">{{ .Params.facilities_description }}</p>
       </div>
@@ -48,7 +46,6 @@
 
     <div class="stack gap-20" style="margin-top: 16px;">
       <div class="section-head gap-8">
-        <span class="label label--cyan">{{ .Params.gallery_eyebrow }}</span>
         <h2 class="h3--xl">{{ .Params.gallery_title }}</h2>
         <p class="muted">{{ .Params.gallery_description }}</p>
       </div>
@@ -78,7 +75,6 @@
     {{ with .Site.Params.jpo }}
     {{ if .enabled }}
     <div class="card card--accent gap-16" style="padding: 36px 32px; margin-top: 16px; align-items: center; text-align: center; width: 100%; box-sizing: border-box;">
-      <span class="label label--accent">{{ $.Params.jpo_eyebrow }}</span>
       <h2 class="h3--lg" style="margin: 0; max-width: 680px;">{{ $.Params.jpo_title }}</h2>
       <p class="muted measure" style="text-align: center; margin: 0;">
         Rendez-vous le <strong>{{ .date | default "31 Janvier 2027" }}</strong>{{ with .horaires }} ({{ . }}){{ end }} à l'IUT de Troyes{{ with .lieu }} — {{ . }}{{ end }}.
