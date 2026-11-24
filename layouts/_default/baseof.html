@@ -13,6 +13,7 @@
 </div>
 {{- partial "onepage/footer.html" . -}}
 {{- partial "cookie-consent.html" . -}}
+<a class="op-totop" href="#top" aria-label="Retour en haut de la page" title="Retour en haut">{{ partial "onepage/icon.html" (dict "name" "arrow-up" "size" 22) }}</a>
 {{- $js := resources.Get "js/onepage.js" | minify | fingerprint -}}
 <script src="{{ $js.RelPermalink }}" defer></script>
 </body>

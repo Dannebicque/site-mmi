@@ -1,173 +1,77 @@
 {{ define "main" }}
-<section class="section grid-bg">
-  <div class="container stack gap-48">
-    <div class="section-head">
-      <h1 class="h2--xl">Des passionné·es à tes côtés, <span class="hl">de l'idée au diplôme.</span></h1>
-      <p class="lead measure">Une équipe mixte composée d'enseignant·es universitaires, d'enseignant·es-chercheur·es et de professionnel·les en activité pour t'apporter à la fois la rigueur des méthodes et l'expertise du marché.</p>
-    </div>
+{{- $people := .Pages.ByWeight -}}
+{{ partial "onepage/page-head.html" (dict "titre" "Des passionné·es à tes côtés," "accent" "de l'idée au diplôme." "texte" "Une équipe mixte d'enseignant·es universitaires, d'enseignant·es-chercheur·ses et de professionnel·les en activité, pour apprendre à la fois les méthodes et le métier.") }}
 
-    <!-- Chiffres clés & KPIs de l'équipe pédagogique -->
-    <div class="kpi-grid" aria-label="Chiffres clés de l'équipe pédagogique">
-      {{ range .Site.Params.equipe.stats }}
-      <div class="kpi-card">
-        <div class="kpi-card__value">{{ .value }}</div>
-        <div class="kpi-card__label">{{ .label }}</div>
-        <p class="kpi-card__desc">{{ .desc }}</p>
-      </div>
-      {{ else }}
-      <div class="kpi-card">
-        <div class="kpi-card__value">18</div>
-        <div class="kpi-card__label">Membres de l'équipe</div>
-        <p class="kpi-card__desc">Direction, enseignants-chercheurs, PRAG, MCF, technicien & secrétariat</p>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-card__value">25+</div>
-        <div class="kpi-card__label">Intervenants professionnels</div>
-        <p class="kpi-card__desc">Experts d'agences, directeurs artistiques & développeurs</p>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-card__value">3</div>
-        <div class="kpi-card__label">Parcours BUT MMI</div>
-        <p class="kpi-card__desc">Dév Web & Dispositifs interactifs, Création numérique, Communication</p>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-card__value">100%</div>
-        <div class="kpi-card__label">Encadrement de proximité</div>
-        <p class="kpi-card__desc">Suivi en SAÉ, tuteurs dédiés, stages & alternance</p>
-      </div>
-      {{ end }}
-    </div>
+<section class="op-section op-section--tight">
+  <div class="op-stats">
+    {{- range .Site.Params.equipe.stats }}
+    <div class="op-stat"><span class="op-stat__v">{{ .value }}</span><span class="op-stat__l">{{ .label }}</span><p>{{ .desc }}</p></div>
+    {{- end }}
+  </div>
+</section>
 
-    <!-- Filtres par pôle -->
-    <div class="gallery-filters" role="group" aria-label="Filtrer l'équipe pédagogique par pôle">
-      <button type="button" class="gallery-filter-btn is-active" data-team-filter="all" aria-pressed="true">Toute l'équipe (18)</button>
-      <button type="button" class="gallery-filter-btn" data-team-filter="direction" aria-pressed="false">Direction & Coordination</button>
-      <button type="button" class="gallery-filter-btn" data-team-filter="dev" aria-pressed="false">Développement Web & Systèmes</button>
-      <button type="button" class="gallery-filter-btn" data-team-filter="design" aria-pressed="false">Création, 3D & UX</button>
-      <button type="button" class="gallery-filter-btn" data-team-filter="audiovisuel" aria-pressed="false">Audiovisuel & Régie</button>
-      <button type="button" class="gallery-filter-btn" data-team-filter="communication" aria-pressed="false">Communication, Marketing & Écriture</button>
-    </div>
-
-    <!-- Grille dynamique des membres de l'équipe -->
-    <div class="team-grid" id="team-grid">
-      {{ range .Pages.ByWeight }}
-      <article class="team-card card--lift{{ if .Params.featured }} team-card--featured{{ end }}" data-pole="{{ .Params.pole | default "autre" }}">
-        <div class="team-card__avatar-wrap">
-          {{ partial "team-avatar.html" . }}
+<section class="op-section op-section--tight" aria-labelledby="membres">
+  <h2 class="op-sr" id="membres">Les membres de l'équipe</h2>
+  <div class="op-filters op-filters--left" role="group" aria-label="Filtrer l'équipe par pôle">
+    <button type="button" class="op-chip" aria-pressed="true" data-team-filter="all">Toute l'équipe ({{ len $people }})</button>
+    <button type="button" class="op-chip" aria-pressed="false" data-team-filter="direction">Direction</button>
+    <button type="button" class="op-chip" aria-pressed="false" data-team-filter="dev">Développement</button>
+    <button type="button" class="op-chip" aria-pressed="false" data-team-filter="design">Création et UX</button>
+    <button type="button" class="op-chip" aria-pressed="false" data-team-filter="audiovisuel">Audiovisuel</button>
+    <button type="button" class="op-chip" aria-pressed="false" data-team-filter="communication">Communication</button>
+  </div>
+  <ul class="op-people" id="team-grid">
+    {{- range $people }}
+    <li class="op-person" data-pole="{{ .Params.pole | default "autre" }}">
+      <div class="op-person__top">
+        {{ partial "onepage/avatar.html" . }}
+        <div>
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          {{ with .Params.role }}<span class="op-person__role">{{ . }}</span>{{ end }}
         </div>
+      </div>
+      <p>{{ with .Params.bio }}{{ . | truncate 170 }}{{ else }}{{ .Summary | plainify | htmlUnescape | truncate 170 }}{{ end }}</p>
+    </li>
+    {{- end }}
+  </ul>
+</section>
 
-        {{ with .Params.role }}
-          <span class="team-card__role">{{ . }}</span>
-        {{ end }}
+<section class="op-section">
+  <div class="op-head">
+    <h2 class="op-h2">Autour de l'équipe</h2>
+    <p>Le BUT MMI s'appuie aussi sur un réseau de professionnel·les et sur une équipe qui t'accompagne au quotidien.</p>
+  </div>
+  <div class="op-grid3">
+    <article class="op-card"><h3 class="op-h3">Intervenant·es professionnel·les</h3><p>Directeurs et directrices artistiques, développeur·ses, motion designers et journalistes web animent des workshops et partagent la réalité du métier.</p></article>
+    <article class="op-card"><h3 class="op-h3">Régie technique</h3><p>Prêt gratuit du matériel (boîtiers, optiques, micros HF, projecteurs LED, tablettes graphiques) et maintenance des serveurs pédagogiques.</p></article>
+    <article class="op-card"><h3 class="op-h3">Secrétariat et alternance</h3><p>Inscriptions, conventions de stage, contrats d'apprentissage et lien avec les tuteur·rices en entreprise.</p></article>
+  </div>
+</section>
 
-        <h2 class="team-card__name">
-          <a href="{{ .RelPermalink }}" class="team-card__name-link">{{ .Title }}</a>
-        </h2>
-
-        <div class="team-card__desc">
-          {{ with .Params.bio }}
-            {{ . }}
-          {{ else }}
-            {{ .Summary | plainify | htmlUnescape | truncate 150 }}
-          {{ end }}
-        </div>
-
-        {{ with .Params.tags }}
-          <ul class="team-card__tags">
-            {{ range . }}
-              <li class="team-card__tag">{{ . }}</li>
-            {{ end }}
-          </ul>
-        {{ end }}
-
-        <!-- Coordonnées directes & lien profil -->
-        <div class="team-card__footer">
-          <div class="team-card__meta">
-            {{ with .Params.bureau }}
-              <span class="team-card__meta-item" title="Bureau">
-                <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span>{{ . }}</span>
-              </span>
-            {{ end }}
-            {{ with .Params.email }}
-              <a href="mailto:{{ . }}" class="team-card__meta-item team-card__meta-link" title="Envoyer un email">
-                <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                <span>{{ . }}</span>
-              </a>
-            {{ end }}
-          </div>
-
-          <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line);">
-            <a href="{{ .RelPermalink }}" class="touch link-accent" style="font-size: 13px;">
-              Voir le profil complet →
-            </a>
-          </div>
-        </div>
-      </article>
-      {{ end }}
+<section class="op-section op-section--tight">
+  <div class="op-cta-band">
+    <div>
+      <h2>Tu veux échanger avec nous ?</h2>
+      <p>Pose tes questions aux portes ouvertes ou écris-nous directement.</p>
     </div>
-
-    <!-- Pôles complémentaires & Intervenants -->
-    <div class="panel">
-      <div class="section-head gap-8">
-        <h3 class="h3--xl">Professionnel·les & support technique</h3>
-        <p class="muted">Le BUT MMI mobilise un vaste réseau d'experts externes et un accompagnement humain au quotidien.</p>
-      </div>
-
-      <div class="cards" style="margin-top: 12px;">
-        <article class="card card--plain gap-10">
-          <h4 class="h3--sm" style="margin: 0;">Intervenant·es professionnels</h4>
-          <p class="muted text-sm">Directeurs artistiques d'agences, développeurs fullstack, motion designers indépendants et journalistes web viennent animer des workshops intensifs et partager les réalités du marché.</p>
-        </article>
-
-        <article class="card card--plain gap-10">
-          <h4 class="h3--sm" style="margin: 0;">Support technique & régie</h4>
-          <p class="muted text-sm">Une régie dédiée au prêt gratuit de matériel haut de gamme (boîtiers hybrides, optiques cinéma, micros HF, projecteurs LED, tablettes graphiques) et à la maintenance des serveurs pédagogiques.</p>
-        </article>
-
-        <article class="card card--plain gap-10">
-          <h4 class="h3--sm" style="margin: 0;">Secrétariat & Alternance</h4>
-          <p class="muted text-sm">Une équipe administrative à l'écoute des étudiant·es pour gérer les inscriptions, le suivi des conventions de stage, le montage des contrats d'apprentissage et le lien avec les tuteurs en entreprise.</p>
-        </article>
-      </div>
-    </div>
-
-    <!-- Bloc contact & candidater -->
-    <div class="split" style="background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 36px 40px;">
-      <div class="stack gap-12">
-        <h3 class="h3--lg" style="margin: 0;">Tu souhaites échanger avec nous ?</h3>
-        <p class="muted" style="margin: 0;">Viens nous poser tes questions lors de nos Journées Portes Ouvertes ou envoie-nous un message directement.</p>
-      </div>
-      <div class="actions" style="margin-left: auto;">
-        <a class="btn btn--primary" href="{{ "/contact/" | relURL }}">Contacter l'équipe</a>
-        <a class="btn btn--ghost" href="{{ "/#candidater" | relURL }}">Modalités de candidature</a>
-      </div>
+    <div class="op-row">
+      <a class="op-pill op-pill--onv op-pill--lg" href="{{ "/contact/" | relURL }}">Contacter l'équipe {{ partial "onepage/icon.html" (dict "name" "arrow-right" "size" 18) }}</a>
+      <a class="op-pill op-pill--ghost op-pill--lg" href="{{ "/#candidater" | relURL }}">Candidater</a>
     </div>
   </div>
 </section>
 
 <script>
-  (function() {
-    const filterButtons = document.querySelectorAll('[data-team-filter]');
-    const cards = document.querySelectorAll('#team-grid .team-card');
-
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterButtons.forEach(b => {
-          b.classList.remove('is-active');
-          b.setAttribute('aria-pressed', 'false');
-        });
-        btn.classList.add('is-active');
-        btn.setAttribute('aria-pressed', 'true');
-
-        const filter = btn.getAttribute('data-team-filter');
-        cards.forEach(card => {
-          const cardPoles = (card.getAttribute('data-pole') || '').split(/\s+/);
-          if (filter === 'all' || cardPoles.includes(filter)) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
+  (function () {
+    var btns = document.querySelectorAll('[data-team-filter]');
+    var cards = document.querySelectorAll('#team-grid .op-person');
+    btns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var f = btn.getAttribute('data-team-filter');
+        btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+        cards.forEach(function (c) {
+          var poles = (c.getAttribute('data-pole') || '').split(/\s+/);
+          c.hidden = !(f === 'all' || poles.indexOf(f) > -1);
         });
       });
     });

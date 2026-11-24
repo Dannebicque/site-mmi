@@ -1,0 +1,5 @@
+{{- with .Params.photo -}}
+<span class="op-avatar op-avatar--photo"><img src="{{ . | relURL }}" alt="" loading="lazy"></span>
+{{- else -}}
+<span class="op-avatar" aria-hidden="true">{{ with .Params.initials }}{{ . }}{{ else }}{{ substr $.Title 0 2 }}{{ end }}</span>
+{{- end -}}

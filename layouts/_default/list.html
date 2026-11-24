@@ -1,18 +1,11 @@
 {{ define "main" }}
-<section class="section section--ruled">
-  <div class="container container--md stack gap-28">
-    <div class="section-head">
-      <h1>{{ .Title }}</h1>
-      {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
-    </div>
-    <div class="stack gap-16">
-      {{ range .Pages }}
-      <article class="card">
-        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-        {{ with .Summary }}<p class="muted">{{ . }}</p>{{ end }}
-      </article>
-      {{ end }}
-    </div>
+{{ partial "onepage/page-head.html" (dict "titre" .Title "texte" .Description) }}
+<section class="op-section op-section--tight">
+  {{ with .Content }}<div class="op-prose">{{ . }}</div>{{ end }}
+  <div class="op-grid3">
+    {{ range .Pages }}
+    <article class="op-card"><h2 class="op-h3"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>{{ with .Summary }}<p>{{ . | plainify | truncate 160 }}</p>{{ end }}</article>
+    {{ end }}
   </div>
 </section>
 {{ end }}
