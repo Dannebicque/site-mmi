@@ -493,3 +493,12 @@ body.op-inner { margin: 0; background: var(--bg); color: var(--ink); font-family
   .op-totop { right: 14px; bottom: 14px; width: 48px; height: 48px; }
 }
 .op-col { display: flex; flex-direction: column; gap: 16px; }
+
+/* Section contact de l'accueil */
+.op-contact { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.op-contact__item { color: var(--ink); text-decoration: none; gap: 10px; transition: transform .25s var(--ease); }
+.op-contact__item:hover { transform: translateY(-3px); }
+.op-contact__item .ico { color: var(--vtext); margin-bottom: 14px; }
+.op-contact__v { font: 600 22px/1.25 var(--display); overflow-wrap: anywhere; }
+.op-cta { padding-bottom: 64px; }
+@media (max-width: 900px) { .op-contact { grid-template-columns: minmax(0, 1fr); } }

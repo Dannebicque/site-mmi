@@ -1,0 +1,25 @@
+{{- $c := site.Params.contact -}}
+<section class="op-section" id="contact" aria-labelledby="contact-title">
+  <div class="op-head">
+    {{ partial "onepage/titre.html" (dict "lignes" (slice "Une question ?" "Écris-nous.") "id" "contact-title") }}
+    <p>Admissions, programme, alternance, visite des locaux : le secrétariat et l'équipe pédagogique te répondent.</p>
+  </div>
+  <div class="op-contact">
+    <a class="op-card op-contact__item" href="mailto:{{ $c.email }}">
+      {{ partial "onepage/icon.html" (dict "name" "mail" "size" 28) }}
+      <span class="op-meta__k">E-mail</span>
+      <span class="op-contact__v">{{ $c.email }}</span>
+    </a>
+    <a class="op-card op-contact__item" href="tel:{{ $c.phone_clean }}">
+      {{ partial "onepage/icon.html" (dict "name" "phone" "size" 28) }}
+      <span class="op-meta__k">Téléphone</span>
+      <span class="op-contact__v">03 25 42 46 46</span>
+    </a>
+    <a class="op-card op-contact__item" href="{{ $c.maps_url }}" target="_blank" rel="noopener">
+      {{ partial "onepage/icon.html" (dict "name" "map-pin" "size" 28) }}
+      <span class="op-meta__k">Adresse</span>
+      <span class="op-contact__v">{{ $c.address }}, {{ $c.postal_code }} {{ $c.city }}</span>
+    </a>
+  </div>
+  <a class="op-pill op-pill--ink op-pill--lg op-mt40" href="{{ "/contact/" | relURL }}">Écrire au département {{ partial "onepage/icon.html" (dict "name" "arrow-right" "size" 18) }}</a>
+</section>

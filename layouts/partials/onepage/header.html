@@ -7,7 +7,7 @@
       <li><a href="{{ $b }}#projets">Projets</a></li>
       <li><a href="{{ $b }}#parcours">Parcours</a></li>
       <li><a href="{{ $b }}#equipe">Équipe</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="{{ if .IsHome }}#contact{{ else }}{{ "/contact/" | relURL }}{{ end }}">Contact</a></li>
     </ul>
     <div class="op-nav__actions">
       <button class="op-iconbtn" type="button" id="theme-toggle" aria-label="Passer en mode clair">
