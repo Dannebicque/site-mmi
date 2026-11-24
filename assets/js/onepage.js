@@ -114,22 +114,40 @@
       fill.style.height = Math.max(0, s.offsetTop + dot.offsetTop + 8 - top) + 'px';
     }
   }
+  var scroller = document.getElementById('op-tl-scroller');
+  var pinMQ = window.matchMedia('(min-width: 901px) and (min-height: 620px)');
+  function pinned() { return scroller && pinMQ.matches; }
+  function stepScrollTop(i) {
+    var total = scroller.offsetHeight - window.innerHeight;
+    var top = scroller.getBoundingClientRect().top + window.scrollY;
+    return top + total * (i + 0.5) / steps.length;
+  }
   steps.forEach(function (s, i) {
-    s.querySelector('.op-step__btn').addEventListener('click', function () { activate(i); });
+    s.querySelector('.op-step__btn').addEventListener('click', function () {
+      if (pinned()) window.scrollTo({ top: stepScrollTop(i), behavior: reduce ? 'auto' : 'smooth' });
+      else activate(i);
+    });
   });
   if (steps.length) {
     activate(0);
     var ticking = false;
     function onScroll() {
       ticking = false;
-      var line = window.innerHeight * 0.45;
       var best = 0;
-      steps.forEach(function (s, i) { if (s.getBoundingClientRect().top < line) best = i; });
+      if (pinned()) {
+        // Section épinglée : la progression dans le conteneur choisit l'étape
+        var total = scroller.offsetHeight - window.innerHeight;
+        var p = Math.min(Math.max(-scroller.getBoundingClientRect().top / total, 0), 0.9999);
+        best = Math.floor(p * steps.length);
+      } else {
+        var line = window.innerHeight * 0.45;
+        steps.forEach(function (s, i) { if (s.getBoundingClientRect().top < line) best = i; });
+      }
       activate(best);
     }
     window.addEventListener('scroll', function () {
       if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
     }, { passive: true });
-    window.addEventListener('resize', function () { var c = current; current = -1; activate(c); });
+    window.addEventListener('resize', function () { var c = current; current = -1; activate(c); onScroll(); });
   }
 })();

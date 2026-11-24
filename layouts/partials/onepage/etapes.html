@@ -6,7 +6,9 @@
       {{ partial "onepage/titre.html" (dict "lignes" $e.titre "id" "projet-title") }}
       <p>{{ $e.texte }}</p>
     </div>
-    <div class="op-tl" style="--n:{{ $n }}">
+    <div class="op-tl-scroller" id="op-tl-scroller" style="--n:{{ $n }}">
+    <div class="op-tl-pin">
+    <div class="op-tl">
       <ol class="op-tl__list" id="op-steps">
         <span class="op-tl__track" aria-hidden="true"><span class="op-tl__fill" id="op-tl-fill"></span></span>
         {{- range $i, $s := $e.liste }}
@@ -27,6 +29,8 @@
         <img id="op-tl-img" src="{{ $first.image | relURL }}" alt="{{ $first.alt }}" loading="lazy">
         <figcaption><span id="op-tl-cap" aria-live="polite">Étape 1 sur {{ $n }} · {{ $first.titre }}</span><span>{{ $e.legende }}</span></figcaption>
       </figure>
+    </div>
+    </div>
     </div>
   </div>
 </section>

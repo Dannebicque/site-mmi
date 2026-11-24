@@ -1,0 +1,22 @@
+Watching for changes in /home/user/site-mmi/{archetypes,assets,content,data,layouts,static}
+Watching for config changes in /home/user/site-mmi/hugo.toml
+Start building sites … 
+hugo v0.125.7-b1d808bc373f53ad37c8966bb02a6aea095db5f8+extended linux/amd64 BuildDate=2024-05-08T14:46:24Z VendorInfo=gohugoio
+
+
+                   | FR  
+-------------------+-----
+  Pages            | 32  
+  Paginator pages  |  0  
+  Non-page files   |  0  
+  Static files     | 14  
+  Processed images |  0  
+  Aliases          |  3  
+  Cleaned          |  0  
+
+Built in 41 ms
+Environment: "development"
+Serving pages from disk
+Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+Web Server is available at http://localhost:1313/ (bind address 127.0.0.1) 
+Press Ctrl+C to stop

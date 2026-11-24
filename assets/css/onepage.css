@@ -222,6 +222,17 @@ button { font: inherit; color: inherit; }
 .op-tl__figure img.is-swapping { opacity: .2; }
 .op-tl__figure figcaption { display: flex; justify-content: space-between; gap: 16px; font-size: 16px; color: var(--mute); }
 
+/* Épinglage : la section reste à l'écran et le scroll fait avancer les étapes une par une */
+@media (min-width: 901px) and (min-height: 620px) {
+  .op-tl-scroller { height: calc(var(--n, 5) * 70vh + 100vh); margin-top: -24px; }
+  .op-tl-pin { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; }
+  .op-tl-pin .op-tl { width: 100%; align-items: center; }
+  .op-tl-pin .op-step { min-height: 0; }
+  .op-tl-pin .op-tl__figure { position: static; }
+  .op-tl-pin .op-tl__figure img { aspect-ratio: auto; height: min(62vh, 560px); }
+  .op-band > .op-section { padding-bottom: 24px; }
+}
+
 /* Parcours ------------------------------------------------------------- */
 .op-years { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .op-year { background: var(--surf); border-radius: 24px; padding: 36px; display: flex; flex-direction: column; gap: 18px; min-height: 380px; }
