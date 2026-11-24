@@ -1,0 +1,11 @@
+{{- $mots := site.Data.accueil.bandeau -}}
+{{- with site.Params.jpo }}{{ if .enabled }}{{ $mots = slice (printf "Portes ouvertes le %s" (lower .date)) | append $mots }}{{ end }}{{ end -}}
+<div class="op-marquee" role="region" aria-label="Bandeau défilant">
+  <p class="op-sr">{{ delimit $mots ", " }}</p>
+  <div class="op-marquee__track" aria-hidden="true">
+    {{- range seq 4 }}{{ range $mots }}<span>{{ . }} <i>✦</i></span>{{ end }}{{ end -}}
+  </div>
+  <button class="op-marquee__btn" type="button" id="op-marquee-toggle" aria-pressed="false" aria-label="Mettre le bandeau en pause">
+    {{ partial "onepage/icon.html" (dict "name" "pause" "size" 16 "class" "when-playing") }}{{ partial "onepage/icon.html" (dict "name" "play" "size" 16 "class" "when-paused") }}
+  </button>
+</div>

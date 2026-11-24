@@ -1,0 +1,28 @@
+{{- $c := site.Data.accueil.candidater -}}
+<section class="op-section op-cta" id="candidater" aria-labelledby="candidater-title">
+  {{- with site.Params.jpo }}{{ if .enabled }}
+  <div class="op-event">
+    <div class="op-stack20">
+      <h2 class="op-event__title" id="candidater-title">Portes ouvertes</h2>
+      <p class="op-lead">{{ .description }}</p>
+    </div>
+    <div class="op-stack20">
+      <p class="op-event__date"><time datetime="{{ .start_date }}">{{ time.Format "Monday 2 January 2006" .start_date | strings.FirstUpper }}</time><br>{{ replace .horaires " - " " – " }}</p>
+      <p class="op-event__place">{{ partial "onepage/icon.html" (dict "name" "map-pin" "size" 20) }}{{ .lieu }}</p>
+      <a class="op-pill op-pill--onv op-pill--xl" href="{{ .url | relURL }}">Préparer ma visite {{ partial "onepage/icon.html" (dict "name" "arrow-right" "size" 18) }}</a>
+    </div>
+  </div>
+  {{- end }}{{ end }}
+  <div class="op-doors">
+    {{- range $c.portes }}
+    <article class="op-door">
+      <h3>{{ .titre }}</h3>
+      <p>{{ .texte }}</p>
+      <dl>
+        {{- range .calendrier }}<div><dt>{{ .k }}</dt><dd>{{ .v }}</dd></div>{{ end }}
+      </dl>
+      <a class="op-pill op-pill--ink op-pill--lg" href="{{ index site.Params.urls .lien }}" target="_blank" rel="noopener">{{ .cta }} {{ partial "onepage/icon.html" (dict "name" "arrow-up-right" "size" 18) }}</a>
+    </article>
+    {{- end }}
+  </div>
+</section>

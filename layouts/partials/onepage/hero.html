@@ -1,0 +1,34 @@
+{{- $h := site.Data.accueil.hero -}}
+<section class="op-hero" aria-labelledby="hero-title">
+  <div class="op-hero__media" aria-hidden="true">
+    {{- with $h.video }}
+    <video id="op-hero-video" autoplay muted loop playsinline poster="{{ $h.image | relURL }}"><source src="{{ . | relURL }}" type="video/mp4"></video>
+    {{- else }}
+    <img src="{{ $h.image | relURL }}" alt="" fetchpriority="high">
+    {{- end }}
+  </div>
+  <div class="op-hero__body">
+    <h1 class="op-hero__title op-reveal is-in" id="hero-title">{{ range $i, $w := $h.titre }}{{ if $i }} {{ end }}<span style="--i:{{ $i }}">{{ $w }}</span>{{ end }}</h1>
+    <div class="op-hero__foot">
+      <div class="op-hero__intro">
+        <p>{{ $h.texte }}</p>
+        <div class="op-row">
+          <a class="op-pill op-pill--violet op-pill--lg" href="#formation">Découvrir la formation {{ partial "onepage/icon.html" (dict "name" "arrow-right" "size" 18) }}</a>
+          {{- with $h.video }}
+          <button class="op-pill op-pill--ghost op-pill--lg" type="button" id="op-video-toggle" aria-pressed="false">
+            <span class="when-playing">{{ partial "onepage/icon.html" (dict "name" "pause" "size" 16) }}Mettre la vidéo en pause</span>
+            <span class="when-paused">{{ partial "onepage/icon.html" (dict "name" "play" "size" 16) }}Lire la vidéo</span>
+          </button>
+          {{- end }}
+        </div>
+      </div>
+      <div class="op-hero__tutelles">
+        <div class="op-logos">
+          <a href="{{ site.Params.urls.iut_troyes }}" target="_blank" rel="noopener"><img src="{{ "images/logo_mmi.png" | relURL }}" alt="IUT de Troyes, Métiers du Multimédia et de l'Internet" height="64"></a>
+          <a href="{{ site.Params.urls.urca }}" target="_blank" rel="noopener"><img src="{{ "images/logo-urca.jpg" | relURL }}" alt="Université de Reims Champagne-Ardenne" height="56"></a>
+        </div>
+        <p>Formation dispensée à l'IUT de Troyes, composante de l'Université de Reims Champagne-Ardenne.</p>
+      </div>
+    </div>
+  </div>
+</section>

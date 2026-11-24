@@ -1,0 +1,22 @@
+<header class="op-header" id="top">
+  <nav class="op-nav" aria-label="Navigation principale">
+    <a class="op-logo" href="#top" aria-label="MMI Troyes, retour en haut">MMI<span>_</span></a>
+    <ul class="op-nav__links" id="op-menu">
+      <li><a href="#formation">Formation</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#parcours">Parcours</a></li>
+      <li><a href="#equipe">Équipe</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="op-nav__actions">
+      <button class="op-iconbtn" type="button" id="theme-toggle" aria-label="Passer en mode clair">
+        {{ partial "onepage/icon.html" (dict "name" "moon" "size" 20 "class" "ico-moon") }}
+        {{ partial "onepage/icon.html" (dict "name" "sun" "size" 20 "class" "ico-sun") }}
+      </button>
+      <a class="op-pill op-pill--white" href="#candidater">Candidater</a>
+      <button class="op-iconbtn op-burger" type="button" id="op-burger" aria-expanded="false" aria-controls="op-menu" aria-label="Ouvrir le menu">
+        {{ partial "onepage/icon.html" (dict "name" "menu" "size" 20) }}
+      </button>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,60 @@
+{{- $p := site.Data.accueil.projets -}}
+<section class="op-section" id="projets" aria-labelledby="projets-title">
+  <div class="op-head op-head--projets">
+    {{ partial "onepage/titre.html" (dict "lignes" $p.titre "id" "projets-title") }}
+    <div class="op-filters" role="group" aria-label="Filtrer les projets">
+      <button type="button" class="op-chip" aria-pressed="true" data-filter="tout">Tout</button>
+      {{- range $p.filtres }}
+      <button type="button" class="op-chip" aria-pressed="false" data-filter="{{ . | urlize }}">{{ . }}</button>
+      {{- end }}
+    </div>
+  </div>
+  {{- /* Projets d'exemple : à remplacer par de vrais travaux d'élèves. */}}
+  <ul class="op-mosaic" id="op-mosaic">
+    <li class="op-work op-work--7" data-cat="web">
+      <a href="#projets">
+        <div class="op-browser">
+          <div class="op-browser__bar" aria-hidden="true"><i></i><i></i><i></i><span>festival.mmi-troyes.fr</span></div>
+          <img src="{{ "images/galerie-lab-dev.jpg" | relURL }}" alt="" loading="lazy" class="r169">
+        </div>
+        <span class="op-work__meta"><strong>[Site du festival]</strong><span>Web · BUT2</span></span>
+      </a>
+    </li>
+    <li class="op-work op-work--5" data-cat="video">
+      <a href="#projets">
+        <div class="op-media r43">
+          <img src="{{ "images/galerie-studio-video.jpg" | relURL }}" alt="" loading="lazy">
+          <span class="op-play" aria-hidden="true">{{ partial "onepage/icon.html" (dict "name" "play" "size" 28) }}</span>
+          <span class="op-duration">1:42</span>
+        </div>
+        <span class="op-work__meta"><strong>[Teaser du festival]</strong><span>Vidéo · BUT2</span></span>
+      </a>
+    </li>
+    <li class="op-work op-work--3" data-cat="design com">
+      <a href="#projets">
+        <div class="op-poster r34"><span class="op-poster__t">FESTI<br>VAL<br>2026</span><span>Affiche · format A2</span></div>
+        <span class="op-work__meta"><strong>[Affiche]</strong><span>Design · BUT1</span></span>
+      </a>
+    </li>
+    <li class="op-work op-work--3" data-cat="design web">
+      <a href="#projets">
+        <div class="op-phonebox r34"><div class="op-phone"><img src="{{ "images/galerie-lab-design.jpg" | relURL }}" alt="" loading="lazy"></div></div>
+        <span class="op-work__meta"><strong>[Appli billetterie]</strong><span>UX · BUT3</span></span>
+      </a>
+    </li>
+    <li class="op-work op-work--6" data-cat="jeu-3d">
+      <a href="#projets">
+        <div class="op-media r1610">
+          <img src="{{ "images/galerie-regie-audio.jpg" | relURL }}" alt="" loading="lazy">
+          <span class="op-badge">{{ partial "onepage/icon.html" (dict "name" "gamepad" "size" 18) }}Jouable en ligne</span>
+        </div>
+        <span class="op-work__meta"><strong>[Jeu vidéo]</strong><span>Jeu &amp; 3D · BUT3</span></span>
+      </a>
+    </li>
+  </ul>
+  <p class="op-empty" id="op-empty" hidden>Pas encore de projet dans cette catégorie.</p>
+  <div class="op-row op-row--between op-mt40">
+    <p class="op-mute op-small">{{ $p.note }}</p>
+    <a class="op-pill op-pill--outline op-pill--lg" href="{{ "/locaux/" | relURL }}">Tous les projets {{ partial "onepage/icon.html" (dict "name" "arrow-right" "size" 18) }}</a>
+  </div>
+</section>

@@ -1,11 +1,13 @@
 {{ define "main" }}
-{{- partial "sections/hero.html" . -}}
-{{- partial "sections/strip.html" . -}}
-{{- partial "sections/competences.html" . -}}
-{{- partial "sections/projet.html" . -}}
-{{- partial "sections/ia.html" . -}}
-{{- partial "sections/parcours.html" . -}}
-{{- partial "sections/anciens.html" . -}}
-{{- partial "sections/departement.html" . -}}
-{{- partial "sections/candidater.html" . -}}
+{{- partial "onepage/header.html" . -}}
+<main id="contenu">
+{{- partial "onepage/hero.html" . -}}
+{{- partial "onepage/bandeau.html" . -}}
+{{- partial "onepage/competences.html" . -}}
+{{- partial "onepage/projets.html" . -}}
+{{- partial "onepage/etapes.html" . -}}
+{{- partial "onepage/parcours.html" . -}}
+{{- partial "onepage/equipe.html" . -}}
+{{- partial "onepage/candidater.html" . -}}
+</main>
 {{ end }}
