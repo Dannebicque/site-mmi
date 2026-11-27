@@ -1,0 +1,70 @@
+# Contenus de la page d'accueil (one page). Modifiable sans toucher aux gabarits.
+
+hero:
+  titre: ["Créer,", "communiquer,", "coder.", "Et ça devient", "ton métier."]
+  texte: "En MMI, tu apprends à mener un projet de A à Z : écrire, designer, filmer, coder, déployer, diffuser. Et tu découvres comment l'IA s'intègre à chaque étape, sans jamais perdre la main sur ton travail."
+  image: "images/galerie-tournage-plateau.jpg"
+  # Vidéo de fond (mp4 dans static/). Laisser vide pour n'afficher que l'image.
+  video: ""
+
+bandeau: ["Design", "Vidéo", "Web", "Motion", "Son", "Communication", "IA"]
+
+competences:
+  titre: ["Ce que tu sauras", "faire en 3 ans"]
+  texte: "Pas un métier figé : une boîte à outils. Tu pourras choisir ton cap sans avoir renoncé à rien. Bac +3, diplôme national, stages et alternance."
+  ia:
+    titre: "IA : usages et esprit critique"
+    texte: "Écrire de bons prompts, choisir ses outils, automatiser les tâches répétitives, vérifier ce que l'IA produit. Mais aussi en connaître les limites : droits d'auteur, biais, impact environnemental, éthique."
+  image:
+    titre: "Design et UX"
+    texte: "Maquetter, structurer une interface, penser l'expérience de celles et ceux qui l'utilisent."
+    image: "images/galerie-lab-design.jpg"
+  tuiles:
+    - { titre: "Vidéo, motion et son", icone: "clapperboard", texte: "Cadrer, tourner, monter, animer, enregistrer et mixer. Du tournage au teaser prêt à diffuser." }
+    - { titre: "Développement web", icone: "code", texte: "HTML, CSS, JavaScript, PHP : construire des sites et des applications, accessibles dès la conception." }
+    - { titre: "DevOps et déploiement", icone: "server", texte: "Git, conteneurs, intégration continue, hébergement : mettre en ligne proprement et maintenir ce qu'on a construit." }
+    - { titre: "Rédaction et communication", icone: "pen-line", texte: "Écrire pour le web, raconter une marque, bâtir une stratégie de contenu." }
+    - { titre: "Gestion de projet", icone: "kanban", texte: "Planifier, travailler en équipe, tenir les délais, présenter à un client." }
+
+projets:
+  titre: ["Ce qu'ils", "ont fabriqué"]
+  note: "Projets et visuels d'exemple : à remplacer par une sélection de travaux d'élèves."
+  filtres: ["Web", "Vidéo", "Design", "Jeu & 3D", "Com"]
+
+etapes:
+  titre: ["Un projet.", "Cinq métiers.", "Toi."]
+  texte: "La polyvalence, c'est ça : une même équipe qui passe de l'idée à la mise en ligne. Fil rouge ici : la campagne de communication globale pour un festival culturel troyen."
+  legende: "Festival culturel troyen"
+  liste:
+    - { titre: "Idée et brief", texte: "Comprendre la demande, cadrer, choisir un angle.", ia: "IA : brainstorm de pistes, que tu tries.", image: "images/galerie-campus-vie.jpg", alt: "Séance de travail en équipe" }
+    - { titre: "Design", texte: "Identité, maquettes, affiche, prototype d'interface.", ia: "IA : variantes de moodboards, tu décides.", image: "images/galerie-lab-design.jpg", alt: "Laboratoire de design" }
+    - { titre: "Image et son", texte: "Tournage, montage, motion, bande-son.", ia: "IA : transcription, sous-titres, détourage.", image: "images/galerie-tournage-plateau.jpg", alt: "Tournage sur le plateau" }
+    - { titre: "Code et déploiement", texte: "Intégration, site responsive, accessibilité, mise en ligne automatisée.", ia: "IA : prototyper, relire, expliquer. Tu testes.", image: "images/galerie-lab-dev.jpg", alt: "Laboratoire de développement" }
+    - { titre: "Diffusion", texte: "Publier, promouvoir, mesurer, présenter au client.", ia: "IA : idées de déclinaisons, tu pilotes.", image: "images/galerie-regie-audio.jpg", alt: "Régie son" }
+
+parcours:
+  titre: ["3 ans pour passer", "de curieux·se à pro"]
+  texte: "Même diplôme, même niveau d'exigence. En formation initiale, tu pars en stage. En alternance, tu partages ton temps entre l'IUT et une entreprise : possible en BUT2 ou en BUT3."
+  annees:
+    - { code: "BUT1", titre: "Les fondamentaux", texte: "Tu touches à tout : design, vidéo, audio, web, communication, IA. Des projets en équipe dès le premier semestre pour acquérir une solide culture numérique.", rythme: "Cours et projets en équipe" }
+    - { code: "BUT2", titre: "Tu choisis ta voie", texte: "Tu te spécialises dans un parcours. Premier stage, ou entrée en alternance.", rythme: "Stage 8 à 10 semaines, ou alternance 1 semaine IUT / 1 semaine entreprise" }
+    - { code: "BUT3", titre: "Cap sur le pro", texte: "Stage ou alternance rémunérée, grand projet de fin d'études et accompagnement personnalisé vers l'emploi ou la poursuite en master.", rythme: "Stage 12 à 16 semaines, ou alternance 1 semaine IUT / 2 semaines entreprise" }
+
+equipe:
+  titre: ["Avec qui", "tu vas apprendre"]
+  texte: "Des enseignant·es universitaires, des chercheur·ses et des professionnel·les en activité qui t'accompagnent en projet."
+  # Fiches de content/equipe/ affichées sur l'accueil, dans cet ordre.
+  selection: ["romain-delon", "anthony-froli", "florent-libbrecht", "marina-matosin", "david-annebicque", "ariane-loizon", "guillaume-leullier", "kyllian-bresson"]
+
+candidater:
+  portes:
+    - titre: "Tu passes ton bac ou tu te réorientes"
+      texte: "Entrée en BUT1 via Parcoursup, comme pour la plupart des formations post-bac."
+      calendrier: [{ k: "Vœux", v: "Janv. – mars" }, { k: "Admissions", v: "Fin mai – juil." }, { k: "Rentrée", v: "Septembre" }]
+      cta: "Candidater sur Parcoursup"
+      lien: "parcoursup"
+    - titre: "Tu viens déjà du supérieur"
+      texte: "Entrée directe en BUT2 ou BUT3 via eCandidat : passerelles BTS, L2, prépa ou réorientation."
+      calendrier: [{ k: "Ouverture", v: "Février / mars" }, { k: "Dossiers", v: "Mars – mai" }, { k: "Résultats", v: "Juin / juil." }]
+      cta: "Candidater sur eCandidat"
+      lien: "ecandidat"

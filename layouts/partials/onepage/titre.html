@@ -1,0 +1,2 @@
+{{- /* Titre de section avec révélation mot par mot. dict "lignes" [..] "id" "" */ -}}
+<h2 class="op-h2 op-reveal"{{ with .id }} id="{{ . }}"{{ end }}>{{ range $i, $l := .lignes }}{{ if $i }} {{ end }}<span style="--i:{{ $i }}">{{ $l }}</span>{{ end }}</h2>

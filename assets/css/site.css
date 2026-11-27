@@ -17,38 +17,38 @@
 :root {
   /* Mode Sombre (défaut) - Déclinaison lumineuse sur la base #4C2365 (teinte 277°) */
   --accent: #C47BF5;
-  --accent-fg: #0B0E14;
+  --accent-fg: #120A18;
   --accent-tint: rgba(196, 123, 245, 0.12);
   --accent-glow: rgba(196, 123, 245, 0.30);
 
-  --bg: #0B0E14;
-  --bg-alt: #0E121A;
-  --surface: #11161F;
-  --surface-2: #161C28;
-  --line: #232B3B;
-  --line-strong: #3A4458;
-  --text: #E8ECF4;
-  --muted: #9AA6BA;
+  --bg: #120A18;
+  --bg-alt: #22152E;
+  --surface: #22152E;
+  --surface-2: #2E1D3C;
+  --line: #3A2A48;
+  --line-strong: #4A3858;
+  --text: #F4EEF8;
+  --muted: #B7A9C2;
   /* Teinte secondaire : intitulés (.eyebrow), étiquettes (.label--cyan), anneau de focus.
      Ambre pour se démarquer du violet de l'accent et du bleu « IA » générique.
      Pour changer d'ambiance, ne modifier que --secondary (ici et en mode clair). */
-  --secondary: #FFB454;
+  --secondary: #C47BF5;
   --cyan: var(--secondary); /* nom historique : conservé pour les classes existantes */
   --danger: #FF8A7A;
 
-  --grid-line: rgba(255, 255, 255, 0.045);
-  --header-bg: rgba(11, 14, 20, 0.90);
-  --header-bg-scrolled: rgba(11, 14, 20, 0.96);
+  --grid-line: transparent;
+  --header-bg: #120A18;
+  --header-bg-scrolled: #120A18;
   --header-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
   --btt-bg: rgba(17, 22, 31, 0.92);
-  --card-shadow: 0 12px 30px rgba(0, 0, 0, 0.40);
+  --card-shadow: none;
 
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: "Hanken Grotesk", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "Inter", system-ui, sans-serif;
 
-  --radius: 14px;
-  --radius-sm: 10px;
+  --radius: 24px;
+  --radius-sm: 16px;
   --container: 100%;
   --gutter: clamp(20px, 3.5vw, 56px);
 }
@@ -60,23 +60,23 @@
   --accent-tint: rgba(76, 35, 101, 0.08);
   --accent-glow: rgba(76, 35, 101, 0.20);
 
-  --bg: #F8FAFC;
-  --bg-alt: #F1F5F9;
-  --surface: #FFFFFF;
-  --surface-2: #F1F5F9;
-  --line: #E2E8F0;
-  --line-strong: #CBD5E1;
-  --text: #0F172A;
-  --muted: #475569;
-  --secondary: #9A4A00;
+  --bg: #FFFFFF;
+  --bg-alt: #EFE7F5;
+  --surface: #EFE7F5;
+  --surface-2: #E2D5EC;
+  --line: #D3C6DC;
+  --line-strong: #BFAECB;
+  --text: #14081C;
+  --muted: #5A4E63;
+  --secondary: #4C2365;
   --danger: #DC2626;
 
-  --grid-line: rgba(15, 23, 42, 0.045);
-  --header-bg: rgba(248, 250, 252, 0.88);
-  --header-bg-scrolled: rgba(255, 255, 255, 0.96);
+  --grid-line: transparent;
+  --header-bg: #FFFFFF;
+  --header-bg-scrolled: #FFFFFF;
   --header-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
   --btt-bg: rgba(255, 255, 255, 0.94);
-  --card-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+  --card-shadow: none;
 }
 
 
@@ -455,7 +455,7 @@ html { scroll-padding-top: calc(var(--header-h, 120px) + 12px); }
   font-weight: 700;
   font-size: clamp(88px, 13vw, 168px);
   line-height: 0.84;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.02em;
 }
 .hero__title {
   font-size: clamp(34px, 4.6vw, 60px);
@@ -1783,3 +1783,42 @@ html { scroll-padding-top: calc(var(--header-h, 120px) + 12px); }
 }
 .footer-jpo .icon { width: 20px; height: 20px; }
 .footer-jpo:hover, .footer-jpo:focus-visible { border-color: var(--accent); color: var(--accent); background: var(--accent-tint); }
+
+
+/* 11. DA « STUDIO ÉDITORIAL » (alignée sur la page d'accueil) =============== */
+/* Pas de quadrillage, pas de lignes de séparation, pas d'ombres, boutons pilule,
+   titres Inter Tight 800 avec une approche légère (les lettres ne se touchent pas). */
+
+.grid-bg { background-image: none; }
+.section--ruled { border-top: 0; }
+.section { padding-top: 96px; padding-bottom: 96px; }
+.container { max-width: min(var(--container), 1360px); }
+.eyebrow { display: none; }
+.label { font-family: var(--font-body); font-weight: 600; letter-spacing: 0; }
+.page { font-family: var(--font-body); }
+:where(.page) :where(h1, h2) { font-weight: 500; letter-spacing: -0.015em; line-height: 1.04; }
+:where(.page) h1, .h2--xl { font-size: clamp(44px, 5.4vw, 80px); line-height: 1.02; letter-spacing: -0.015em; }
+:where(.page) h3 { font-weight: 600; letter-spacing: -0.005em; }
+.lead { color: var(--text); }
+.card, .panel { border: 0 !important; box-shadow: none !important; background: var(--surface); border-radius: var(--radius); }
+.card--lift:hover { transform: none; box-shadow: none; }
+.btn { border-radius: 999px; font-weight: 600; box-shadow: none !important; }
+.btn--primary { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+.btn--ghost { border-color: var(--text); }
+.form-input, .form-select, .form-textarea { border-radius: 16px; background: var(--bg); border-color: var(--line); }
+hr { display: none; }
+
+/* Cartes à plat : fond violet clair (violet foncé en sombre), sans contour ni lueur */
+.card, .panel, .step, .kpi-card, .team-card, .team-card--featured, .facility-card, .gallery-item,
+.card-mini-timeline, .contact-meta-icon, .team-card__avatar-wrap {
+  border: 0 !important;
+  box-shadow: none !important;
+  background: var(--surface);
+}
+.team-card__avatar-wrap, .contact-meta-icon { background: var(--surface-2); }
+.kpi-card::before { display: none; }
+.kpi-card, .team-card, .facility-card, .gallery-item { border-radius: var(--radius); }
+.kpi-card:hover, .team-card:hover, .facility-card:hover, .gallery-item:hover, .card--lift:hover { transform: translateY(-3px); box-shadow: none !important; }
+.team-card__tag, .facility-card__spec-item { border: 0 !important; background: var(--surface-2); border-radius: 999px; }
+.gallery-filter-btn { border-radius: 999px; border-color: var(--text); color: var(--text); background: transparent; }
+.gallery-filter-btn[aria-pressed="true"], .gallery-filter-btn.is-active { background: var(--text); color: var(--bg); border-color: var(--text); }

@@ -3,148 +3,18 @@
 <head>
 {{- partial "head.html" . -}}
 </head>
-<body>
-<div id="top" class="page">
-<a class="skip" href="#contenu">Aller au contenu</a>
-
-{{- partial "header.html" . -}}
-
+<body class="op-inner">
+<div class="page">
+<a class="op-skip" href="#contenu">Aller au contenu</a>
+{{- partial "onepage/header.html" . -}}
 <main id="contenu">
 {{- block "main" . }}{{- end -}}
 </main>
-
-{{- partial "footer.html" . -}}
-
 </div>
+{{- partial "onepage/footer.html" . -}}
 {{- partial "cookie-consent.html" . -}}
-
-<!-- Bouton Retour en haut -->
-<a href="#top" id="back-to-top" class="back-to-top" aria-label="Retour en haut de page" title="Retour en haut de page">
-  <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M18 15l-6-6-6 6"/>
-  </svg>
-  <span>Haut</span>
-</a>
-
-<script>
-  (function() {
-    const btn = document.getElementById('back-to-top');
-    const header = document.querySelector('.site-header');
-    const themeBtn = document.getElementById('theme-toggle');
-    
-    // Bascule du mode clair / sombre
-    if (themeBtn) {
-      themeBtn.addEventListener('click', function() {
-        const current = document.documentElement.getAttribute('data-theme') || 'dark';
-        const next = current === 'light' ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-      });
-    }
-
-    // Menu mobile : le bouton ouvre ou ferme la liste des pages (replié seulement si JS actif)
-    const navToggle = document.getElementById('nav-toggle');
-    const nav = document.getElementById('site-nav');
-    function setNav(open) {
-      nav.classList.toggle('is-open', open);
-      navToggle.setAttribute('aria-expanded', String(open));
-      navToggle.setAttribute('aria-label', open ? 'Fermer le menu principal' : 'Ouvrir le menu principal');
-    }
-    if (navToggle && nav) {
-      navToggle.addEventListener('click', function() {
-        setNav(navToggle.getAttribute('aria-expanded') !== 'true');
-      });
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
-          setNav(false);
-          navToggle.focus();
-        }
-      });
-      nav.addEventListener('click', function(e) {
-        if (e.target.closest('a')) setNav(false);
-      });
-    }
-
-    // Hauteur réelle du header (barre + sous-navigation) : sert au décalage des ancres
-    function syncHeaderHeight() {
-      if (header) document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
-    }
-    // Sur PC, la barre « Sur cette page » démarre à la même abscisse que le premier lien du menu
-    const subnavList = document.querySelector('.subnav__list');
-    const firstNavLink = document.querySelector('.nav__link');
-    function alignSubnav() {
-      if (!subnavList || !firstNavLink) return;
-      subnavList.style.setProperty('--subnav-offset', '0px');
-      if (window.innerWidth <= 900) return;
-      const delta = firstNavLink.getBoundingClientRect().left - subnavList.getBoundingClientRect().left;
-      subnavList.style.setProperty('--subnav-offset', Math.max(0, delta) + 'px');
-    }
-    window.addEventListener('resize', alignSubnav);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(alignSubnav);
-    alignSubnav();
-
-    syncHeaderHeight();
-    if (header && 'ResizeObserver' in window) {
-      new ResizeObserver(syncHeaderHeight).observe(header);
-    } else {
-      window.addEventListener('resize', syncHeaderHeight);
-    }
-
-    // Sous-navigation de l'accueil : met en évidence la section en cours de lecture
-    const spyLinks = Array.from(document.querySelectorAll('.subnav__link'));
-    const spySections = Array.from(document.querySelectorAll('main > section[id]'));
-    let spyTicking = false;
-    function updateSpy() {
-      spyTicking = false;
-      if (!spyLinks.length) return;
-      const line = (header ? header.offsetHeight : 0) + 24;
-      const atBottom = window.innerHeight + window.pageYOffset >= document.documentElement.scrollHeight - 2;
-      let currentId = null;
-      spySections.forEach(function(sec) {
-        if (sec.getBoundingClientRect().top <= line) currentId = sec.id;
-      });
-      if (atBottom && spySections.length) currentId = spySections[spySections.length - 1].id;
-      spyLinks.forEach(function(a) {
-        if (a.getAttribute('href') === '#' + currentId) {
-          a.setAttribute('aria-current', 'location');
-        } else {
-          a.removeAttribute('aria-current');
-        }
-      });
-    }
-
-    function onScroll() {
-      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-      if (!spyTicking) {
-        spyTicking = true;
-        window.requestAnimationFrame(updateSpy);
-      }
-      if (btn) {
-        if (scrollY > 250) {
-          btn.classList.add('is-visible');
-        } else {
-          btn.classList.remove('is-visible');
-        }
-      }
-      if (header) {
-        if (scrollY > 10) {
-          header.classList.add('is-scrolled');
-        } else {
-          header.classList.remove('is-scrolled');
-        }
-      }
-    }
-    
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    
-    if (btn) {
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
-  })();
-</script>
+<a class="op-totop" href="#top" aria-label="Retour en haut de la page" title="Retour en haut">{{ partial "onepage/icon.html" (dict "name" "arrow-up" "size" 22) }}</a>
+{{- $js := resources.Get "js/onepage.js" | minify | fingerprint -}}
+<script src="{{ $js.RelPermalink }}" defer></script>
 </body>
 </html>

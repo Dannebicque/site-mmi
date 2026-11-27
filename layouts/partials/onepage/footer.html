@@ -1,0 +1,49 @@
+{{- $c := site.Params.contact -}}
+{{- $u := site.Params.urls -}}
+{{- $b := cond .IsHome "" ("/" | relURL) -}}
+<footer class="op-footer" id="pied-de-page">
+  <div class="op-footer__inner">
+    <div class="op-fcols">
+      <div class="op-fcontact">
+        <p class="op-fcontact__name">{{ $c.department }}</p>
+        <p>{{ partial "onepage/icon.html" (dict "name" "map-pin" "size" 20) }}<a href="{{ $c.maps_url }}" target="_blank" rel="noopener">{{ $c.address }}<br>{{ $c.postal_code }} {{ $c.city }}</a></p>
+        <p>{{ partial "onepage/icon.html" (dict "name" "phone" "size" 20) }}<a href="tel:{{ $c.phone_clean }}">03 25 42 46 46</a></p>
+        <p>{{ partial "onepage/icon.html" (dict "name" "mail" "size" 20) }}<a href="mailto:{{ $c.email }}">{{ $c.email }}</a></p>
+      </div>
+      <nav aria-label="La formation">
+        <p class="op-fh">La formation</p>
+        <a href="{{ $b }}#formation">Compétences</a>
+        <a href="{{ $b }}#projets">Projets étudiants</a>
+        <a href="{{ $b }}#projet">Un projet de A à Z</a>
+        <a href="{{ $b }}#parcours">Parcours</a>
+        <a href="{{ $b }}#candidater">Candidater</a>
+      </nav>
+      <nav aria-label="Découvrir">
+        <p class="op-fh">Découvrir</p>
+        <a href="{{ "/locaux/" | relURL }}">Locaux &amp; équipements</a>
+        <a href="{{ "/equipe/" | relURL }}">L'équipe</a>
+        <a href="{{ "/contact/" | relURL }}">Contact &amp; accès</a>
+        <a href="{{ $b }}#candidater">Portes ouvertes</a>
+      </nav>
+      <nav aria-label="Pour aller plus loin">
+        <p class="op-fh">Pour aller plus loin</p>
+        <a href="{{ $u.iut_troyes }}" target="_blank" rel="noopener">IUT de Troyes</a>
+        <a href="{{ $u.urca }}" target="_blank" rel="noopener">Université de Reims</a>
+        <a href="{{ $u.butmmi }}" target="_blank" rel="noopener">butmmi.fr</a>
+      </nav>
+      <nav aria-label="Infos légales">
+        <p class="op-fh">Infos légales</p>
+        <a href="{{ "/accessibilite/" | relURL }}">Accessibilité</a>
+        <a href="{{ "/mentions-legales/" | relURL }}">Mentions légales</a>
+        <a href="{{ "/confidentialite/" | relURL }}">Confidentialité</a>
+        <a href="{{ "/cookies/" | relURL }}">Cookies</a>
+        <a href="{{ "/credits/" | relURL }}">Crédits</a>
+        <a href="{{ "/plan-du-site/" | relURL }}">Plan du site</a>
+      </nav>
+    </div>
+    <p class="op-wordmark" aria-hidden="true">MMI<span>_</span></p>
+    <div class="op-fbottom">
+      <span>© {{ now.Year }} IUT de Troyes · Université de Reims Champagne-Ardenne</span>
+    </div>
+  </div>
+</footer>

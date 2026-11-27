@@ -1,213 +1,110 @@
 {{ define "main" }}
-<section class="section grid-bg">
-  <div class="container stack gap-48">
-    <div class="section-head">
-      <p class="eyebrow">// {{ .Params.hero_eyebrow }}</p>
-      <h1 class="h2--xl">{{ .Params.hero_title }} <span class="hl">{{ .Params.hero_highlight }}</span></h1>
-      <p class="lead measure">{{ .Params.hero_description }}</p>
-    </div>
+{{- $P := .Params -}}
+{{ partial "onepage/page-head.html" (dict "titre" $P.hero_title "accent" $P.hero_highlight "texte" $P.hero_description) }}
 
-    <div class="kpi-grid" aria-label="Chiffres clés des locaux et équipements">
-      {{ range .Params.stats }}
-      <div class="kpi-card">
-        <div class="kpi-card__value">{{ .value }}</div>
-        <div class="kpi-card__label">{{ .label }}</div>
-        <p class="kpi-card__desc">{{ .desc }}</p>
-      </div>
-      {{ end }}
-    </div>
-
-    <div class="stack gap-20">
-      <div class="section-head gap-8">
-        <span class="label label--cyan">{{ .Params.facilities_label }}</span>
-        <h2 class="h3--xl">{{ .Params.facilities_title }}</h2>
-        <p class="muted">{{ .Params.facilities_description }}</p>
-      </div>
-
-      <div class="facilities-grid">
-        {{ range .Params.facilities }}
-        <article class="facility-card">
-          <div class="facility-card__header">
-            <span class="facility-card__badge">{{ .badge }}</span>
-            <img src="{{ .image | relURL }}" alt="{{ .image_alt }}" class="facility-card__img" loading="lazy">
-          </div>
-          <div class="facility-card__body">
-            <h3 class="facility-card__title">{{ .title }}</h3>
-            <p class="facility-card__desc">{{ .description }}</p>
-            <span class="facility-card__specs-title">{{ .specs_title }}</span>
-            <ul class="facility-card__specs">
-              {{ range .specs }}
-              <li class="facility-card__spec-item">{{ . }}</li>
-              {{ end }}
-            </ul>
-          </div>
-        </article>
-        {{ end }}
-      </div>
-    </div>
-
-    <div class="stack gap-20" style="margin-top: 16px;">
-      <div class="section-head gap-8">
-        <span class="label label--cyan">{{ .Params.gallery_eyebrow }}</span>
-        <h2 class="h3--xl">{{ .Params.gallery_title }}</h2>
-        <p class="muted">{{ .Params.gallery_description }}</p>
-      </div>
-
-      <div class="gallery-filters" role="group" aria-label="{{ .Params.gallery_filters_aria }}">
-        {{ range $index, $filter := .Params.gallery_filters }}
-        <button type="button" class="gallery-filter-btn{{ if eq $index 0 }} is-active{{ end }}" data-filter="{{ $filter.key }}" aria-pressed="{{ if eq $index 0 }}true{{ else }}false{{ end }}">{{ $filter.label }}</button>
-        {{ end }}
-      </div>
-
-      <div class="gallery-grid" id="gallery-grid">
-        {{ range .Params.gallery_items }}
-        <article class="gallery-item" data-category="{{ .category }}" tabindex="0" role="button" aria-label="Agrandir la photo {{ .title }}">
-          <div class="gallery-item__img-wrap">
-            <span class="gallery-item__badge">{{ .badge }}</span>
-            <img src="{{ .image | relURL }}" alt="{{ .image_alt }}" class="gallery-item__img" loading="lazy">
-          </div>
-          <div class="gallery-item__caption">
-            <h3 class="gallery-item__title">{{ .title }}</h3>
-            <p class="gallery-item__desc">{{ .description }}</p>
-          </div>
-        </article>
-        {{ end }}
-      </div>
-    </div>
-
-    {{ with .Site.Params.jpo }}
-    {{ if .enabled }}
-    <div class="card card--accent gap-16" style="padding: 36px 32px; margin-top: 16px; align-items: center; text-align: center; width: 100%; box-sizing: border-box;">
-      <span class="label label--accent">{{ $.Params.jpo_eyebrow }}</span>
-      <h2 class="h3--lg" style="margin: 0; max-width: 680px;">{{ $.Params.jpo_title }}</h2>
-      <p class="muted measure" style="text-align: center; margin: 0;">
-        Rendez-vous le <strong>{{ .date | default "31 Janvier 2027" }}</strong>{{ with .horaires }} ({{ . }}){{ end }} à l'IUT de Troyes{{ with .lieu }} — {{ . }}{{ end }}.
-        {{ with .description }}<br><span style="font-size: 14px; display: inline-block; margin-top: 4px;">{{ . }}</span>{{ end }}
-      </p>
-      <div class="actions" style="justify-content: center; margin-top: 8px;">
-        <a class="btn btn--primary" href="{{ .url | default "/contact/" | relURL }}">{{ $.Params.jpo_button }}</a>
-        <a class="btn btn--ghost" href="{{ "/#candidater" | relURL }}">{{ $.Params.jpo_secondary_button }}</a>
-      </div>
-    </div>
-    {{ end }}
-    {{ end }}
+<section class="op-section op-section--tight">
+  <div class="op-stats">
+    {{- range $P.stats }}
+    <div class="op-stat"><span class="op-stat__v">{{ .value }}</span><span class="op-stat__l">{{ .label }}</span><p>{{ .desc }}</p></div>
+    {{- end }}
   </div>
 </section>
 
-<div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Visualisation de la photo">
-  <div class="lightbox-content">
-    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Fermer la vue agrandie">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-    </button>
-    <img src="" alt="" class="lightbox-img" id="lightbox-img">
-    <div class="lightbox-footer">
-      <span id="lightbox-badge" class="label label--accent" style="margin-bottom: 2px;"></span>
-      <h3 class="lightbox-footer-title" id="lightbox-title"></h3>
-      <p class="lightbox-footer-desc" id="lightbox-desc"></p>
+<section class="op-section" aria-labelledby="espaces">
+  <div class="op-head">
+    <h2 class="op-h2" id="espaces">{{ $P.facilities_title }}</h2>
+    <p>{{ $P.facilities_description }}</p>
+  </div>
+  <div class="op-places">
+    {{- range $P.facilities }}
+    <article class="op-place">
+      {{- if fileExists (printf "static/%s" .image) }}
+      <img class="op-place__img" src="{{ .image | relURL }}" alt="{{ .image_alt }}" loading="lazy">
+      {{- else }}
+      <div class="op-place__noimg" role="img" aria-label="Photo à venir">{{ partial "onepage/icon.html" (dict "name" "image" "size" 40 "stroke" 1.5) }}</div>
+      {{- end }}
+      <div class="op-place__body">
+        <span class="op-place__cat">{{ .badge }}</span>
+        <h3>{{ .title }}</h3>
+        <p>{{ .description }}</p>
+        <ul class="op-checks" aria-label="{{ .specs_title }}">
+          {{- range .specs }}<li>{{ partial "onepage/icon.html" (dict "name" "check" "size" 16) }}{{ . }}</li>{{ end }}
+        </ul>
+      </div>
+    </article>
+    {{- end }}
+  </div>
+</section>
+
+<section class="op-section op-section--tight" aria-labelledby="galerie">
+  <div class="op-head op-head--projets">
+    <h2 class="op-h2" id="galerie">{{ $P.gallery_title }}</h2>
+    <div class="op-filters" role="group" aria-label="{{ $P.gallery_filters_aria }}">
+      {{- range $i, $f := $P.gallery_filters }}
+      <button type="button" class="op-chip" data-filter="{{ $f.key }}" aria-pressed="{{ if eq $i 0 }}true{{ else }}false{{ end }}">{{ $f.label }}</button>
+      {{- end }}
     </div>
   </div>
-</div>
+  <ul class="op-gallery" id="gallery-grid">
+    {{- range $P.gallery_items }}
+    <li class="op-shot" data-category="{{ .category }}">
+      <button type="button" data-src="{{ .image | relURL }}" data-alt="{{ .image_alt }}" data-title="{{ .title }}" data-desc="{{ .description }}" aria-label="Agrandir la photo : {{ .title }}">
+        <span class="op-shot__img"><img src="{{ .image | relURL }}" alt="{{ .image_alt }}" loading="lazy"><span class="op-shot__zoom" aria-hidden="true">{{ partial "onepage/icon.html" (dict "name" "maximize" "size" 18) }}</span></span>
+        <span class="op-shot__meta"><strong>{{ .title }}</strong><span>{{ .badge }}</span></span>
+      </button>
+    </li>
+    {{- end }}
+  </ul>
+</section>
+
+{{- with .Site.Params.jpo }}{{ if .enabled }}
+<section class="op-section">
+  <div class="op-event">
+    <div class="op-stack20">
+      <h2 class="op-event__title">Portes ouvertes</h2>
+      <p class="op-lead">{{ $P.jpo_title }}. {{ .description }}</p>
+    </div>
+    <div class="op-stack20">
+      <p class="op-event__date"><time datetime="{{ .start_date }}">{{ time.Format "Monday 2 January 2006" .start_date | strings.FirstUpper }}</time><br>{{ replace .horaires " - " " – " }}</p>
+      <p class="op-event__place">{{ partial "onepage/icon.html" (dict "name" "map-pin" "size" 20) }}{{ .lieu }}</p>
+      <a class="op-pill op-pill--onv op-pill--xl" href="{{ .url | relURL }}">Préparer ma visite {{ partial "onepage/icon.html" (dict "name" "arrow-right" "size" 18) }}</a>
+    </div>
+  </div>
+</section>
+{{- end }}{{ end }}
+
+<dialog class="op-lightbox" id="op-lightbox" aria-labelledby="op-lb-title">
+  <img id="op-lb-img" src="" alt="">
+  <div class="op-lightbox__bar">
+    <div><h2 id="op-lb-title"></h2><p id="op-lb-desc"></p></div>
+    <button type="button" class="op-iconbtn" id="op-lb-close" aria-label="Fermer la photo">{{ partial "onepage/icon.html" (dict "name" "x" "size" 20) }}</button>
+  </div>
+</dialog>
 
 <script>
-  (function() {
-    const filterButtons = document.querySelectorAll('.gallery-filter-btn');
-    const items = document.querySelectorAll('.gallery-item');
-
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterButtons.forEach(b => {
-          b.classList.remove('is-active');
-          b.setAttribute('aria-pressed', 'false');
-        });
-        btn.classList.add('is-active');
-        btn.setAttribute('aria-pressed', 'true');
-
-        const filter = btn.getAttribute('data-filter');
-        items.forEach(item => {
-          item.style.display = filter === 'all' || item.getAttribute('data-category') === filter ? 'flex' : 'none';
-        });
+  (function () {
+    var shots = document.querySelectorAll('#gallery-grid .op-shot');
+    document.querySelectorAll('.op-chip[data-filter]').forEach(function (chip, _, all) {
+      chip.addEventListener('click', function () {
+        var f = chip.getAttribute('data-filter');
+        all.forEach(function (c) { c.setAttribute('aria-pressed', String(c === chip)); });
+        shots.forEach(function (s) { s.hidden = !(f === 'all' || s.getAttribute('data-category') === f); });
       });
     });
-
-    const modal = document.getElementById('lightbox-modal');
-    const modalImg = document.getElementById('lightbox-img');
-    const modalBadge = document.getElementById('lightbox-badge');
-    const modalTitle = document.getElementById('lightbox-title');
-    const modalDesc = document.getElementById('lightbox-desc');
-    const closeBtn = document.getElementById('lightbox-close');
-    let lastActiveTrigger = null;
-
-    const openLightbox = (item) => {
-      lastActiveTrigger = item || document.activeElement;
-      const img = item.querySelector('.gallery-item__img');
-      const badge = item.querySelector('.gallery-item__badge');
-      const title = item.querySelector('.gallery-item__title');
-      const desc = item.querySelector('.gallery-item__desc');
-
-      if (!img || !modalImg) return;
-
-      modalImg.src = img.src;
-      modalImg.alt = img.alt;
-      if (modalBadge) modalBadge.textContent = badge ? badge.textContent : '';
-      if (modalTitle) modalTitle.textContent = title ? title.textContent : '';
-      if (modalDesc) modalDesc.textContent = desc ? desc.textContent : '';
-
-      modal.classList.add('is-open');
-      document.body.style.overflow = 'hidden';
-      if (closeBtn) setTimeout(() => closeBtn.focus(), 30);
-    };
-
-    const closeLightbox = () => {
-      if (!modal.classList.contains('is-open')) return;
-      modal.classList.remove('is-open');
-      document.body.style.overflow = '';
-      if (modalImg) modalImg.src = '';
-      if (lastActiveTrigger && typeof lastActiveTrigger.focus === 'function') lastActiveTrigger.focus();
-      lastActiveTrigger = null;
-    };
-
-    items.forEach(item => {
-      item.addEventListener('click', () => openLightbox(item));
-      item.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          openLightbox(item);
-        }
+    var dlg = document.getElementById('op-lightbox');
+    if (!dlg || !dlg.showModal) return;
+    var img = document.getElementById('op-lb-img');
+    shots.forEach(function (s) {
+      var b = s.querySelector('button');
+      b.addEventListener('click', function () {
+        img.src = b.dataset.src; img.alt = b.dataset.alt;
+        document.getElementById('op-lb-title').textContent = b.dataset.title;
+        document.getElementById('op-lb-desc').textContent = b.dataset.desc;
+        dlg.showModal();
       });
     });
-
-    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
-    if (modal) {
-      modal.addEventListener('click', (event) => {
-        if (event.target === modal) closeLightbox();
-      });
-
-      modal.addEventListener('keydown', (event) => {
-        if (event.key !== 'Tab') return;
-        const focusables = Array.from(modal.querySelectorAll(
-          'button:not([disabled]), [href], input:not([disabled]), [tabindex]:not([tabindex="-1"])'
-        )).filter(element => element.offsetWidth > 0 || element.offsetHeight > 0 || element === document.activeElement);
-
-        if (focusables.length === 0) {
-          event.preventDefault();
-          return;
-        }
-        const first = focusables[0];
-        const last = focusables[focusables.length - 1];
-
-        if (event.shiftKey && document.activeElement === first) {
-          event.preventDefault();
-          last.focus();
-        } else if (!event.shiftKey && document.activeElement === last) {
-          event.preventDefault();
-          first.focus();
-        }
-      });
-    }
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && modal && modal.classList.contains('is-open')) closeLightbox();
-    });
+    document.getElementById('op-lb-close').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
   })();
 </script>
 {{ end }}

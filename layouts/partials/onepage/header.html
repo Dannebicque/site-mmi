@@ -1,0 +1,23 @@
+{{- $b := cond .IsHome "" ("/" | relURL) -}}
+<header class="op-header{{ if not .IsHome }} op-header--solid{{ end }}" id="top">
+  <nav class="op-nav" aria-label="Navigation principale">
+    <a class="op-logo" href="{{ if .IsHome }}#top{{ else }}{{ "/" | relURL }}{{ end }}" aria-label="MMI Troyes, accueil">MMI<span>_</span></a>
+    <ul class="op-nav__links" id="op-menu">
+      <li><a href="{{ $b }}#formation">Formation</a></li>
+      <li><a href="{{ $b }}#projets">Projets</a></li>
+      <li><a href="{{ $b }}#parcours">Parcours</a></li>
+      <li><a href="{{ $b }}#equipe">Équipe</a></li>
+      <li><a href="{{ if .IsHome }}#contact{{ else }}{{ "/contact/" | relURL }}{{ end }}">Contact</a></li>
+    </ul>
+    <div class="op-nav__actions">
+      <button class="op-iconbtn" type="button" id="theme-toggle" aria-label="Passer en mode clair">
+        {{ partial "onepage/icon.html" (dict "name" "moon" "size" 20 "class" "ico-moon") }}
+        {{ partial "onepage/icon.html" (dict "name" "sun" "size" 20 "class" "ico-sun") }}
+      </button>
+      <a class="op-pill op-pill--white" href="{{ $b }}#candidater">Candidater</a>
+      <button class="op-iconbtn op-burger" type="button" id="op-burger" aria-expanded="false" aria-controls="op-menu" aria-label="Ouvrir le menu">
+        {{ partial "onepage/icon.html" (dict "name" "menu" "size" 20) }}
+      </button>
+    </div>
+  </nav>
+</header>

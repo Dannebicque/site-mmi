@@ -1,0 +1,10 @@
+{{- /* En-tête de page intérieure : dict "titre" "…" "accent" "…" "texte" "…" "retour" (dict "url" "" "label" "") */ -}}
+<section class="op-section op-page-head">
+  {{- with .retour }}
+  <a class="op-back" href="{{ .url | relURL }}">{{ partial "onepage/icon.html" (dict "name" "arrow-left" "size" 18) }}{{ .label }}</a>
+  {{- end }}
+  <div class="op-head">
+    <h1 class="op-h1">{{ .titre }}{{ with .accent }} <em>{{ . }}</em>{{ end }}</h1>
+    {{ with .texte }}<p>{{ . }}</p>{{ end }}
+  </div>
+</section>

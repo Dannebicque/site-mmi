@@ -1,71 +1,41 @@
 {{ define "main" }}
-<section class="section grid-bg">
-  <div class="container container--md stack gap-36">
-    <!-- Fil d'Ariane / Retour -->
+<section class="op-section op-page-head">
+  <a class="op-back" href="{{ "/equipe/" | relURL }}">{{ partial "onepage/icon.html" (dict "name" "arrow-left" "size" 18) }}Toute l'équipe</a>
+  <div class="op-profile">
+    {{ partial "onepage/avatar.html" . }}
     <div>
-      <a href="{{ "/equipe/" | relURL }}" class="touch link-accent" style="gap: 6px;">
-        <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        <span>Retour à l'équipe pédagogique</span>
-      </a>
+      <h1 class="op-h1">{{ .Title }}</h1>
+      <p class="op-profile__role">{{ .Params.pole_label | default .Params.role }}</p>
+      {{ with .Params.statut }}<p class="op-profile__statut">{{ . }}</p>{{ end }}
     </div>
+  </div>
+</section>
 
-    <!-- Carte Profil Principale -->
-    <article class="card card--lift" style="padding: 36px;">
-      <div class="split" style="align-items: flex-start; gap: 32px;">
-        <!-- Photo de profil -->
-        <div style="flex: 0 0 220px; max-width: 240px; width: 100%;">
-          <div class="team-card__avatar-wrap" style="aspect-ratio: 1; border-radius: var(--radius); margin-bottom: 0;">
-            {{ partial "team-avatar.html" . }}
-          </div>
-        </div>
-
-        <!-- Informations & Coordonnées -->
-        <div class="stack gap-16" style="flex: 1 1 320px;">
-          <div class="stack gap-6">
-            {{ with .Params.pole_label }}
-              <span class="label label--cyan">{{ . }}</span>
-            {{ else }}
-              {{ with .Params.role }}
-                <span class="label label--cyan">{{ . }}</span>
-              {{ end }}
-            {{ end }}
-            <h1 class="h2--xl" style="margin: 0;">{{ .Title }}</h1>
-            {{ with .Params.statut }}
-              <p class="muted" style="margin: 0; font-size: 16px;">{{ . }}</p>
-            {{ end }}
-          </div>
-
-          {{ with .Params.tags }}
-            <ul class="team-card__tags">
-              {{ range . }}
-                <li class="team-card__tag" style="font-size: 13px; padding: 4px 10px;">{{ . }}</li>
-              {{ end }}
-            </ul>
-          {{ end }}
-
-        </div>
+<section class="op-section op-section--tight">
+  <div class="op-two">
+    <div class="op-col">
+      <div class="op-card">
+        <div class="op-prose">{{ .Content }}</div>
       </div>
-    </article>
-
-    <!-- Contenu & Biographie détaillée -->
-    <div class="card card--plain stack gap-20" style="padding: 36px; line-height: 1.7; font-size: 16px;">
-      <div class="member-content prose">
-        {{ .Content }}
-      </div>
+      {{ with .Params.tags }}
+      <ul class="op-tags" aria-label="Domaines">
+        {{ range . }}<li>{{ . }}</li>{{ end }}
+      </ul>
+      {{ end }}
     </div>
-
     {{ partial "team-contact.html" . }}
+  </div>
+</section>
 
-    <!-- Bannière contact & navigation -->
-    <div class="split" style="background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px 36px;">
-      <div class="stack gap-8">
-        <h3 class="h3--md" style="margin: 0;">Une question sur les enseignements ?</h3>
-        <p class="muted text-sm" style="margin: 0;">Notre secrétariat et nos équipes pédagogiques sont à ta disposition pour te renseigner sur la formation.</p>
-      </div>
-      <div class="actions" style="margin-left: auto;">
-        <a class="btn btn--primary" href="{{ "/contact/" | relURL }}">Nous contacter</a>
-        <a class="btn btn--ghost" href="{{ "/equipe/" | relURL }}">Toute l'équipe</a>
-      </div>
+<section class="op-section op-section--tight">
+  <div class="op-cta-band">
+    <div>
+      <h2>Une question sur les enseignements ?</h2>
+      <p>Le secrétariat et l'équipe pédagogique te renseignent sur la formation.</p>
+    </div>
+    <div class="op-row">
+      <a class="op-pill op-pill--onv op-pill--lg" href="{{ "/contact/" | relURL }}">Nous contacter {{ partial "onepage/icon.html" (dict "name" "arrow-right" "size" 18) }}</a>
+      <a class="op-pill op-pill--ghost op-pill--lg" href="{{ "/equipe/" | relURL }}">Toute l'équipe</a>
     </div>
   </div>
 </section>

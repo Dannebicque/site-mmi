@@ -1,0 +1,32 @@
+{{- $c := site.Data.accueil.competences -}}
+<section class="op-section" id="formation" aria-labelledby="formation-title">
+  <div class="op-head">
+    {{ partial "onepage/titre.html" (dict "lignes" $c.titre "id" "formation-title") }}
+    <p>{{ $c.texte }}</p>
+  </div>
+  <div class="op-bento">
+    <article class="op-tile op-tile--violet op-tile--xl">
+      {{ partial "onepage/icon.html" (dict "name" "sparkles" "size" 44 "stroke" 1.6) }}
+      <div>
+        <h3>{{ $c.ia.titre }}</h3>
+        <p>{{ $c.ia.texte }}</p>
+      </div>
+    </article>
+    <article class="op-tile op-tile--img op-tile--wide">
+      <img src="{{ $c.image.image | relURL }}" alt="" loading="lazy">
+      <div class="op-tile__caption">
+        <h3>{{ $c.image.titre }}</h3>
+        <p>{{ $c.image.texte }}</p>
+      </div>
+    </article>
+    {{- range $c.tuiles }}
+    <article class="op-tile">
+      <span class="op-tile__ico">{{ partial "onepage/icon.html" (dict "name" .icone "size" 32 "stroke" 1.8) }}</span>
+      <div>
+        <h3>{{ .titre }}</h3>
+        <p>{{ .texte }}</p>
+      </div>
+    </article>
+    {{- end }}
+  </div>
+</section>

@@ -1,0 +1,17 @@
+{{- $p := site.Data.accueil.parcours -}}
+<section class="op-section" id="parcours" aria-labelledby="parcours-title">
+  <div class="op-head">
+    {{ partial "onepage/titre.html" (dict "lignes" $p.titre "id" "parcours-title") }}
+    <p>{{ $p.texte }}</p>
+  </div>
+  <div class="op-years">
+    {{- range $i, $y := $p.annees }}
+    <article class="op-year{{ if eq $i 2 }} op-year--inv{{ end }}">
+      <span class="op-year__code">{{ $y.code }}</span>
+      <h3>{{ $y.titre }}</h3>
+      <p>{{ $y.texte }}</p>
+      <p class="op-year__rythme">{{ $y.rythme }}</p>
+    </article>
+    {{- end }}
+  </div>
+</section>

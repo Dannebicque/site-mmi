@@ -1,0 +1,36 @@
+{{- $e := site.Data.accueil.etapes -}}
+{{- $n := len $e.liste -}}
+<section class="op-band" id="projet" aria-labelledby="projet-title">
+  <div class="op-section">
+    <div class="op-head">
+      {{ partial "onepage/titre.html" (dict "lignes" $e.titre "id" "projet-title") }}
+      <p>{{ $e.texte }}</p>
+    </div>
+    <div class="op-tl-scroller" id="op-tl-scroller" style="--n:{{ $n }}">
+    <div class="op-tl-pin">
+    <div class="op-tl">
+      <ol class="op-tl__list" id="op-steps">
+        <span class="op-tl__track" aria-hidden="true"><span class="op-tl__fill" id="op-tl-fill"></span></span>
+        {{- range $i, $s := $e.liste }}
+        <li class="op-step{{ if eq $i 0 }} is-active{{ end }}" data-step="{{ $i }}" data-img="{{ $s.image | relURL }}" data-alt="{{ $s.alt }}" data-title="{{ $s.titre }}">
+          <span class="op-step__dot" aria-hidden="true"></span>
+          <button type="button" class="op-step__btn" aria-current="{{ if eq $i 0 }}step{{ else }}false{{ end }}">
+            <span class="op-step__title">{{ $s.titre }}</span>
+          </button>
+          <div class="op-step__body">
+            <p>{{ $s.texte }}</p>
+            <p class="op-step__ia">{{ partial "onepage/icon.html" (dict "name" "sparkles" "size" 18) }}{{ $s.ia }}</p>
+          </div>
+        </li>
+        {{- end }}
+      </ol>
+      {{- $first := index $e.liste 0 }}
+      <figure class="op-tl__figure">
+        <img id="op-tl-img" src="{{ $first.image | relURL }}" alt="{{ $first.alt }}" loading="lazy">
+        <figcaption><span id="op-tl-cap" aria-live="polite">Étape 1 sur {{ $n }} · {{ $first.titre }}</span><span>{{ $e.legende }}</span></figcaption>
+      </figure>
+    </div>
+    </div>
+    </div>
+  </div>
+</section>

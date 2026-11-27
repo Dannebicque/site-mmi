@@ -1,0 +1,19 @@
+{{- $e := site.Data.accueil.equipe -}}
+{{- $all := where (site.GetPage "/equipe").RegularPages "Type" "equipe" -}}
+<section class="op-section" id="equipe" aria-labelledby="equipe-title">
+  <div class="op-head">
+    {{ partial "onepage/titre.html" (dict "lignes" $e.titre "id" "equipe-title") }}
+    <p>{{ $e.texte }}</p>
+  </div>
+  <ul class="op-team">
+    {{- range $e.selection }}
+    {{- with site.GetPage (printf "/equipe/%s" .) }}
+    <li>
+      <span class="op-avatar" aria-hidden="true">{{ .Params.initials }}</span>
+      <div><a href="{{ .RelPermalink }}">{{ .Title }}</a><span>{{ .Params.role }}</span></div>
+    </li>
+    {{- end }}
+    {{- end }}
+  </ul>
+  <a class="op-pill op-pill--outline op-pill--lg op-mt44" href="{{ "/equipe/" | relURL }}">Voir toute l'équipe ({{ len $all }}) {{ partial "onepage/icon.html" (dict "name" "arrow-right" "size" 18) }}</a>
+</section>
